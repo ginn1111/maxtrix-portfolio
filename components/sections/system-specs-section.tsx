@@ -12,7 +12,8 @@ export function SystemSpecsSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setUptime((prev) => prev + 1);
-      setMemory((prev) => Math.round((prev + Math.random() * 0.1) * 10) / 10);
+      setMemory((prev) => parseFloat((prev + Math.random() * 0.1).toFixed(1)));
+      setProcesses((prev) => prev + (Math.random() > 0.9 ? 1 : 0));
     }, 1000);
     return () => clearInterval(interval);
   }, []);
