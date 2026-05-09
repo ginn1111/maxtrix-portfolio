@@ -6,11 +6,11 @@ export interface TerminalInputProps extends React.InputHTMLAttributes<HTMLInputE
 }
 
 const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
-  ({ className, type, label, ...props }, ref) => {
+  ({ className, type, label, id, ...props }, ref) => {
     return (
       <div className="w-full">
         {label && (
-          <label className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider">
+          <label htmlFor={id} className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider">
             {label}
           </label>
         )}
@@ -19,6 +19,7 @@ const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
             &gt;
           </span>
           <input
+            id={id}
             type={type}
             className={cn(
               "flex h-10 w-full bg-transparent border-b border-outline font-mono text-primary",

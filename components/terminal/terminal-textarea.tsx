@@ -6,11 +6,11 @@ export interface TerminalTextareaProps extends React.TextareaHTMLAttributes<HTML
 }
 
 const TerminalTextarea = React.forwardRef<HTMLTextAreaElement, TerminalTextareaProps>(
-  ({ className, label, ...props }, ref) => {
+  ({ className, label, id, ...props }, ref) => {
     return (
       <div className="w-full">
         {label && (
-          <label className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider">
+          <label htmlFor={id} className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider">
             {label}
           </label>
         )}
@@ -19,6 +19,7 @@ const TerminalTextarea = React.forwardRef<HTMLTextAreaElement, TerminalTextareaP
             &gt;
           </span>
           <textarea
+            id={id}
             className={cn(
               "flex min-h-[120px] w-full bg-transparent border-b border-outline font-mono text-primary",
               "px-2 py-2 pl-6 text-sm resize-none",
