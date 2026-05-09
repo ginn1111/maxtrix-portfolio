@@ -38,7 +38,7 @@ export function TerminalLandingSection() {
           <TerminalButton
             size="lg"
             className="px-8 py-4 text-lg"
-            onClick={() => alert("Boot sequence initiated...")}
+            onClick={() => console.log("[ INITIALIZE ] clicked - boot sequence initiated")}
           >
             [ INITIALIZE ]
           </TerminalButton>
