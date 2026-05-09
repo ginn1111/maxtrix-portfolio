@@ -28,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} ${spaceMono.variable} antialiased`}>
-        <div className="scanlines" />
         {children}
       </body>
     </html>

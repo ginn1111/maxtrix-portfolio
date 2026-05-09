@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -22,15 +21,6 @@
   --font-family-mono: 'Space Mono', monospace;
 }
 
-:root {
-  --primary: #00ff41;
-  --primary-dim: #00e639;
-  --secondary: #ffb000;
-  --background: #131313;
-  --surface: #1f1f1f;
-  --foreground: #e2e2e2;
-}
-
 * {
   border-color: var(--outline);
 }
@@ -41,8 +31,8 @@ body {
   font-family: var(--font-family-body);
 }
 
-/* CRT Scanline Overlay */
-.scanlines::before {
+/* CRT Scanline Overlay via body::after */
+body::after {
   content: '';
   position: fixed;
   top: 0;
