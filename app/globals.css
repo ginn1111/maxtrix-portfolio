@@ -11,10 +11,46 @@
   --color-surface-container: #1f1f1f;
   --color-surface-container-high: #2a2a2a;
   --color-surface-container-highest: #353535;
+  --color-surface-container-low: #1b1b1b;
+  --color-surface-container-lowest: #0e0e0e;
   --color-on-surface: #e2e2e2;
   --color-on-surface-variant: #b9ccb2;
   --color-outline: #84967e;
   --color-outline-variant: #3b4b37;
+  --color-primary-container: #00ff41;
+  --color-on-primary-container: #003907;
+  --color-secondary-container: #fdaf00;
+  --color-on-secondary-container: #694600;
+  --color-tertiary: #fcf8f8;
+  --color-tertiary-container: #dfdcdb;
+  --color-on-tertiary: #313030;
+  --color-on-tertiary-fixed: #1c1b1b;
+  --color-tertiary-fixed: #e5e2e1;
+  --color-tertiary-fixed-dim: #c9c6c5;
+  --color-on-tertiary-fixed-variant: #474646;
+  --color-secondary-fixed: #ffddaf;
+  --color-secondary-fixed-dim: #ffba43;
+  --color-on-secondary-fixed: #281800;
+  --color-on-secondary-fixed-variant: #614000;
+  --color-primary-fixed: #72ff70;
+  --color-primary-fixed-dim: #00e639;
+  --color-on-primary-fixed: #002203;
+  --color-on-primary-fixed-variant: #00530e;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-inverse-primary: #006e16;
+  --color-inverse-surface: #e2e2e2;
+  --color-inverse-on-surface: #303030;
+  --color-on-background: #e2e2e2;
+  --color-on-secondary: #432c00;
+  --color-surface-dim: #131313;
+  --color-surface-tint: #00e639;
+  --color-surface-variant: #353535;
+  --color-on-tertiary-container: #626060;
+  --color-surface-bright: #393939;
+  --color-surface-container-highest: #353535;
 
   --font-family-heading: 'JetBrains Mono', monospace;
   --font-family-body: 'JetBrains Mono', monospace;
@@ -70,4 +106,25 @@ body::after {
   content: ' ';
   flex: 1;
   border-bottom: 1px dotted var(--outline);
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Glow effects */
+.glow-sm {
+  box-shadow: 0 0 10px rgba(0, 230, 57, 0.3);
+}
+
+.glow-md {
+  box-shadow: 0 0 20px rgba(0, 230, 57, 0.5);
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(0, 230, 57, 0.8);
 }
