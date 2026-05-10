@@ -22,9 +22,26 @@ const FOOTER_LINKS: NavItem[] = [
   { href: "/", label: "HELP", icon: "help" },
 ];
 
-export function Sidebar() {
+function NavItem({ href, label, icon }: NavItem) {
   const pathname = usePathname();
+  const isActive = pathname === href;
 
+  return (
+    <Link
+      href={href}
+      className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
+        isActive
+          ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
+          : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
+      }`}
+    >
+      <span className="material-symbols-outlined">{icon}</span>
+      {label}
+    </Link>
+  );
+}
+
+export function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-full z-40 pt-20 flex flex-col border-r border-outline-variant bg-background w-64 hidden md:flex">
       <div className="px-6 py-8 border-b border-outline-variant mb-4">
@@ -47,50 +64,9 @@ export function Sidebar() {
         </div>
       </div>
       <nav className="flex-1 flex flex-col">
-        <Link
-          href="/"
-          className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
-            pathname === "/"
-              ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
-              : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
-          }`}
-        >
-          <span className="material-symbols-outlined">terminal</span>
-          ROOT_ACCESS
-        </Link>
-        <Link
-          href="/projects"
-          className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
-            pathname === "/projects"
-              ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
-              : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
-          }`}
-        >
-          <span className="material-symbols-outlined">account_tree</span>
-          DATA_NODES
-        </Link>
-        <Link
-          href="/specs"
-          className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
-            pathname === "/specs"
-              ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
-              : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
-          }`}
-        >
-          <span className="material-symbols-outlined">memory</span>
-          SYS_DIAGNOSTICS
-        </Link>
-        <Link
-          href="/contact"
-          className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
-            pathname === "/contact"
-              ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
-              : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
-          }`}
-        >
-          <span className="material-symbols-outlined">lock</span>
-          ENCRYPT_MSG
-        </Link>
+        {NAV_ITEMS.map((item) => (
+          <NavItem key={item.href} {...item} />
+        ))}
       </nav>
       <div className="p-4">
         <TerminalButton className="w-full text-sm py-3">
@@ -98,20 +74,16 @@ export function Sidebar() {
         </TerminalButton>
       </div>
       <div className="mt-auto border-t border-outline-variant p-4 flex flex-col gap-2">
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-on-surface-variant hover:text-primary-fixed font-mono text-code-sm uppercase"
-        >
-          <span className="material-symbols-outlined text-[18px]">logout</span>
-          LOGOUT
-        </Link>
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-on-surface-variant hover:text-primary-fixed font-mono text-code-sm uppercase"
-        >
-          <span className="material-symbols-outlined text-[18px]">help</span>
-          HELP
-        </Link>
+        {FOOTER_LINKS.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            className="flex items-center gap-3 text-on-surface-variant hover:text-primary-fixed font-mono text-code-sm uppercase"
+          >
+            <span className="material-symbols-outlined text-[18px]">{link.icon}</span>
+            {link.label}
+          </Link>
+        ))}
       </div>
     </aside>
   );
