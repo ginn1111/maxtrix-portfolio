@@ -1,18 +1,22 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { TerminalButton } from "@/components/terminal/terminal-button";
 
 const skills = [
-  { name: "FRONTEND_DEV", level: 92 },
-  { name: "TYPESCRIPT", level: 90 },
-  { name: "BACKEND_DEV", level: 65 },
-  { name: "MOBILE_DEV", level: 40 },
+  "JavaScript",
+  "TypeScript",
+  "Go",
+  "CSS",
+  "HTML",
+  "Next.js",
+  "React",
+  "Express",
+  "Redux",
+  "Zustand",
 ];
 
 export function SystemSpecsSection() {
   const bioRef = useRef<HTMLDivElement>(null);
-  const barsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const loadGSAP = async () => {
@@ -33,22 +37,6 @@ export function SystemSpecsSection() {
           },
         });
       }
-
-      barsRef.current.forEach((bar) => {
-        if (bar) {
-          const targetWidth = bar.getAttribute("data-width") || "0%";
-          gsap.to(bar, {
-            width: targetWidth,
-            duration: 1.5,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: bar,
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          });
-        }
-      });
     };
 
     loadGSAP();
@@ -151,7 +139,7 @@ export function SystemSpecsSection() {
             </div>
           </div>
 
-          {/* Skill Diagnostics (Progress Bars) */}
+          {/* Skill Diagnostics (Simple List) */}
           <div className="md:col-span-12 lg:col-span-7 relative p-8 border border-outline-variant bg-surface-container-lowest">
             <div className="crosshair crosshair-tl" />
             <div className="crosshair crosshair-tr" />
@@ -159,32 +147,18 @@ export function SystemSpecsSection() {
             <div className="crosshair crosshair-br" />
 
             <h3 className="font-heading text-headline-md text-primary-fixed-dim mb-8 flex items-center gap-3 uppercase">
-              <span className="material-symbols-outlined">analytics</span>
-              SKILL_DIAGNOSTICS
+              <span className="material-symbols-outlined">code</span>
+              TECH_STACK
             </h3>
 
-            <div className="space-y-8">
-              {skills.map((skill, index) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between mb-2 font-mono text-label-sm uppercase tracking-widest">
-                    <span>{skill.name}</span>
-                    <span className="text-primary-fixed-dim">
-                      {skill.level}%
-                    </span>
-                  </div>
-                  <div className="h-1 w-full bg-outline-variant">
-                    <div
-                      ref={(el) => {
-                        if (el !== null) {
-                          barsRef.current[index] = el;
-                        }
-                      }}
-                      className="h-full bg-primary-fixed-dim glow-sm spec-bar animate-flicker"
-                      data-width={`${skill.level}%`}
-                      style={{ width: "0%" }}
-                    />
-                  </div>
-                </div>
+            <div className="flex flex-wrap gap-3">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="font-mono text-code-sm px-4 py-2 border border-primary-fixed-dim/50 bg-surface-container-low text-primary-fixed-dim hover:bg-primary-fixed-dim hover:text-black transition-colors"
+                >
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
