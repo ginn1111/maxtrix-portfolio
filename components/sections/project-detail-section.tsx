@@ -5,148 +5,14 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Separator } from "@base-ui/react/separator";
-
-const projects = [
-  {
-    id: "0x92F1",
-    title: "NEURAL_INTERFACE_V2",
-    description:
-      "Deploying subconscious API integration for low-latency cerebral communication. Protocol verified.",
-    tags: ["REACT", "THREE.JS", "WEBSOCKET"],
-    status: "OPERATIONAL",
-    lastUpdate: "2026-04-15",
-    stats: {
-      languages: [
-        { name: "TypeScript", percentage: 65 },
-        { name: "JavaScript", percentage: 25 },
-        { name: "GLSL", percentage: 10 },
-      ],
-      loc: 12847,
-      commits: 342,
-      contributors: 4,
-      activity: 78,
-      lastCommit: "2026-05-09",
-      repo: "https://github.com/ginn1111/neural-interface-v2",
-    },
-  },
-  {
-    id: "0x44B2",
-    title: "CRYPT_SENTINEL",
-    description:
-      "Real-time traffic monitoring of subterranean data highways. Automated threat suppression active.",
-    tags: ["RUST", "KAFKA", "CUDA"],
-    status: "MONITORING",
-    lastUpdate: "2026-05-02",
-    stats: {
-      languages: [
-        { name: "Rust", percentage: 70 },
-        { name: "C++", percentage: 20 },
-        { name: "Python", percentage: 10 },
-      ],
-      loc: 24891,
-      commits: 567,
-      contributors: 3,
-      activity: 92,
-      lastCommit: "2026-05-10",
-      repo: "https://github.com/ginn1111/crypt-sentinel",
-    },
-  },
-  {
-    id: "0xFD01",
-    title: "VOID_OS_KERNEL",
-    description:
-      "Rewriting the base reality layer. Kernel modules optimizing for 0ms latency in virtualized instances.",
-    tags: ["C++", "ASSEMBLY", "POSIX"],
-    status: "OPTIMIZING",
-    lastUpdate: "2026-03-28",
-    stats: {
-      languages: [
-        { name: "C++", percentage: 55 },
-        { name: "Assembly", percentage: 30 },
-        { name: "C", percentage: 15 },
-      ],
-      loc: 45230,
-      commits: 1024,
-      contributors: 2,
-      activity: 45,
-      lastCommit: "2026-04-20",
-      repo: "https://github.com/ginn1111/void-os-kernel",
-    },
-  },
-  {
-    id: "0x21A3",
-    title: "GHOST_TRAFFIC",
-    description:
-      "Masking system footprints across global networks. Invisible routing established via dark-mesh nodes.",
-    tags: ["GO", "TOR", "PROXY_V6"],
-    status: "STEALTH_MODE",
-    lastUpdate: "2026-05-08",
-    stats: {
-      languages: [
-        { name: "Go", percentage: 80 },
-        { name: "C", percentage: 15 },
-        { name: "Shell", percentage: 5 },
-      ],
-      loc: 8934,
-      commits: 189,
-      contributors: 1,
-      activity: 67,
-      lastCommit: "2026-05-08",
-      repo: "https://github.com/ginn1111/ghost-traffic",
-    },
-  },
-  {
-    id: "0xEE44",
-    title: "CHAIN_REACTOR",
-    description:
-      "Smart contract execution in a sandbox environment. Validating high-value transactions on the ledger.",
-    tags: ["SOLIDITY", "ETH", "WEB3.JS"],
-    status: "VALIDATING",
-    lastUpdate: "2026-04-22",
-    stats: {
-      languages: [
-        { name: "Solidity", percentage: 50 },
-        { name: "JavaScript", percentage: 35 },
-        { name: "TypeScript", percentage: 15 },
-      ],
-      loc: 6721,
-      commits: 98,
-      contributors: 5,
-      activity: 55,
-      lastCommit: "2026-05-01",
-      repo: "https://github.com/ginn1111/chain-reactor",
-    },
-  },
-  {
-    id: "0xBB12",
-    title: "SYNTH_CORE",
-    description:
-      "Emulating biometric logic gates. Synthesis of artificial decision pathways successful. Core temp stable.",
-    tags: ["PYTHON", "PYTORCH", "ONNX"],
-    status: "RUNNING",
-    lastUpdate: "2026-05-07",
-    stats: {
-      languages: [
-        { name: "Python", percentage: 85 },
-        { name: "C++", percentage: 10 },
-        { name: "CUDA", percentage: 5 },
-      ],
-      loc: 15432,
-      commits: 276,
-      contributors: 2,
-      activity: 83,
-      lastCommit: "2026-05-09",
-      repo: "https://github.com/ginn1111/synth-core",
-    },
-  },
-];
+import { PROJECTS } from "@/data/projects";
 
 export function ProjectDetailSection() {
   const params = useParams();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const projectId = params?.id as string;
-  const project = projects.find((p) => p.id === projectId);
+  const project = PROJECTS.find((p) => p.id === projectId);
 
   useEffect(() => {
     const loadGSAP = async () => {
@@ -214,7 +80,7 @@ export function ProjectDetailSection() {
             PROJECT_ID: {project.id}
           </div>
           <h1 className="font-heading text-headline-xl text-primary-fixed-dim uppercase tracking-tighter animate-flicker">
-            {project.title}.sys
+            {project.title}
           </h1>
         </div>
 
@@ -223,14 +89,12 @@ export function ProjectDetailSection() {
         {/* Project Visual Placeholder */}
         <div className="relative mb-8 h-64 w-full overflow-hidden border border-outline-variant bg-surface-container-low crt-fallback crt-flicker">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-fixed-dim/20 via-transparent to-primary-fixed-dim/5" />
-          {/* Noise layer */}
           <div className="absolute inset-0 crt-noise" />
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <div className="text-primary-fixed-dim font-heading text-display-md uppercase tracking-widest crt-color-aberration opacity-40">
               VISUAL_OUTPUT
             </div>
           </div>
-          {/* Crosshair corners */}
           <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary-fixed-dim opacity-50 z-10" />
           <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary-fixed-dim opacity-50 z-10" />
           <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary-fixed-dim opacity-50 z-10" />
@@ -265,98 +129,52 @@ export function ProjectDetailSection() {
           </div>
         </section>
 
-        {/* STATUS and LAST_UPDATE */}
-        <section className="mb-8 flex gap-8 border border-outline-variant p-4 bg-surface-container-low">
-          <div>
-            <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-1">
-              STATUS:
-            </div>
-            <div className="font-mono text-body-md text-primary-fixed-dim">
-              {project.status}
-            </div>
-          </div>
-          <div>
-            <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-1">
-              LAST_UPDATE:
-            </div>
-            <div className="font-mono text-body-md text-on-surface-variant">
-              {project.lastUpdate}
-            </div>
-          </div>
-        </section>
-
-        {/* CONTRIBUTION_METRICS */}
+        {/* MODULES/FEATURES */}
         <section className="mb-8 border border-outline-variant p-6 bg-surface-container-low">
           <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-6">
             <span className="animate-pulse">●</span>
-            CONTRIBUTION_METRICS:
+            MODULES:
           </div>
+          <ul className="space-y-3">
+            {project.features.map((feature, index) => (
+              <li
+                key={index}
+                className="flex items-start gap-3 text-on-surface-variant font-mono text-body-sm"
+              >
+                <span className="text-primary-fixed-dim mt-0.5">
+                  [{index.toString().padStart(2, "0")}]
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-          {/* LOC, Commits, Contributors */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="border border-outline-variant p-4 bg-surface-container-lowest">
-              <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-1">
-                LOC:
-              </div>
-              <div className="font-mono text-headline-sm text-primary-fixed-dim">
-                {project.stats.loc.toLocaleString()}
-              </div>
-            </div>
-            <div className="border border-outline-variant p-4 bg-surface-container-lowest">
-              <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-1">
-                COMMITS:
-              </div>
-              <div className="font-mono text-headline-sm text-primary-fixed-dim">
-                {project.stats.commits}
-              </div>
-            </div>
-            <div className="border border-outline-variant p-4 bg-surface-container-lowest">
-              <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-1">
-                CONTRIBUTORS:
-              </div>
-              <div className="font-mono text-headline-sm text-primary-fixed-dim">
-                {project.stats.contributors}
-              </div>
-            </div>
+        {/* PROJECT_LINK */}
+        <section className="mb-8 border border-outline-variant p-6 bg-surface-container-low">
+          <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-4">
+            <span className="animate-pulse">●</span>
+            PROJECT_LINK:
           </div>
-
-          {/* Activity Progress Bar */}
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] font-mono text-primary-fixed-dim/70">
-                ACTIVITY_LEVEL:
-              </span>
-              <span className="font-mono text-code-sm text-primary-fixed-dim">
-                {project.stats.activity}%
+          {project.isPublic ? (
+            <div className="border border-outline-variant p-4 bg-surface-container-lowest text-center">
+              <span className="font-mono text-code-sm text-on-surface-variant/70 italic">
+                LINK_PENDING_USER_INPUT
               </span>
             </div>
-            <div className="h-3 bg-surface-container-lowest border border-outline-variant overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-primary-fixed-dim/40 to-primary-fixed-dim transition-all duration-500"
-                style={{ width: `${project.stats.activity}%` }}
-              />
+          ) : (
+            <div className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden">
+              <div className="absolute inset-0 bg-surface-container-low/50 backdrop-blur-sm z-10" />
+              <div className="relative z-0 flex flex-col items-center gap-2">
+                <div className="text-primary-fixed-dim font-mono text-code-sm">
+                  ACCESS_DENIED
+                </div>
+                <div className="text-[10px] font-mono text-primary-fixed-dim/70">
+                  INTERNAL_PROJECT // AUTHORIZATION_REQUIRED
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Last Commit and Repo Link */}
-          <div className="flex items-center justify-between">
-            <div>
-              <span className="text-[10px] font-mono text-primary-fixed-dim/70">
-                LAST_COMMIT:
-              </span>
-              <span className="font-mono text-code-sm text-on-surface-variant ml-2">
-                {project.stats.lastCommit}
-              </span>
-            </div>
-            <a
-              href={project.stats.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-code-sm text-primary-fixed-dim hover:text-primary transition-colors underline underline-offset-4"
-            >
-              REPO_LINK
-            </a>
-          </div>
+          )}
         </section>
 
         {/* Footer Output */}
@@ -384,4 +202,3 @@ export function ProjectDetailSection() {
     </div>
   );
 }
-

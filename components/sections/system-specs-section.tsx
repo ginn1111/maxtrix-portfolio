@@ -70,7 +70,7 @@ export function SystemSpecsSection() {
       </div>
 
       {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-5">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 px-5">
         {/* Profile Avatar & Identity */}
         <div className="md:col-span-4 relative p-6 border border-outline-variant bg-surface-container-lowest">
           <div className="crosshair crosshair-tl" />
@@ -149,6 +149,24 @@ export function SystemSpecsSection() {
                   >
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.227h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.126-5.864 10.126-11.854z" />
                   </svg>
+                </a>
+              </div>
+            </div>
+            <div className="flex justify-between font-mono text-label-sm">
+              <span className="text-on-surface-variant">CONTACT:</span>
+              <div className="flex flex-col items-end gap-1">
+                <a
+                  href="mailto:vanthuanjw@gmail.com"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                >
+                  vanthuanjw@gmail.com
+                </a>
+
+                <a
+                  href="tel:0365338185"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                >
+                  0365338185
                 </a>
               </div>
             </div>

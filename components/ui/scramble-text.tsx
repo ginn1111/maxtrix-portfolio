@@ -6,9 +6,11 @@ export function ScrambleText({
   text,
   isHover = true,
   scrambleText = '"!@#$%^&*()_+-=[]{}|;:,./<>?"',
+  duration = 1,
 }: {
   isHover?: boolean;
   scrambleText?: string;
+  duration?: number;
   text: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -17,14 +19,14 @@ export function ScrambleText({
   const runScramble = useCallback(() => {
     if (gsapRef.current && ref.current) {
       gsapRef.current.to(ref.current, {
-        duration: 1,
+        duration,
         scrambleText: {
           text,
           chars: scrambleText,
         },
       });
     }
-  }, [text, scrambleText]);
+  }, [text, scrambleText, duration]);
 
   useEffect(() => {
     (async () => {

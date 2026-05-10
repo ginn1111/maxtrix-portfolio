@@ -88,19 +88,18 @@ export function TerminalLandingSection() {
   }, []);
 
   return (
-    <>
+    <div className="my-auto">
       {/* Hero Terminal Section */}
       <div className="max-w-4xl w-full relative mb-12">
         <div className="absolute -top-12 -left-12 w-32 h-32 border border-outline-variant/30 hidden lg:block" />
         <div className="absolute -bottom-12 -right-12 w-48 h-48 border border-outline-variant/30 hidden lg:block" />
 
+        <div className="crosshair corner-tl" />
+        <div className="crosshair corner-br" />
         <div
           ref={terminalRef}
           className="relative bg-background border border-primary-fixed-dim glow-md p-8 md:p-12 z-10"
         >
-          <div className="crosshair corner-tl" />
-          <div className="crosshair corner-br" />
-
           <div className="flex justify-between items-center mb-8 border-b border-outline-variant pb-4">
             <div className="flex gap-2">
               <div className="w-3 h-3 bg-primary-fixed-dim rounded-full opacity-50" />
@@ -227,7 +226,6 @@ export function TerminalLandingSection() {
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
