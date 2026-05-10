@@ -155,7 +155,7 @@ export function SystemSpecsSection() {
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="font-mono text-code-sm px-4 py-2 border border-primary-fixed-dim/50 bg-surface-container-low text-primary-fixed-dim hover:bg-primary-fixed-dim hover:text-black transition-colors"
+                  className="font-mono text-code-sm px-4 py-2 border border-primary-fixed-dim bg-surface-container-low text-primary-fixed-dim hover:bg-primary-fixed-dim hover:text-black transition-all duration-200 hover:shadow-[0_0_12px_rgba(0,230,57,0.4)]"
                 >
                   {skill}
                 </span>
