@@ -65,7 +65,7 @@ export function SystemSpecsSection() {
       <div className="page-scan-line-specs animate-page-scan" />
       <div className="mb-8 font-mono text-code-sm text-on-surface-variant flex items-center gap-2 px-5">
         <span className="text-primary-fixed-dim font-bold animate-flicker">
-          USERS_SPECS.DAT
+          ABOUT_ME.DAT
         </span>
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { ForwardedRef, forwardRef, RefObject, useEffect, useRef } from "react";
 
 interface DigitalFlickerProps {
   children: React.ReactNode;
@@ -8,89 +8,102 @@ interface DigitalFlickerProps {
   glitchColor?: string;
 }
 
-export function DigitalFlicker({
-  children,
-  className = "",
-  glitchColor = "#00e639",
-}: DigitalFlickerProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const gsapRef = useRef<typeof gsap>(null);
+export const DigitalFlicker = forwardRef(
+  (
+    { children, className = "", glitchColor = "#00e639" }: DigitalFlickerProps,
+    outerRef: ForwardedRef<HTMLSpanElement>,
+  ) => {
+    const ref = useRef<HTMLSpanElement>(null);
+    const gsapRef = useRef<typeof gsap>(null);
 
-  useEffect(() => {
-    if (!ref.current) return;
+    useEffect(() => {
+      if (!ref.current) return;
 
-    const element = ref.current;
-    let timeline: gsap.core.Timeline | null = null;
-    let timeoutId: NodeJS.Timeout;
-    let isRunning = true;
+      const element = ref.current;
+      let timeline: gsap.core.Timeline | null = null;
+      let timeoutId: NodeJS.Timeout;
+      let isRunning = true;
 
-    const createGlitch = async () => {
-      if (!isRunning || !element || !gsapRef.current) return;
+      const createGlitch = async () => {
+        if (!isRunning || !element || !gsapRef.current) return;
 
-      const duration = Math.random() * 0.08 + 0.04;
-      const offsetX = (Math.random() - 0.5) * 4;
-      const offsetY = (Math.random() - 0.5) * 2;
-      const targetOpacity = Math.random() * 0.35 + 0.65;
+        const duration = Math.random() * 0.08 + 0.04;
+        const offsetX = (Math.random() - 0.5) * 4;
+        const offsetY = (Math.random() - 0.5) * 2;
+        const targetOpacity = Math.random() * 0.35 + 0.65;
 
-      timeline = gsapRef.current.timeline({
-        onComplete: () => {
-          if (!isRunning) return;
+        timeline = gsapRef.current.timeline({
+          onComplete: () => {
+            if (!isRunning) return;
 
-          gsapRef.current?.set(element, {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            textShadow: "none",
-          });
+            gsapRef.current?.set(element, {
+              x: 0,
+              y: 0,
+              opacity: 1,
+              textShadow: "none",
+            });
 
-          const nextDelay = Math.random() * 4000 + 1000;
-          timeoutId = setTimeout(createGlitch, nextDelay);
-        },
-      });
-
-      timeline
-        .to(element, {
-          x: offsetX,
-          y: offsetY,
-          opacity: targetOpacity,
-          textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 rgba(0, 255, 255, 0.8)`,
-          duration,
-          ease: "steps(3)",
-        })
-        .to(element, {
-          x: offsetX * -0.5,
-          y: offsetY * 0.5,
-          opacity: targetOpacity * 0.9,
-          duration: duration * 0.5,
-          ease: "steps(2)",
+            const nextDelay = Math.random() * 4000 + 1000;
+            timeoutId = setTimeout(createGlitch, nextDelay);
+          },
         });
-    };
 
-    (async () => {
-      const gsap = await import("gsap");
-      gsapRef.current = gsap.default;
-      timeoutId = setTimeout(createGlitch, Math.random() * 2000 + 500);
-    })();
+        timeline
+          .to(element, {
+            x: offsetX,
+            y: offsetY,
+            opacity: targetOpacity,
+            textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 rgba(0, 255, 255, 0.8)`,
+            duration,
+            ease: "steps(3)",
+          })
+          .to(element, {
+            x: offsetX * -0.5,
+            y: offsetY * 0.5,
+            opacity: targetOpacity * 0.9,
+            duration: duration * 0.5,
+            ease: "steps(2)",
+          });
+      };
 
-    return () => {
-      isRunning = false;
-      clearTimeout(timeoutId);
-      timeline?.kill();
-      gsapRef.current?.set(element, {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        textShadow: "none",
-      });
-    };
-  }, [glitchColor]);
+      (async () => {
+        const gsap = await import("gsap");
+        gsapRef.current = gsap.default;
+        timeoutId = setTimeout(createGlitch, Math.random() * 2000 + 500);
+      })();
 
-  return (
-    <span ref={ref} className={`inline-block ${className}`}>
-      {children}
-    </span>
-  );
-}
+      return () => {
+        isRunning = false;
+        clearTimeout(timeoutId);
+        timeline?.kill();
+        gsapRef.current?.set(element, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          textShadow: "none",
+        });
+      };
+    }, [glitchColor]);
+
+    return (
+      <span
+        ref={(el) => {
+          if (el) {
+            if (outerRef) {
+              (outerRef as RefObject<HTMLSpanElement>).current = el;
+            }
+            ref.current = el;
+          }
+        }}
+        className={`inline-block ${className}`}
+      >
+        {children}
+      </span>
+    );
+  },
+);
+
+DigitalFlicker.displayName = "DigitalFlicker";
 
 interface FlickerTextProps {
   children: React.ReactNode;

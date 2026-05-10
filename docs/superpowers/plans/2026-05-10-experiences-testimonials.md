@@ -12,19 +12,20 @@
 
 ## File Map
 
-| Action | Path | Responsibility |
-|--------|------|----------------|
-| Create | `components/sections/experiences-section.tsx` | Experience entries as terminal card grid |
-| Create | `components/sections/testimonials-section.tsx` | Testimonial cards grid |
-| Create | `app/experiences/page.tsx` | Route — renders ExperiencesSection |
-| Create | `app/testimonials/page.tsx` | Route — renders TestimonialsSection |
-| Modify | `app/shared/sidebar.tsx` | Add nav items for /experiences and /testimonials |
+| Action | Path                                           | Responsibility                                   |
+| ------ | ---------------------------------------------- | ------------------------------------------------ |
+| Create | `components/sections/experiences-section.tsx`  | Experience entries as terminal card grid         |
+| Create | `components/sections/testimonials-section.tsx` | Testimonial cards grid                           |
+| Create | `app/experiences/page.tsx`                     | Route — renders ExperiencesSection               |
+| Create | `app/testimonials/page.tsx`                    | Route — renders TestimonialsSection              |
+| Modify | `app/shared/sidebar.tsx`                       | Add nav items for /experiences and /testimonials |
 
 ---
 
 ## Task 1: Create Experiences Section
 
 **Files:**
+
 - Create: `components/sections/experiences-section.tsx`
 
 - [ ] **Step 1: Write the section component**
@@ -89,7 +90,7 @@ export function ExperiencesSection() {
               start: "top 90%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       });
     };
@@ -116,10 +117,7 @@ export function ExperiencesSection() {
               className="relative p-6 border border-outline-variant bg-surface-container-low opacity-0"
             >
               <div className="crosshair crosshair-tl" />
-              <div className="crosshair crosshair-tr" />
-              <div className="crosshair crosshair-bl" />
               <div className="crosshair crosshair-br" />
-
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <span className="inline-block px-2 py-1 font-mono text-[10px] text-background bg-primary-fixed-dim mb-2">
@@ -165,6 +163,7 @@ export function ExperiencesSection() {
 ## Task 2: Create Testimonials Section
 
 **Files:**
+
 - Create: `components/sections/testimonials-section.tsx`
 
 - [ ] **Step 1: Write the section component**
@@ -226,7 +225,7 @@ export function TestimonialsSection() {
               start: "top 90%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       });
     };
@@ -297,6 +296,7 @@ export function TestimonialsSection() {
 ## Task 3: Create Page Routes
 
 **Files:**
+
 - Create: `app/experiences/page.tsx`
 - Create: `app/testimonials/page.tsx`
 
@@ -329,6 +329,7 @@ Run: `mkdir -p app/experiences app/testimonials`
 ## Task 4: Update Sidebar Navigation
 
 **Files:**
+
 - Modify: `app/shared/sidebar.tsx:14-33`
 
 - [ ] **Step 1: Add nav items to NAV_ITEMS array**

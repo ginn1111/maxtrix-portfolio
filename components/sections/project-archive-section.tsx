@@ -1,18 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { ScrambleText } from "@/components/ui/scramble-text";
 import type { Project } from "@/data/projects";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 interface ProjectArchiveSectionProps {
   projects: Project[];
-  isHashing: boolean;
 }
 
 export function ProjectArchiveSection({
   projects,
-  isHashing,
 }: ProjectArchiveSectionProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLAnchorElement[]>([]);
@@ -63,7 +61,7 @@ export function ProjectArchiveSection({
       {/* DATA_NODES Grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-gutter container px-5"
+        className="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-3 container px-5"
       >
         {projects.map((project, index) => (
           <Link
@@ -74,22 +72,15 @@ export function ProjectArchiveSection({
                 cardsRef.current[index] = el;
               }
             }}
-            className="card-node block relative border border-outline-variant p-6 bg-surface-container-lowest overflow-hidden group cursor-pointer group/project"
+            className="card-node block relative border border-outline-variant p-6 bg-surface-container-lowest group cursor-pointer group/project"
           >
+            <div className="crosshair crosshair-tl" />
+            <div className="crosshair crosshair-br" />
+
             <div className="scanline-effect group-hover/project:animate-page-scan-specs" />
-            <div className="absolute top-0 right-0 p-2 text-[10px] text-primary-fixed-dim font-mono">
+            <div className="absolute top-0 right-4 p-2 text-[10px] text-end text-primary-fixed-dim font-mono">
               NODE_ID:{" "}
-              <span className="inline-block">
-                {isHashing ? (
-                  <ScrambleText
-                    text={project.id}
-                    scrambleText="!@#$%^&*()+-=[]{}|;:,.<>?0-9A-F"
-                    duration={2}
-                  />
-                ) : (
-                  project.id
-                )}
-              </span>
+              <span className="inline-block">{project.id.slice(20)}</span>
             </div>
 
             {/* Placeholder image area */}
@@ -100,23 +91,12 @@ export function ProjectArchiveSection({
             <h3 className="font-heading text-headline-md text-primary-fixed-dim uppercase mb-2">
               {project.title}
             </h3>
+            <div className="text-[10px] font-mono text-primary-fixed-dim mb-2">
+              [{project.company}]
+            </div>
             <div className="text-on-surface-variant text-code-sm mb-4">
               SYSTEM_LOG: {project.description}
             </div>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-label-sm text-primary-fixed-dim"
-                >
-                  [ {tag} ]
-                </span>
-              ))}
-            </div>
-
-            {/* Crosshair corners */}
-            <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-primary-fixed-dim opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-primary-fixed-dim opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
         ))}
       </div>
@@ -129,7 +109,9 @@ export function ProjectArchiveSection({
         </div>
         <div className="text-[12px] mt-2 space-y-1 text-on-surface-variant opacity-70">
           <div>[ 12:44:01 ] NODE_CONNECTION: ESTABLISHED</div>
-          <div>[ 12:44:03 ] SYS: ALL_SYSTEMS_OPERATIONAL. READY_FOR_COMMAND.</div>
+          <div>
+            [ 12:44:03 ] SYS: ALL_SYSTEMS_OPERATIONAL. READY_FOR_COMMAND.
+          </div>
           <div className="flex items-center">
             <span className="text-primary-fixed-dim mr-2">&gt;</span>
             <span className="w-2 h-4 bg-primary-fixed-dim animate-pulse animate-flicker" />

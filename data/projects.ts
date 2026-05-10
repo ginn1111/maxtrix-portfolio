@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   title: string;
+  company: string;
   description: string;
   tags: string[];
   isPublic: boolean;
@@ -15,10 +16,12 @@ export const PROJECTS: Project[] = [
   {
     id: "0xA1F2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0",
     title: "AIOZ Stream",
+    company: "AIOZ Network",
     description:
       "Live streaming platform supporting HLS and DASH protocols with real-time viewer analytics.",
     tags: ["React", "Next.js", "TypeScript", "Shaka", "WebSocket"],
-    isPublic: false,
+    isPublic: true,
+    link: "https://aiozstream.network/",
     features: [
       "Live streaming with HLS/DASH",
       "Real-time viewer count",
@@ -30,6 +33,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xB2C3D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0",
     title: "AIOZ Wallet",
+    company: "AIOZ Network",
     description:
       "Cryptocurrency wallet built on Kepler wallet infrastructure with multi-chain support.",
     tags: ["React", "Next.js", "TypeScript", "Kepler Wallet", "Web3"],
@@ -45,6 +49,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xC3D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1",
     title: "AIOZ Global Map",
+    company: "AIOZ Network",
     description:
       "International news platform with interactive map features for geolocated content.",
     tags: ["React", "Next.js", "TypeScript", "Mapbox", "REST API"],
@@ -60,11 +65,13 @@ export const PROJECTS: Project[] = [
   // YRISM
   {
     id: "0xD4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2",
-    title: "6ixgo - Share Module",
+    title: "6ixgo",
+    company: "YRISM",
     description:
       "Social marketplace module enabling users to share classifieds, services, products, restaurants, and jobs.",
     tags: ["React", "Next.js", "TypeScript", "Redux Toolkit", "RTK Query"],
-    isPublic: false,
+    isPublic: true,
+    link: "https://6ixgo.com/",
     features: [
       "Post creation with images",
       "Social reactions and comments",
@@ -77,6 +84,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xE5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3",
     title: "Payme Dashboard",
+    company: "PAYME",
     description:
       "Internal management dashboard for merchant management, fee configuration, payment methods, and KYC processing.",
     tags: ["React", "Next.js", "TypeScript", "Ant Design", "GraphQL"],
@@ -92,6 +100,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xF6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4",
     title: "Payme Merchant Dashboard",
+    company: "PAYME",
     description:
       "Merchant-facing dashboard for managing payin, payout, and B2C settings.",
     tags: ["React", "Next.js", "TypeScript", "Ant Design", "GraphQL"],
@@ -107,6 +116,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xA7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5",
     title: "Payme B2C Sites",
+    company: "PAYME",
     description:
       "Mini-checkout pages allowing merchants to accept multiple payment methods.",
     tags: ["React", "Next.js", "TypeScript", "Ant Design", "REST API"],
@@ -123,6 +133,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xB8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6",
     title: "Building Project Management",
+    company: "Pet Project",
     description:
       "Graduate project for managing tasks, subtasks, proposals, employees, projects, and supplies.",
     tags: ["React Native", "React", "TypeScript", "Zustand", "Firebase"],
@@ -138,6 +149,7 @@ export const PROJECTS: Project[] = [
   {
     id: "0xC9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7",
     title: "Freelancer Mobile App",
+    company: "Pet Project",
     description:
       "Loyalty app for Canalis Club with point accumulation, discounts, and event notifications.",
     tags: ["React Native", "Firebase", "Google Sign-In", "Apple Sign-In"],

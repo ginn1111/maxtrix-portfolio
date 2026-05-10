@@ -1,15 +1,22 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Separator } from "@base-ui/react/separator";
 import { PROJECTS } from "@/data/projects";
+import { Badge } from "../ui/badge";
+import { DigitalFlicker } from "../ui/glitch-text";
+
+const OPEN_LINK_TIMER_MS = 1500;
 
 export function ProjectDetailSection() {
   const params = useParams();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
+  const [linkProgress, setLinkProgress] = useState(0);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const projectId = params?.id as string;
   const project = PROJECTS.find((p) => p.id === projectId);
@@ -34,6 +41,30 @@ export function ProjectDetailSection() {
 
     loadGSAP();
   }, []);
+
+  useEffect(() => {
+    if (isHoveringLink && project?.link) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLinkProgress(0);
+      const step = 100 / (OPEN_LINK_TIMER_MS / 50);
+      progressRef.current = setInterval(() => {
+        setLinkProgress((prev) => {
+          if (prev >= 100) {
+            if (progressRef.current) clearInterval(progressRef.current);
+            window.open(project.link, "_blank");
+            return 100;
+          }
+          return prev + step;
+        });
+      }, 50);
+    } else {
+      if (progressRef.current) clearInterval(progressRef.current);
+      setLinkProgress(0);
+    }
+    return () => {
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isHoveringLink, project?.link]);
 
   if (!project) {
     return (
@@ -84,7 +115,7 @@ export function ProjectDetailSection() {
           </h1>
         </div>
 
-        <Separator className="border border-primary-fixed-dim -mx-5 mt-5!" />
+        <Separator className="border border-primary-fixed-dim -mx-5 my-5!" />
 
         {/* Project Visual Placeholder */}
         <div className="relative mb-8 h-64 w-full overflow-hidden border border-outline-variant bg-surface-container-low crt-fallback crt-flicker">
@@ -119,12 +150,9 @@ export function ProjectDetailSection() {
           </div>
           <div className="flex flex-wrap gap-3">
             {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="font-mono text-code-sm px-3 py-1 border border-primary-fixed-dim/50 bg-surface-container-low text-primary-fixed-dim"
-              >
-                [ {tag} ]
-              </span>
+              <Badge variant="tech" key={tag}>
+                {tag}
+              </Badge>
             ))}
           </div>
         </section>
@@ -156,21 +184,42 @@ export function ProjectDetailSection() {
             <span className="animate-pulse">●</span>
             PROJECT_LINK:
           </div>
-          {project.isPublic ? (
-            <div className="border border-outline-variant p-4 bg-surface-container-lowest text-center">
-              <span className="font-mono text-code-sm text-on-surface-variant/70 italic">
-                LINK_PENDING_USER_INPUT
-              </span>
+          {project.isPublic && project.link ? (
+            <div
+              className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden cursor-pointer"
+              onMouseEnter={() => setIsHoveringLink(true)}
+              onMouseLeave={() => setIsHoveringLink(false)}
+            >
+              {/* Progress bar */}
+              <div
+                className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
+                style={{ width: `${linkProgress}%` }}
+              />
+              <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
+                {linkProgress >= 100 ? (
+                  <span className="animate-pulse">OPENING_LINK...</span>
+                ) : (
+                  <Link
+                    target="_blank"
+                    href={project.link}
+                    className="text-on-surface-variant hover:text-primary transition-colors"
+                  >
+                    <DigitalFlicker>[{project.link}]</DigitalFlicker>
+                  </Link>
+                )}
+              </div>
             </div>
           ) : (
             <div className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden">
-              <div className="absolute inset-0 bg-surface-container-low/50 backdrop-blur-sm z-10" />
+              <div className="absolute inset-0 bg-surface-container-low/50 z-10" />
               <div className="relative z-0 flex flex-col items-center gap-2">
                 <div className="text-primary-fixed-dim font-mono text-code-sm">
-                  ACCESS_DENIED
+                  <DigitalFlicker>ACCESS_DENIED</DigitalFlicker>
                 </div>
                 <div className="text-[10px] font-mono text-primary-fixed-dim/70">
-                  INTERNAL_PROJECT // AUTHORIZATION_REQUIRED
+                  <DigitalFlicker>
+                    INTERNAL_PROJECT // AUTHORIZATION_REQUIRED
+                  </DigitalFlicker>
                 </div>
               </div>
             </div>
