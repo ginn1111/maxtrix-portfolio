@@ -160,7 +160,7 @@ export function ProjectDetailSection() {
     };
 
     loadGSAP();
-  }, [project]);
+  }, []);
 
   if (!project) {
     return (
