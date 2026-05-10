@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-export function ScrambleText({ text }: { text: string }) {
+export function ScrambleText({
+  text,
+  isHover = true,
+  scrambleText = '"!@#$%^&*()_+-=[]{}|;:,./<>?"',
+}: {
+  isHover?: boolean;
+  scrambleText?: string;
+  text: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
-  const gsapRef = useRef<{ to: Function } | null>(null);
+  const gsapRef = useRef<typeof gsap>(null);
 
   const runScramble = useCallback(() => {
     if (gsapRef.current && ref.current) {
@@ -12,11 +20,11 @@ export function ScrambleText({ text }: { text: string }) {
         duration: 1,
         scrambleText: {
           text,
-          chars: "!@#$%^&*()_+-=[]{}|;:,./<>?",
+          chars: scrambleText,
         },
       });
     }
-  }, [text]);
+  }, [text, scrambleText]);
 
   useEffect(() => {
     (async () => {
@@ -24,11 +32,12 @@ export function ScrambleText({ text }: { text: string }) {
       const ScrambleTextPlugin = await import("gsap/ScrambleTextPlugin");
       gsap.default.registerPlugin(ScrambleTextPlugin.default);
       gsapRef.current = gsap.default;
+      runScramble();
     })();
   }, []);
 
   return (
-    <span ref={ref} onMouseEnter={runScramble}>
+    <span ref={ref} onMouseOver={isHover ? runScramble : undefined}>
       {text}
     </span>
   );

@@ -1,28 +1,38 @@
 "use client";
 
+import { ScrambleText } from "@/components/ui/scramble-text";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { TerminalButton } from "@/components/terminal/terminal-button";
 
 type NavItem = {
   href: string;
   label: string;
   icon: string;
+  scrambleText: string;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/", label: "ROOT_ACCESS", icon: "terminal" },
-  { href: "/projects", label: "DATA_NODES", icon: "account_tree" },
-  { href: "/specs", label: "SYS_DIAGNOSTICS", icon: "memory" },
-  { href: "/contact", label: "ENCRYPT_MSG", icon: "lock" },
+  {
+    href: "/specs",
+    label: "ABOUT_ME",
+    icon: "terminal",
+    scrambleText: "ROOT_ACCESS",
+  },
+  {
+    href: "/projects",
+    label: "PROJECTS",
+    icon: "account_tree",
+    scrambleText: "DATA_NODES",
+  },
+  {
+    href: "/contact",
+    label: "CONTACT",
+    icon: "lock",
+    scrambleText: "ENCRYPT_MSG",
+  },
 ];
 
-const FOOTER_LINKS: NavItem[] = [
-  { href: "/", label: "LOGOUT", icon: "logout" },
-  { href: "/", label: "HELP", icon: "help" },
-];
-
-function NavItem({ href, label, icon }: NavItem) {
+function NavItem({ href, label, icon, scrambleText }: NavItem) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -36,7 +46,7 @@ function NavItem({ href, label, icon }: NavItem) {
       }`}
     >
       <span className="material-symbols-outlined">{icon}</span>
-      {label}
+      <ScrambleText text={label} scrambleText={scrambleText} />
     </Link>
   );
 }
@@ -68,24 +78,6 @@ export function Sidebar() {
           <NavItem key={item.href} {...item} />
         ))}
       </nav>
-      <div className="p-4">
-        <TerminalButton className="w-full text-sm py-3">
-          [INITIATE_PING]_
-        </TerminalButton>
-      </div>
-      <div className="mt-auto border-t border-outline-variant p-4 flex flex-col gap-2">
-        {FOOTER_LINKS.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="flex items-center gap-3 text-on-surface-variant hover:text-primary-fixed font-mono text-code-sm uppercase"
-          >
-            <span className="material-symbols-outlined text-[18px]">{link.icon}</span>
-            {link.label}
-          </Link>
-        ))}
-      </div>
     </aside>
   );
 }
-
