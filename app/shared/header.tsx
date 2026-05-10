@@ -1,5 +1,6 @@
 "use client";
 
+import { DigitalFlicker } from "@/components/ui/glitch-text";
 import { ScrambleText } from "@/components/ui/scramble-text";
 import Link from "next/link";
 
@@ -14,9 +15,11 @@ export function Header({ currentPath = "/" }: HeaderProps) {
         <div className="flex items-center gap-4 min-w-25">
           <Link
             href="/"
-            className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(0,230,57,0.8)] animate-flicker-logo"
+            className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(0,230,57,0.8)]"
           >
-            <ScrambleText text="GIN_OS_v3.0.2026" isHover={false} />
+            <DigitalFlicker>
+              <ScrambleText text="GIN_OS_v3.0.2026" isHover={false} />
+            </DigitalFlicker>
           </Link>
         </div>
         <nav className="hidden md:flex gap-gutter items-center">

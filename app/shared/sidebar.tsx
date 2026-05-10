@@ -19,10 +19,22 @@ const NAV_ITEMS: NavItem[] = [
     scrambleText: "ROOT_ACCESS",
   },
   {
+    href: "/experiences",
+    label: "EXPERIENCES",
+    icon: "work_history",
+    scrambleText: "CAREER_LOG",
+  },
+  {
     href: "/projects",
     label: "PROJECTS",
     icon: "account_tree",
     scrambleText: "DATA_NODES",
+  },
+  {
+    href: "/testimonials",
+    label: "TESTIMONIALS",
+    icon: "format_quote",
+    scrambleText: "FEEDBACK_DATA",
   },
   {
     href: "/contact",
