@@ -1,5 +1,6 @@
 "use client";
 
+import { DigitalFlicker } from "@/components/ui/glitch-text";
 import { ScrambleText } from "@/components/ui/scramble-text";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -65,20 +66,18 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
 
 export function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 h-full z-40 pt-20 flex flex-col border-r border-outline-variant bg-background w-64 hidden md:flex">
+    <aside className="fixed left-0 top-0 h-full z-40 flex flex-col border-r border-outline-variant bg-background w-64 hidden md:flex">
       <div className="px-6 py-8 border-b border-outline-variant mb-4">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 border border-primary-fixed-dim p-0.5">
-            <div className="w-full h-full bg-primary-fixed-dim/20 flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary-fixed-dim text-sm">
-                person
-              </span>
-            </div>
-          </div>
           <div>
-            <p className="font-mono text-code-sm uppercase text-primary-fixed-dim">
-              OPERATOR_01
-            </p>
+            <Link
+              href="/"
+              className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(0,230,57,0.8)]"
+            >
+              <DigitalFlicker>
+                <ScrambleText text="GIN_OS_v3.0.2026" isHover={false} />
+              </DigitalFlicker>
+            </Link>
             <p className="text-[10px] text-primary-fixed-dim opacity-70 animate-pulse">
               SECURE_SESSION_ACTIVE
             </p>

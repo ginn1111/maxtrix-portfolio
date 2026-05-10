@@ -1,5 +1,7 @@
 "use client";
 
+import { DigitalFlicker } from "@/components/ui/glitch-text";
+
 export function Footer() {
   return (
     <footer className="fixed bottom-0 w-full z-50  px-margin py-2 text-[10px] border-t border-outline-variant bg-background">
@@ -13,11 +15,10 @@ export function Footer() {
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-primary-fixed-dim rounded-full animate-pulse" />
           <span className="font-mono text-label-sm text-primary-fixed-dim">
-            SERVER_STABLE
+            <DigitalFlicker>AI_COLLABORATOR</DigitalFlicker>
           </span>
         </div>
       </div>
     </footer>
   );
 }
-

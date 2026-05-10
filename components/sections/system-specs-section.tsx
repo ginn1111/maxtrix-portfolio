@@ -15,6 +15,22 @@ const skills = [
   "Express",
   "Redux",
   "Zustand",
+  "React Native",
+  "React Query",
+  "TailwindCSS",
+  "Ant Design",
+  "Shadcn",
+  "React Hook Form",
+  "GraphQL",
+  "Docker",
+  "Prisma",
+  "PostgresQL",
+  "Vim",
+  "Command line",
+  "Git",
+  "Webpack",
+  "Vite",
+  "Notion",
 ];
 
 export function SystemSpecsSection() {
@@ -65,8 +81,8 @@ export function SystemSpecsSection() {
           <div className="aspect-square w-full mb-6 border border-primary-fixed-dim p-2 relative overflow-hidden group">
             <div className="w-full h-full bg-gradient-to-br from-primary-fixed-dim/30 to-surface-container-low" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-            <div className="absolute bottom-4 left-4 font-heading text-primary-fixed-dim">
-              [ UNIT_01 ]
+            <div className="absolute bottom-4 left-4 font-heading text-primary-fixed-dim text-sm">
+              <DigitalFlicker>[ +3YOE ]</DigitalFlicker>
             </div>
           </div>
 
@@ -168,28 +184,27 @@ export function SystemSpecsSection() {
             <p>
               Hi, I&apos;m{" "}
               <span className="text-primary-fixed-dim">
-                <DigitalFlicker>Thuan</DigitalFlicker>
+                Pham (<DigitalFlicker>Gin</DigitalFlicker>) Van Thuan
               </span>{" "}
-              — a passionate web developer with a deep love for creating
-              performant and impactful websites that users love. I follow best
-              practices and conventions to keep projects clean and maintainable.
+              — a web developer crafting performant, user-centered digital
+              experiences. I champion clean code and best practices to keep
+              projects maintainable.
             </p>
             <p>
-              My web development journey began with a thirst for knowledge and a
-              determination to turn ideas into digital realities. With a solid
-              foundation in HTML, CSS, JavaScript, TypeScript and frameworks
-              like React and NextJS, I&apos;m excited to be part of the
-              ever-evolving world of web technologies.
+              My journey began with a drive to turn ideas into elegant,
+              functional web solutions. Today, I work with HTML, CSS,
+              JavaScript, TypeScript, React, and Next.js — always prioritizing
+              code quality.
             </p>
             <p>
-              In this dynamic field, I believe in lifelong learning. I&apos;m
-              eager to take on challenges, learn from experiences, and
-              collaborate with like-minded individuals to create innovative web
-              solutions. My next goals: expand into{" "}
-              <span className="text-primary-fixed-dim">
-                back-end development
-              </span>{" "}
-              and{" "}
+              In this ever-evolving field, I embrace continuous learning. I
+              welcome challenges, collaborate with peers, and strive to build
+              web solutions that matter.
+            </p>
+            <p>
+              <span className="text-primary-fixed-dim">What&apos;s next:</span>{" "}
+              Expanding into{" "}
+              <span className="text-primary-fixed-dim">backend</span> and{" "}
               <span className="text-primary-fixed-dim">mobile development</span>
               .
               <span className="blink-block animate-blink-block ml-1" />
@@ -198,7 +213,7 @@ export function SystemSpecsSection() {
         </div>
 
         {/* Skill Diagnostics (Simple List) */}
-        <div className="md:col-span-12 lg:col-span-7 relative p-8 border border-outline-variant bg-surface-container-lowest">
+        <div className="md:col-span-12 lg:col-span-6 relative p-8 border border-outline-variant bg-surface-container-lowest">
           <div className="crosshair crosshair-tl" />
           <div className="crosshair crosshair-tr" />
           <div className="crosshair crosshair-bl" />
@@ -210,6 +225,12 @@ export function SystemSpecsSection() {
           </h3>
 
           <div className="flex flex-wrap gap-3">
+            <Badge variant="tech">
+              <DigitalFlicker>Claude/Codex/Gemini</DigitalFlicker>
+            </Badge>
+            <Badge variant="tech">
+              <DigitalFlicker>Hermes</DigitalFlicker>
+            </Badge>
             {skills.map((skill) => (
               <Badge key={skill} variant="tech">
                 {skill}
@@ -219,7 +240,7 @@ export function SystemSpecsSection() {
         </div>
 
         {/* Education */}
-        <div className="md:col-span-12 lg:col-span-5 relative p-8 border border-outline-variant bg-surface-container-lowest">
+        <div className="md:col-span-12 lg:col-span-6 relative p-8 border border-outline-variant bg-surface-container-lowest">
           <div className="crosshair crosshair-tl" />
           <div className="crosshair crosshair-tr" />
           <div className="crosshair crosshair-bl" />
