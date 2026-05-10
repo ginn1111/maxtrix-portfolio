@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { TerminalButton } from "@/components/terminal/terminal-button";
 import { TerminalInput } from "@/components/terminal/terminal-input";
 import { TerminalTextarea } from "@/components/terminal/terminal-textarea";
+import { DigitalFlicker } from "../ui/glitch-text";
 
 export function SecureContactSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +20,27 @@ export function SecureContactSection() {
     { time: "22:04:13", text: "SSL_CERT_VERIFIED [OK]", type: "default" },
     { time: "22:04:15", text: "LISTENING_FOR_PAYLOAD...", type: "default" },
   ]);
+
+  useEffect(() => {
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+
+      if (sectionRef.current) {
+        gsap.fromTo(
+          sectionRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          }
+        );
+      }
+    };
+
+    loadGSAP();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,7 +61,7 @@ export function SecureContactSection() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full" ref={sectionRef}>
       {/* Background Decoration */}
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-10">
         <div className="absolute top-1/4 -right-20 w-96 h-96 border border-primary-fixed-dim rounded-full flex items-center justify-center opacity-20">
@@ -75,17 +99,14 @@ export function SecureContactSection() {
 
           <form className="space-y-10" onSubmit={handleSubmit}>
             {/* Input: Name */}
-            <div className="relative group">
+            <div className="relative">
               <label
                 className="block font-mono text-primary-fixed-dim mb-2"
                 htmlFor="name"
               >
                 &gt; USER_IDENTIFIER:
               </label>
-              <div className="flex items-baseline gap-2 border-b border-outline-variant group-focus-within:border-primary-fixed-dim transition-all">
-                <span className="text-primary-fixed-dim opacity-50 group-focus-within:opacity-100">
-                  &gt;
-                </span>
+              <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="name"
                   name="name"
@@ -94,9 +115,8 @@ export function SecureContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="flex-1 animate-flicker"
                 />
-              </div>
+              </DigitalFlicker>
             </div>
 
             {/* Input: Email */}
@@ -107,10 +127,7 @@ export function SecureContactSection() {
               >
                 &gt; RETURN_NODE_ADDR:
               </label>
-              <div className="flex items-baseline gap-2 border-b border-outline-variant group-focus-within:border-primary-fixed-dim transition-all">
-                <span className="text-primary-fixed-dim opacity-50 group-focus-within:opacity-100">
-                  &gt;
-                </span>
+              <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="email"
                   name="email"
@@ -121,7 +138,7 @@ export function SecureContactSection() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                 />
-              </div>
+              </DigitalFlicker>
             </div>
 
             {/* Input: Subject */}
@@ -132,10 +149,7 @@ export function SecureContactSection() {
               >
                 &gt; PKT_HEADER:
               </label>
-              <div className="flex items-baseline gap-2 border-b border-outline-variant group-focus-within:border-primary-fixed-dim transition-all">
-                <span className="text-primary-fixed-dim opacity-50 group-focus-within:opacity-100">
-                  &gt;
-                </span>
+              <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="subject"
                   name="subject"
@@ -145,7 +159,7 @@ export function SecureContactSection() {
                     setFormData({ ...formData, subject: e.target.value })
                   }
                 />
-              </div>
+              </DigitalFlicker>
             </div>
 
             {/* Input: Message */}
@@ -156,10 +170,7 @@ export function SecureContactSection() {
               >
                 &gt; DATA_PAYLOAD:
               </label>
-              <div className="flex items-start gap-2 border-b border-outline-variant group-focus-within:border-primary-fixed-dim transition-all">
-                <span className="text-primary-fixed-dim opacity-50 group-focus-within:opacity-100 mt-1">
-                  &gt;
-                </span>
+              <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalTextarea
                   id="message"
                   name="message"
@@ -170,7 +181,7 @@ export function SecureContactSection() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                 />
-              </div>
+              </DigitalFlicker>
             </div>
 
             {/* Action Button */}
@@ -239,4 +250,3 @@ export function SecureContactSection() {
     </div>
   );
 }
-

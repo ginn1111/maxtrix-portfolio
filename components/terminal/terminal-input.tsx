@@ -8,13 +8,16 @@ export interface TerminalInputProps extends React.InputHTMLAttributes<HTMLInputE
 const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
   ({ className, type, label, id, ...props }, ref) => {
     return (
-      <div className="w-full">
+      <div className="w-full group/item">
         {label && (
-          <label htmlFor={id} className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider">
+          <label
+            htmlFor={id}
+            className="block font-mono text-xs text-primary opacity-70 mb-1 uppercase tracking-wider"
+          >
             {label}
           </label>
         )}
-        <div className="relative">
+        <div className="relative flex items-center border-b border-outline group-focus-within/item:outline-none group-focus-within/item:border-primary! group-focus-within/item:shadow-[0_0_8px_var(--primary)]">
           <span className="absolute left-0 top-1/2 -translate-y-1/2 text-primary opacity-70 font-mono">
             &gt;
           </span>
@@ -22,20 +25,20 @@ const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
             id={id}
             type={type}
             className={cn(
-              "flex h-10 w-full bg-transparent border-b border-outline font-mono text-primary",
+              "flex h-10 w-full bg-transparent font-mono text-primary flex-1 outline-none",
               "px-2 py-2 pl-6 text-sm",
-              "focus:outline-none focus:border-primary focus:shadow-[0_0_8px_var(--primary)]",
               "placeholder:text-primary/40 placeholder:font-mono",
               "transition-all duration-150",
-              className
+              className,
             )}
             ref={ref}
             {...props}
           />
+          <div className="group-focus-within/item:blink-block animate-blink-block" />
         </div>
       </div>
     );
-  }
+  },
 );
 TerminalInput.displayName = "TerminalInput";
 

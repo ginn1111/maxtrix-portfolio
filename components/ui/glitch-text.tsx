@@ -6,11 +6,21 @@ interface DigitalFlickerProps {
   children: React.ReactNode;
   className?: string;
   glitchColor?: string;
+  config?: {
+    xOffest?: number;
+    yOffset?: number;
+    delay?: number;
+  };
 }
 
 export const DigitalFlicker = forwardRef(
   (
-    { children, className = "", glitchColor = "#00e639" }: DigitalFlickerProps,
+    {
+      children,
+      className = "",
+      glitchColor = "currentColor",
+      config = {},
+    }: DigitalFlickerProps,
     outerRef: ForwardedRef<HTMLSpanElement>,
   ) => {
     const ref = useRef<HTMLSpanElement>(null);
@@ -28,8 +38,8 @@ export const DigitalFlicker = forwardRef(
         if (!isRunning || !element || !gsapRef.current) return;
 
         const duration = Math.random() * 0.08 + 0.04;
-        const offsetX = (Math.random() - 0.5) * 4;
-        const offsetY = (Math.random() - 0.5) * 2;
+        const offsetX = (Math.random() - 0.5) * (config.xOffest ?? 4);
+        const offsetY = (Math.random() - 0.5) * (config.xOffest ?? 2);
         const targetOpacity = Math.random() * 0.35 + 0.65;
 
         timeline = gsapRef.current.timeline({
@@ -43,7 +53,7 @@ export const DigitalFlicker = forwardRef(
               textShadow: "none",
             });
 
-            const nextDelay = Math.random() * 4000 + 1000;
+            const nextDelay = Math.random() * (config.delay ?? 4000) + 1000;
             timeoutId = setTimeout(createGlitch, nextDelay);
           },
         });

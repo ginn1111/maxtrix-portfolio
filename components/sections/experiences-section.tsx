@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Badge } from "../ui/badge";
+import { DigitalFlicker } from "../ui/glitch-text";
 
 const EXPERIENCES = [
   {
@@ -148,7 +149,18 @@ export function ExperiencesSection() {
 
   return (
     <div className="relative w-full">
-      <div className="page-scan-line-specs animate-page-scan" />
+      <div className="animate-page-scan page-scan-line-specs">
+        <DigitalFlicker
+          config={{
+            xOffest: 100,
+            yOffset: 50,
+            delay: 0,
+          }}
+          className="size-full bg-primary"
+        >
+          {null}
+        </DigitalFlicker>
+      </div>
       <div className="w-full space-y-8">
         <div className="font-mono text-code-sm text-on-surface-variant flex gap-2 px-5 flex-col">
           <span className="text-primary-fixed-dim font-bold animate-flicker">

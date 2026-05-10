@@ -182,48 +182,80 @@ export function ProjectDetailSection() {
         <section className="mb-8 border border-outline-variant p-6 bg-surface-container-low">
           <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-4">
             <span className="animate-pulse">●</span>
-            PROJECT_LINK:
+            LINKS:
           </div>
-          {project.isPublic && project.link ? (
-            <div
-              className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden cursor-pointer"
-              onMouseEnter={() => setIsHoveringLink(true)}
-              onMouseLeave={() => setIsHoveringLink(false)}
-            >
-              {/* Progress bar */}
+          <div className="space-y-3">
+            {/* Live Demo Link */}
+            {project.isPublic && project.link && (
               <div
-                className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
-                style={{ width: `${linkProgress}%` }}
-              />
-              <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
-                {linkProgress >= 100 ? (
-                  <span className="animate-pulse">OPENING_LINK...</span>
-                ) : (
-                  <Link
-                    target="_blank"
-                    href={project.link}
-                    className="text-on-surface-variant hover:text-primary transition-colors"
-                  >
-                    <DigitalFlicker>[{project.link}]</DigitalFlicker>
-                  </Link>
-                )}
-              </div>
-            </div>
-          ) : (
-            <div className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden">
-              <div className="absolute inset-0 bg-surface-container-low/50 z-10" />
-              <div className="relative z-0 flex flex-col items-center gap-2">
-                <div className="text-primary-fixed-dim font-mono text-code-sm">
-                  <DigitalFlicker>ACCESS_DENIED</DigitalFlicker>
-                </div>
-                <div className="text-[10px] font-mono text-primary-fixed-dim/70">
-                  <DigitalFlicker>
-                    INTERNAL_PROJECT // AUTHORIZATION_REQUIRED
-                  </DigitalFlicker>
+                className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden cursor-pointer"
+                onMouseEnter={() => setIsHoveringLink(true)}
+                onMouseLeave={() => setIsHoveringLink(false)}
+              >
+                <div
+                  className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
+                  style={{ width: `${linkProgress}%` }}
+                />
+                <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
+                  {linkProgress >= 100 ? (
+                    <span className="animate-pulse">OPENING_LINK...</span>
+                  ) : (
+                    <Link
+                      target="_blank"
+                      href={project.link}
+                      className="text-on-surface-variant hover:text-primary transition-colors"
+                    >
+                      <DigitalFlicker>[{project.link}]</DigitalFlicker>
+                    </Link>
+                  )}
                 </div>
               </div>
-            </div>
-          )}
+            )}
+
+            {/* GitHub Link */}
+            {project.githubLink && (
+              <div
+                className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden cursor-pointer"
+                onMouseEnter={() => setIsHoveringLink(true)}
+                onMouseLeave={() => setIsHoveringLink(false)}
+              >
+                <div
+                  className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
+                  style={{ width: `${linkProgress}%` }}
+                />
+                <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
+                  {linkProgress >= 100 ? (
+                    <span className="animate-pulse">OPENING_LINK...</span>
+                  ) : (
+                    <Link
+                      target="_blank"
+                      href={project.githubLink}
+                      className="text-on-surface-variant hover:text-primary transition-colors"
+                    >
+                      <DigitalFlicker>[GITHUB: {project.githubLink}]</DigitalFlicker>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Access Denied for internal without links */}
+            {!project.link && !project.githubLink && !project.isPublic && (
+              <div className="border border-outline-variant p-4 bg-surface-container-lowest relative overflow-hidden">
+                <div className="absolute inset-0 bg-surface-container-low/50 z-10" />
+                <div className="relative z-0 flex flex-col items-center gap-2">
+                  <div className="text-primary-fixed-dim font-mono text-code-sm">
+                    <DigitalFlicker>ACCESS_DENIED</DigitalFlicker>
+                  </div>
+                  <div className="text-[10px] font-mono text-primary-fixed-dim/70">
+                    <DigitalFlicker>
+                      INTERNAL_PROJECT // AUTHORIZATION_REQUIRED
+                    </DigitalFlicker>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </section>
 
         {/* Footer Output */}

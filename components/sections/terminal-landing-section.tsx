@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { TerminalButton } from "@/components/terminal/terminal-button";
 import Link from "next/link";
+import { DigitalFlicker } from "../ui/glitch-text";
 
 export function TerminalLandingSection() {
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -116,9 +117,11 @@ export function TerminalLandingSection() {
               ref={heroTitleRef}
               className="font-heading text-headline-xl text-primary-fixed-dim text-glow uppercase leading-tight animate-flicker"
             >
-              INITIALIZING SYSTEM...
+              <DigitalFlicker>INITIALIZING SYSTEM...</DigitalFlicker>
               <br />
-              <span className="text-primary-container">ACCESS GRANTED.</span>
+              <DigitalFlicker>
+                <span className="text-primary-container">ACCESS GRANTED.</span>
+              </DigitalFlicker>
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-7 space-y-4">
@@ -154,8 +157,10 @@ export function TerminalLandingSection() {
                       NODE_04_STABLE
                     </li>
                     <li className="flex items-center gap-2 text-secondary-container">
-                      <span className="w-1 h-1 bg-secondary-container" />{" "}
-                      MEMORY_LEAK_DETECTED
+                      <DigitalFlicker>
+                        <span className="w-1 h-1 bg-secondary-container" />{" "}
+                        MEMORY_LEAK_DETECTED
+                      </DigitalFlicker>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1 h-1 bg-primary-fixed-dim" />{" "}
@@ -216,7 +221,7 @@ export function TerminalLandingSection() {
           className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md flex items-center justify-between"
         >
           <p className="font-mono text-label-sm text-primary-fixed-dim">
-            [ SECURITY ]
+            [ SECURE ]
           </p>
           <span
             className="material-symbols-outlined text-primary-fixed-dim"

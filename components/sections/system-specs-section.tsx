@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
+import { useEffect, useRef } from "react";
 import { DigitalFlicker } from "../ui/glitch-text";
 
 const skills = [
@@ -62,7 +62,18 @@ export function SystemSpecsSection() {
 
   return (
     <div className="relative w-full">
-      <div className="page-scan-line-specs animate-page-scan" />
+      <div className="animate-page-scan page-scan-line-specs">
+        <DigitalFlicker
+          config={{
+            xOffest: 100,
+            yOffset: 50,
+            delay: 0,
+          }}
+          className="size-full bg-primary"
+        >
+          {null}
+        </DigitalFlicker>
+      </div>
       <div className="mb-8 font-mono text-code-sm text-on-surface-variant flex items-center gap-2 px-5">
         <span className="text-primary-fixed-dim font-bold animate-flicker">
           ABOUT_ME.DAT

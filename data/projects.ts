@@ -6,7 +6,8 @@ export interface Project {
   tags: string[];
   isPublic: boolean;
   features: string[];
-  link?: string;
+  link?: string;        // Live demo URL (for public projects)
+  githubLink?: string; // GitHub repository URL
 }
 
 // Pre-calculated keccak256 hashes for project IDs
@@ -138,6 +139,7 @@ export const PROJECTS: Project[] = [
       "Graduate project for managing tasks, subtasks, proposals, employees, projects, and supplies.",
     tags: ["React Native", "React", "TypeScript", "Zustand", "Firebase"],
     isPublic: true,
+    githubLink: "https://github.com/vanthuan76/building-project-management",
     features: [
       "Task and subtask management",
       "Employee profiles",
@@ -154,6 +156,7 @@ export const PROJECTS: Project[] = [
       "Loyalty app for Canalis Club with point accumulation, discounts, and event notifications.",
     tags: ["React Native", "Firebase", "Google Sign-In", "Apple Sign-In"],
     isPublic: true,
+    githubLink: "https://github.com/vanthuan76/freelancer-mobile-app",
     features: [
       "Loyalty point system",
       "Discount redemption",

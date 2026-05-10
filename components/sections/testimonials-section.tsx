@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { DigitalFlicker } from "../ui/glitch-text";
 
 const TESTIMONIALS = [
   {
@@ -54,7 +55,7 @@ export function TestimonialsSection() {
               start: "top 90%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       });
     };
@@ -63,15 +64,26 @@ export function TestimonialsSection() {
 
   return (
     <div className="relative w-full">
-      <div className="page-scan-line-specs animate-page-scan" />
-      <div className="w-full space-y-8">
+      <div className="animate-page-scan page-scan-line-specs">
+        <DigitalFlicker
+          config={{
+            xOffest: 100,
+            yOffset: 50,
+            delay: 0,
+          }}
+          className="size-full bg-primary"
+        >
+          {null}
+        </DigitalFlicker>
+      </div>
+      <div className="w-full space-y-8 px-5">
         <div className="font-mono text-code-sm text-on-surface-variant flex items-center gap-2">
           <span className="text-primary-fixed-dim font-bold animate-flicker">
             TESTIMONIALS.DAT
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-3">
           {TESTIMONIALS.map((t, i) => (
             <div
               key={t.name + i}
@@ -93,7 +105,7 @@ export function TestimonialsSection() {
               </span>
 
               <p className="font-body-lg text-body-sm text-on-surface-variant mb-6 leading-relaxed italic">
-                "{t.quote}"
+                &quot;{t.quote}&ldquo;
               </p>
 
               <div className="flex items-center gap-3 border-t border-outline-variant pt-4">
@@ -118,3 +130,4 @@ export function TestimonialsSection() {
     </div>
   );
 }
+

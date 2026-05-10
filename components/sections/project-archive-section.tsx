@@ -93,6 +93,15 @@ export function ProjectArchiveSection({
             </h3>
             <div className="text-[10px] font-mono text-primary-fixed-dim mb-2">
               [{project.company}]
+              <span
+                className={`ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 text-[8px] font-mono uppercase ${
+                  project.isPublic
+                    ? "bg-green-900/30 text-green-400 border border-green-700/50"
+                    : "bg-red-900/30 text-red-400 border border-red-700/50"
+                }`}
+              >
+                {project.isPublic ? "● PUBLIC" : "◼ INTERNAL"}
+              </span>
             </div>
             <div className="text-on-surface-variant text-code-sm mb-4">
               SYSTEM_LOG: {project.description}
