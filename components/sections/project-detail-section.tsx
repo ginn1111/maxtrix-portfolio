@@ -4,12 +4,14 @@ import { useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Separator } from "@base-ui/react/separator";
 
 const projects = [
   {
     id: "0x92F1",
     title: "NEURAL_INTERFACE_V2",
-    description: "Deploying subconscious API integration for low-latency cerebral communication. Protocol verified.",
+    description:
+      "Deploying subconscious API integration for low-latency cerebral communication. Protocol verified.",
     tags: ["REACT", "THREE.JS", "WEBSOCKET"],
     status: "OPERATIONAL",
     lastUpdate: "2026-04-15",
@@ -30,7 +32,8 @@ const projects = [
   {
     id: "0x44B2",
     title: "CRYPT_SENTINEL",
-    description: "Real-time traffic monitoring of subterranean data highways. Automated threat suppression active.",
+    description:
+      "Real-time traffic monitoring of subterranean data highways. Automated threat suppression active.",
     tags: ["RUST", "KAFKA", "CUDA"],
     status: "MONITORING",
     lastUpdate: "2026-05-02",
@@ -51,7 +54,8 @@ const projects = [
   {
     id: "0xFD01",
     title: "VOID_OS_KERNEL",
-    description: "Rewriting the base reality layer. Kernel modules optimizing for 0ms latency in virtualized instances.",
+    description:
+      "Rewriting the base reality layer. Kernel modules optimizing for 0ms latency in virtualized instances.",
     tags: ["C++", "ASSEMBLY", "POSIX"],
     status: "OPTIMIZING",
     lastUpdate: "2026-03-28",
@@ -72,7 +76,8 @@ const projects = [
   {
     id: "0x21A3",
     title: "GHOST_TRAFFIC",
-    description: "Masking system footprints across global networks. Invisible routing established via dark-mesh nodes.",
+    description:
+      "Masking system footprints across global networks. Invisible routing established via dark-mesh nodes.",
     tags: ["GO", "TOR", "PROXY_V6"],
     status: "STEALTH_MODE",
     lastUpdate: "2026-05-08",
@@ -93,7 +98,8 @@ const projects = [
   {
     id: "0xEE44",
     title: "CHAIN_REACTOR",
-    description: "Smart contract execution in a sandbox environment. Validating high-value transactions on the ledger.",
+    description:
+      "Smart contract execution in a sandbox environment. Validating high-value transactions on the ledger.",
     tags: ["SOLIDITY", "ETH", "WEB3.JS"],
     status: "VALIDATING",
     lastUpdate: "2026-04-22",
@@ -114,7 +120,8 @@ const projects = [
   {
     id: "0xBB12",
     title: "SYNTH_CORE",
-    description: "Emulating biometric logic gates. Synthesis of artificial decision pathways successful. Core temp stable.",
+    description:
+      "Emulating biometric logic gates. Synthesis of artificial decision pathways successful. Core temp stable.",
     tags: ["PYTHON", "PYTORCH", "ONNX"],
     status: "RUNNING",
     lastUpdate: "2026-05-07",
@@ -154,7 +161,7 @@ export function ProjectDetailSection() {
             y: 0,
             duration: 0.8,
             ease: "power2.out",
-          }
+          },
         );
       }
     };
@@ -187,7 +194,7 @@ export function ProjectDetailSection() {
   }
 
   return (
-    <div className="relative w-full" ref={sectionRef}>
+    <div className="relative w-full px-5" ref={sectionRef}>
       <div className="max-w-container-max mx-auto w-full">
         {/* Back Button */}
         <Link
@@ -202,7 +209,7 @@ export function ProjectDetailSection() {
         </Link>
 
         {/* Project ID Header */}
-        <div className="mb-6 border-b border-primary-fixed-dim pb-4">
+        <div>
           <div className="text-[10px] text-primary-fixed-dim font-mono mb-2">
             PROJECT_ID: {project.id}
           </div>
@@ -211,19 +218,23 @@ export function ProjectDetailSection() {
           </h1>
         </div>
 
+        <Separator className="border border-primary-fixed-dim -mx-5 mt-5!" />
+
         {/* Project Visual Placeholder */}
-        <div className="relative mb-8 h-64 w-full overflow-hidden border border-outline-variant bg-surface-container-low scanline-effect">
+        <div className="relative mb-8 h-64 w-full overflow-hidden border border-outline-variant bg-surface-container-low crt-fallback crt-flicker">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-fixed-dim/20 via-transparent to-primary-fixed-dim/5" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-primary-fixed-dim font-heading text-display-md opacity-30 uppercase tracking-widest">
+          {/* Noise layer */}
+          <div className="absolute inset-0 crt-noise" />
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="text-primary-fixed-dim font-heading text-display-md uppercase tracking-widest crt-color-aberration opacity-40">
               VISUAL_OUTPUT
             </div>
           </div>
           {/* Crosshair corners */}
-          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary-fixed-dim opacity-50" />
-          <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary-fixed-dim opacity-50" />
-          <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary-fixed-dim opacity-50" />
-          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary-fixed-dim opacity-50" />
+          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary-fixed-dim opacity-50 z-10" />
+          <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-primary-fixed-dim opacity-50 z-10" />
+          <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-primary-fixed-dim opacity-50 z-10" />
+          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary-fixed-dim opacity-50 z-10" />
         </div>
 
         {/* Description / SYSTEM_LOG */}
@@ -279,31 +290,6 @@ export function ProjectDetailSection() {
           <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-6">
             <span className="animate-pulse">●</span>
             CONTRIBUTION_METRICS:
-          </div>
-
-          {/* Language Breakdown */}
-          <div className="mb-6">
-            <div className="text-[10px] font-mono text-primary-fixed-dim/70 mb-3">
-              LANGUAGE_BREAKDOWN:
-            </div>
-            <div className="space-y-3">
-              {project.stats.languages.map((lang) => (
-                <div key={lang.name} className="flex items-center gap-4">
-                  <span className="font-mono text-code-sm text-on-surface-variant w-20">
-                    {lang.name}
-                  </span>
-                  <div className="flex-1 h-2 bg-surface-container-lowest border border-outline-variant overflow-hidden">
-                    <div
-                      className="h-full bg-primary-fixed-dim/60 transition-all duration-500"
-                      style={{ width: `${lang.percentage}%` }}
-                    />
-                  </div>
-                  <span className="font-mono text-code-sm text-primary-fixed-dim w-10 text-right">
-                    {lang.percentage}%
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* LOC, Commits, Contributors */}
@@ -373,17 +359,6 @@ export function ProjectDetailSection() {
           </div>
         </section>
 
-        {/* RAW_DATA_DUMP */}
-        <section className="border border-outline-variant p-6 bg-surface-container-low">
-          <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-4">
-            <span className="animate-pulse">●</span>
-            RAW_DATA_DUMP:
-          </div>
-          <pre className="font-mono text-code-xs text-on-surface-variant overflow-x-auto whitespace-pre-wrap">
-            {JSON.stringify(project, null, 2)}
-          </pre>
-        </section>
-
         {/* Footer Output */}
         <section className="mt-12 border border-outline-variant p-4 font-mono bg-surface-container-low">
           <div className="flex items-center gap-2 text-primary-fixed-dim">
@@ -391,8 +366,14 @@ export function ProjectDetailSection() {
             NODE_LOG:
           </div>
           <div className="text-[12px] mt-2 space-y-1 text-on-surface-variant opacity-70">
-            <div>[ {new Date().toLocaleTimeString()} ] NODE_{project.id}: DISPLAYING_PROJECT_DETAILS</div>
-            <div>[ {new Date().toLocaleTimeString()} ] SYS: DATA_STREAM_COMPLETE. READY_FOR_INPUT.</div>
+            <div>
+              [ {new Date().toLocaleTimeString()} ] NODE_{project.id}:
+              DISPLAYING_PROJECT_DETAILS
+            </div>
+            <div>
+              [ {new Date().toLocaleTimeString()} ] SYS: DATA_STREAM_COMPLETE.
+              READY_FOR_INPUT.
+            </div>
             <div className="flex items-center">
               <span className="text-primary-fixed-dim mr-2">&gt;</span>
               <span className="w-2 h-4 bg-primary-fixed-dim animate-pulse animate-flicker" />
@@ -400,29 +381,7 @@ export function ProjectDetailSection() {
           </div>
         </section>
       </div>
-
-      <style jsx>{`
-        .scanline-effect {
-          position: relative;
-        }
-        .scanline-effect::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 0, 0, 0.1) 2px,
-            rgba(0, 0, 0, 0.1) 4px
-          );
-          pointer-events: none;
-          z-index: 1;
-        }
-      `}</style>
     </div>
   );
 }
+

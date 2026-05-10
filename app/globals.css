@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@utility container {
+  margin: auto;
+}
+
 @theme {
   --color-primary: #00ff41;
   --color-primary-dim: #00e639;
@@ -52,9 +56,9 @@
   --color-surface-bright: #393939;
   --color-surface-container-highest: #353535;
 
-  --font-family-heading: 'JetBrains Mono', monospace;
-  --font-family-body: 'JetBrains Mono', monospace;
-  --font-family-mono: 'Space Mono', monospace;
+  --font-family-heading: "JetBrains Mono", monospace;
+  --font-family-body: "JetBrains Mono", monospace;
+  --font-family-mono: "Space Mono", monospace;
 }
 
 * {
@@ -69,7 +73,7 @@ body {
 
 /* CRT Scanline Overlay via body::after */
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -88,32 +92,32 @@ body::after {
 
 /* Phosphor Glow */
 .glow {
-  text-shadow: 0 0 8px var(--primary), 0 0 2px var(--primary);
-}
-
-/* Flicker Animation */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.97; }
-}
-
-.animate-flicker {
-  animation: flicker 0.1s infinite;
+  text-shadow:
+    0 0 8px var(--primary),
+    0 0 2px var(--primary);
 }
 
 /* Dot leaders for data rows */
 .dot-leader::after {
-  content: ' ';
+  content: " ";
   flex: 1;
   border-bottom: 1px dotted var(--outline);
 }
 
 /* Material Symbols */
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 .material-symbols-filled {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 /* Glow effects */
@@ -125,6 +129,476 @@ body::after {
   box-shadow: 0 0 20px rgba(0, 230, 57, 0.5);
 }
 
-.text-glow {
+/* ===== FLICKER ANIMATIONS ===== */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.93;
+  }
+  35% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.92;
+  }
+  60% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.88;
+  }
+  95% {
+    opacity: 1;
+  }
+}
+
+@keyframes flicker-logo {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  5% {
+    opacity: 0.6;
+    transform: translate(-2px, 1px);
+  }
+  10% {
+    opacity: 0.85;
+    transform: translate(1.5px, -1px);
+  }
+  15% {
+    opacity: 0.5;
+    transform: translate(-1.8px, 0.8px);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(1.2px, -0.6px);
+  }
+  25% {
+    opacity: 0.95;
+    transform: translate(-0.5px, 0.3px);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  45% {
+    opacity: 0.7;
+    transform: translate(-1.5px, -0.8px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(1px, 0.5px);
+  }
+  55% {
+    opacity: 0.4;
+    transform: translate(-2px, 1.2px);
+  }
+  60% {
+    opacity: 0.85;
+    transform: translate(1.5px, -0.7px);
+  }
+  65% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  80% {
+    opacity: 0.6;
+    transform: translate(-1.8px, 0.6px);
+  }
+  85% {
+    opacity: 0.88;
+    transform: translate(1.2px, -1px);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translate(-1.5px, 0.8px);
+  }
+  95% {
+    opacity: 0.92;
+    transform: translate(0.8px, -0.4px);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pageScan {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  95% {
+    opacity: 0.4;
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+  }
+}
+
+@keyframes pageScanSpecs {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  92% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes scanlineMove {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* ===== UTILITIES ===== */
+@utility animate-flicker {
+  animation: flicker 3s linear infinite;
+}
+
+@utility animate-flicker-fast {
+  animation: flicker 0.15s infinite;
+}
+
+@utility animate-flicker-text {
+  animation: flicker 0.1s infinite;
+}
+
+@utility animate-flicker-logo {
+  animation: flicker-logo 4s linear infinite;
+}
+
+@utility animate-blink-block {
+  animation: blink 1s step-end infinite;
+}
+
+@utility animate-page-scan {
+  animation: pageScan 8s linear infinite;
+}
+
+@utility animate-page-scan-specs {
+  animation: pageScanSpecs 2s linear infinite;
+}
+
+@utility glow-sm {
+  box-shadow: 0 0 10px rgba(0, 230, 57, 0.3);
+}
+
+@utility glow-md {
+  box-shadow: 0 0 20px rgba(0, 230, 57, 0.5);
+}
+
+@utility text-glow {
   text-shadow: 0 0 8px rgba(0, 230, 57, 0.8);
+}
+
+@utility crosshair {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #3b4b37;
+}
+
+@utility crosshair-tl {
+  top: -4px;
+  left: -4px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+@utility crosshair-tr {
+  top: -4px;
+  right: -4px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+@utility crosshair-bl {
+  bottom: -4px;
+  left: -4px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+@utility crosshair-br {
+  bottom: -4px;
+  right: -4px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+@utility page-scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00e639,
+    #00ff55,
+    #00e639,
+    transparent
+  );
+  box-shadow:
+    0 0 30px #00e639,
+    0 0 60px #00e639,
+    0 0 90px rgba(0, 230, 57, 0.6),
+    0 0 120px rgba(0, 230, 57, 0.4);
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.4;
+}
+
+@utility page-scan-line-specs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00e639,
+    #00ff55,
+    #00e639,
+    transparent
+  );
+  box-shadow:
+    0 0 40px #00e639,
+    0 0 80px #00e639,
+    0 0 120px rgba(0, 230, 57, 0.7),
+    0 0 160px rgba(0, 230, 57, 0.5);
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.7;
+}
+
+@utility scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(19, 19, 19, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+  will-change: transform;
+}
+
+@utility scanline-effect {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00e639,
+    #00ff55,
+    #00e639,
+    transparent
+  );
+  box-shadow:
+    0 0 20px #00e639,
+    0 0 40px #00e639,
+    0 0 60px rgba(0, 230, 57, 0.5),
+    0 0 80px rgba(0, 230, 57, 0.3);
+  z-index: 10;
+  opacity: 0;
+  transition: none;
+}
+
+@utility animate-scanline-move {
+  animation: scanlineMove 1.5s ease-out forwards;
+}
+
+@utility blink-block {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background-color: #00e639;
+  vertical-align: middle;
+}
+
+@utility card-node {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@utility corner-tl {
+  position: absolute;
+}
+
+@utility corner-br {
+  position: absolute;
+}
+
+/* Corner decorations - these need to be used with ::before and ::after in components */
+
+@utility crt-flicker-text {
+  animation: highFreqFlicker 0.2s infinite;
+}
+
+/* Corner decorations with pseudo-elements */
+.corner-tl::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 1px;
+  height: 12px;
+  background-color: #00e639;
+}
+
+.corner-tl::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 12px;
+  height: 1px;
+  background-color: #00e639;
+}
+
+.corner-br::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 1px;
+  height: 12px;
+  background-color: #00e639;
+}
+
+/* CRT Fallback Image Effect */
+.crt-fallback {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 230, 57, 0.2);
+}
+
+.crt-fallback::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.crt-fallback::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Noise background for CRT static effect */
+.crt-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
+
+/* Color aberration effect for text */
+.crt-color-aberration {
+  text-shadow:
+    1px 0 0 rgba(255, 0, 0, 0.5),
+    -1px 0 0 rgba(0, 255, 255, 0.5);
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  97% { opacity: 0.9; }
+  98% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 4s linear infinite;
+}
+
+.corner-br::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -4px;
+  width: 12px;
+  height: 1px;
+  background-color: #00e639;
 }
