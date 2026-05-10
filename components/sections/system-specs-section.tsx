@@ -4,10 +4,10 @@ import { useEffect, useRef } from "react";
 import { TerminalButton } from "@/components/terminal/terminal-button";
 
 const skills = [
-  { name: "JAVASCRIPT_CORE", level: 94 },
-  { name: "UI_SYSTEM_ARCH", level: 98 },
-  { name: "BACKEND_LOGIC", level: 82 },
-  { name: "NEURAL_INTERFACING", level: 75 },
+  { name: "FRONTEND_DEV", level: 92 },
+  { name: "TYPESCRIPT", level: 90 },
+  { name: "BACKEND_DEV", level: 65 },
+  { name: "MOBILE_DEV", level: 40 },
 ];
 
 export function SystemSpecsSection() {
@@ -56,20 +56,11 @@ export function SystemSpecsSection() {
 
   return (
     <div className="relative w-full">
-      <div className="pageScanline" />
+      <div className="page-scan-line-specs animate-page-scan" />
       <div className="w-full">
-        {/* Breadcrumbs */}
         <div className="mb-8 font-mono text-code-sm text-on-surface-variant flex items-center gap-2">
-          <span>ROOT</span>
-          <span className="material-symbols-outlined text-[14px]">
-            chevron_right
-          </span>
-          <span>SYSTEM</span>
-          <span className="material-symbols-outlined text-[14px]">
-            chevron_right
-          </span>
           <span className="text-primary-fixed-dim font-bold animate-flicker">
-            OPERATOR_SPECS.DAT
+            USERS_SPECS.DAT
           </span>
         </div>
 
@@ -93,21 +84,19 @@ export function SystemSpecsSection() {
             <div className="space-y-3">
               <div className="flex justify-between font-mono text-label-sm">
                 <span className="text-on-surface-variant">DESIGNATION:</span>
-                <span className="text-primary-fixed-dim">
-                  K_NEURAL_OPERATOR
-                </span>
+                <span className="text-primary-fixed-dim">FULL_STACK_DEV</span>
               </div>
               <div className="flex justify-between font-mono text-label-sm">
-                <span className="text-on-surface-variant">CLEARANCE:</span>
-                <span className="text-primary-fixed-dim">LEVEL_09_ADMIN</span>
+                <span className="text-on-surface-variant">STACK:</span>
+                <span className="text-primary-fixed-dim">REACT/NEXTJS</span>
               </div>
               <div className="flex justify-between font-mono text-label-sm">
-                <span className="text-on-surface-variant">ORIGIN:</span>
-                <span className="text-primary-fixed-dim">SECTOR_B4_GRID</span>
+                <span className="text-on-surface-variant">LANGUAGES:</span>
+                <span className="text-primary-fixed-dim">TS/JS/PY</span>
               </div>
               <div className="flex justify-between font-mono text-label-sm">
-                <span className="text-on-surface-variant">UPTIME:</span>
-                <span className="text-primary-fixed-dim">12,482_CYCLES</span>
+                <span className="text-on-surface-variant">STATUS:</span>
+                <span className="text-primary-fixed-dim">LEARNING</span>
               </div>
             </div>
           </div>
@@ -136,29 +125,27 @@ export function SystemSpecsSection() {
 
             <div className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed space-y-6">
               <p className="border-l-2 border-primary-fixed-dim pl-4">
-                &gt; ACCESSING BIOGRAPHICAL RECORD... SUCCESS.
+                &gt; SYSTEM_LOAD: SUCCESS. WELCOME_OPERATOR.
               </p>
               <p>
-                Operator 01, formerly identified as{" "}
-                <span className="text-primary-fixed-dim">[REDACTED]</span>, is a
-                high-level systems architect specialized in the construction of
-                modular digital infrastructures. Originating from the
-                decentralized grids of the Subterranean Mainframe, they have
-                spent over a decade refining the balance between aesthetic
-                brutalism and functional computational efficiency.
+                Hi, I'm <span className="text-primary-fixed-dim">Thuan</span> — a
+                passionate web developer with a deep love for creating performant
+                and impactful websites that users love. I follow best practices
+                and conventions to keep projects clean and maintainable.
               </p>
               <p>
-                Their methodology prioritizes the "raw-data-first" philosophy,
-                stripping away the superfluous layers of modern web design to
-                expose the core logic beneath. Every line of code is treated as
-                a critical component in a larger simulation, ensuring
-                high-frequency throughput and maximum security across all
-                deployed nodes.
+                My web development journey began with a thirst for knowledge and a
+                determination to turn ideas into digital realities. With a solid
+                foundation in HTML, CSS, JavaScript, TypeScript and frameworks
+                like React and NextJS, I'm excited to be part of the
+                ever-evolving world of web technologies.
               </p>
               <p>
-                Current mission parameters focus on the evolution of user
-                interfaces into immersive terminal environments, bridging the
-                gap between human intuition and machine precision
+                In this dynamic field, I believe in lifelong learning. I'm eager
+                to take on challenges, learn from experiences, and collaborate
+                with like-minded individuals to create innovative web solutions.
+                My next goals: expand into <span className="text-primary-fixed-dim">back-end development</span> and{" "}
+                <span className="text-primary-fixed-dim">mobile development</span>.
                 <span className="blink-block" />
               </p>
             </div>
@@ -266,9 +253,7 @@ export function SystemSpecsSection() {
             </div>
           </div>
         </div>
-
-              </div>
+      </div>
     </div>
   );
 }
-
