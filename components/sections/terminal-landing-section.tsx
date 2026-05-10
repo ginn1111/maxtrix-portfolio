@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { TerminalButton } from "@/components/terminal/terminal-button";
+import Link from "next/link";
 
 export function TerminalLandingSection() {
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ export function TerminalLandingSection() {
               start: "top 85%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
@@ -50,7 +51,7 @@ export function TerminalLandingSection() {
             x: 0,
             delay: 0.5,
             ease: "steps(12)",
-          }
+          },
         );
       }
 
@@ -58,7 +59,7 @@ export function TerminalLandingSection() {
         gsap.fromTo(
           heroBodyRef.current,
           { opacity: 0, y: 10 },
-          { duration: 1, opacity: 1, y: 0, delay: 0.3, ease: "power2.out" }
+          { duration: 1, opacity: 1, y: 0, delay: 0.3, ease: "power2.out" },
         );
       }
 
@@ -77,7 +78,7 @@ export function TerminalLandingSection() {
                 start: "top 95%",
                 toggleActions: "play none none none",
               },
-            }
+            },
           );
         }
       });
@@ -116,15 +117,20 @@ export function TerminalLandingSection() {
               ref={heroTitleRef}
               className="font-heading text-headline-xl text-primary-fixed-dim text-glow uppercase leading-tight animate-flicker"
             >
-              INITIALIZING SYSTEM...<br />
+              INITIALIZING SYSTEM...
+              <br />
               <span className="text-primary-container">ACCESS GRANTED.</span>
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-7 space-y-4">
-                <p ref={heroBodyRef} className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                  Welcome, Operator. You have successfully bypassed the perimeter security protocols. The Subterranean
-                  GIN_OS is now at your disposal. Navigate through the encrypted nodes to review current projects and system
-                  specifications.
+                <p
+                  ref={heroBodyRef}
+                  className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                >
+                  Welcome, Operator. You have successfully bypassed the
+                  perimeter security protocols. The Subterranean GIN_OS is now
+                  at your disposal. Navigate through the encrypted nodes to
+                  review current projects and system specifications.
                 </p>
                 <div className="space-y-1 font-mono text-on-surface-variant opacity-80 mt-8">
                   <p>IP_SOURCE........127.0.0.1</p>
@@ -133,21 +139,28 @@ export function TerminalLandingSection() {
                 </div>
               </div>
               <div className="lg:col-span-5 flex flex-col gap-4">
-                <TerminalButton className="group w-full p-6 text-headline-md">
-                  COMMAND: VIEW_PROJECTS_
-                  <div className="absolute bottom-0 left-0 h-1 bg-primary-container w-0 group-hover:w-full transition-all duration-300" />
-                </TerminalButton>
+                <Link href="/specs" className="block">
+                  <TerminalButton className="group w-full text-headline-md gap-0 h-min py-3">
+                    COMMAND: USER_SPECS
+                    <div className="absolute bottom-0 left-0 h-1 bg-primary-container w-0 group-hover:w-full transition-all duration-300" />
+                  </TerminalButton>
+                </Link>
                 <div className="p-4 border border-outline-variant bg-surface-container-lowest">
-                  <p className="font-mono text-label-sm text-on-surface-variant mb-2">[ SYSTEM_ALERTS ]</p>
+                  <p className="font-mono text-label-sm text-on-surface-variant mb-2">
+                    [ SYSTEM_ALERTS ]
+                  </p>
                   <ul className="font-mono text-primary-fixed-dim space-y-1">
                     <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-primary-fixed-dim" /> NODE_04_STABLE
+                      <span className="w-1 h-1 bg-primary-fixed-dim" />{" "}
+                      NODE_04_STABLE
                     </li>
                     <li className="flex items-center gap-2 text-secondary-container">
-                      <span className="w-1 h-1 bg-secondary-container" /> MEMORY_LEAK_DETECTED
+                      <span className="w-1 h-1 bg-secondary-container" />{" "}
+                      MEMORY_LEAK_DETECTED
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-primary-fixed-dim" /> SYNC_COMPLETE_100%
+                      <span className="w-1 h-1 bg-primary-fixed-dim" />{" "}
+                      SYNC_COMPLETE_100%
                     </li>
                   </ul>
                 </div>
@@ -156,7 +169,9 @@ export function TerminalLandingSection() {
           </div>
 
           <div className="mt-12 flex justify-end">
-            <span className="font-mono text-label-sm text-on-surface-variant opacity-40">ENCRYPTION_HASH: 0x8F2A...91C</span>
+            <span className="font-mono text-label-sm text-on-surface-variant opacity-40">
+              ENCRYPTION_HASH: 0x8F2A...91C
+            </span>
           </div>
         </div>
       </div>
@@ -164,32 +179,55 @@ export function TerminalLandingSection() {
       {/* Bento Grid Elements */}
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-3 gap-gutter">
         <div
-          ref={(el) => { if (el !== null) { nodesRef.current[0] = el; } }}
+          ref={(el) => {
+            if (el !== null) {
+              nodesRef.current[0] = el;
+            }
+          }}
           className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md"
         >
-          <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">[ DATA_STREAM_01 ]</p>
+          <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">
+            [ DATA_STREAM_01 ]
+          </p>
           <div className="h-1 bg-outline-variant w-full overflow-hidden">
             <div className="h-full bg-primary-fixed-dim w-3/4 animate-pulse" />
           </div>
         </div>
         <div
-          ref={(el) => { if (el !== null) { nodesRef.current[1] = el; } }}
+          ref={(el) => {
+            if (el !== null) {
+              nodesRef.current[1] = el;
+            }
+          }}
           className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md"
         >
-          <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">[ UPLINK_STATUS ]</p>
-          <p className="font-mono text-on-surface-variant">CONNECTED_TO_ORBITAL_7</p>
+          <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">
+            [ UPLINK_STATUS ]
+          </p>
+          <p className="font-mono text-on-surface-variant">
+            CONNECTED_TO_ORBITAL_7
+          </p>
         </div>
         <div
-          ref={(el) => { if (el !== null) { nodesRef.current[2] = el; } }}
+          ref={(el) => {
+            if (el !== null) {
+              nodesRef.current[2] = el;
+            }
+          }}
           className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md flex items-center justify-between"
         >
-          <p className="font-mono text-label-sm text-primary-fixed-dim">[ SECURITY ]</p>
-          <span className="material-symbols-outlined text-primary-fixed-dim" style={{ fontVariationSettings: "'FILL' 1" }}>
+          <p className="font-mono text-label-sm text-primary-fixed-dim">
+            [ SECURITY ]
+          </p>
+          <span
+            className="material-symbols-outlined text-primary-fixed-dim"
+            style={{ fontVariationSettings: "'FILL' 1" }}
+          >
             lock
           </span>
         </div>
       </div>
-
-          </>
+    </>
   );
 }
+
