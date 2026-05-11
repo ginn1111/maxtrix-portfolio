@@ -5,28 +5,22 @@ import { DigitalFlicker } from "../ui/glitch-text";
 
 const TESTIMONIALS = [
   {
-    name: "Sarah Chen",
-    role: "CTO, AIOZ Network",
+    name: "Anonymous",
+    role: "Unknown, YRISM",
     quote:
-      "Thuan consistently delivers clean, performant code with an eye for design. His frontend work elevated our platform significantly.",
+      "Excellent technical skills, very positive attitude, and great diligence. Your smile brightens the team. Wish you all the best, see you!",
   },
   {
-    name: "Minh Nguyen",
-    role: "Project Manager, Freelance Client",
+    name: "Pinky",
+    role: "Designer, YRISM",
     quote:
-      "Exceptional communication and technical skill. Delivered the project ahead of schedule with all features working flawlessly.",
+      "You are honest, hardworking, and a great team player. I really appreciate your attitude and the way you share ideas with colleagues. Keep speaking up and sharing your thoughts more - you're doing great and I'm always here to support you.",
   },
   {
-    name: "Alex Tran",
-    role: "Senior Developer, Startup Hub",
+    name: "Hoang Nguyen",
+    role: "Team Member, YRISM",
     quote:
-      "A fast learner who asks great questions. His React fundamentals solidified quickly during his internship.",
-  },
-  {
-    name: "Lisa Park",
-    role: "Product Owner, E-Commerce Platform",
-    quote:
-      "Thuan integrated Stripe and Meilisearch seamlessly. The search experience and payment flow were exactly what we needed.",
+      "Open attitude and eager to learn. Learned a lot working with your and grew quickly. Keep it up!",
   },
 ];
 
@@ -90,7 +84,7 @@ export function TestimonialsSection() {
               ref={(el) => {
                 if (el !== null) cardsRef.current[i] = el;
               }}
-              className="relative p-6 border border-outline-variant bg-surface-container-low opacity-0"
+              className="relative p-6 border border-outline-variant bg-surface-container-low opacity-0 size-full flex flex-col"
             >
               <div className="crosshair crosshair-tl" />
               <div className="crosshair crosshair-tr" />
@@ -108,7 +102,7 @@ export function TestimonialsSection() {
                 &quot;{t.quote}&ldquo;
               </p>
 
-              <div className="flex items-center gap-3 border-t border-outline-variant pt-4">
+              <div className="flex items-center gap-3 border-t border-outline-variant pt-4 mt-auto">
                 <div className="w-10 h-10 border border-primary-fixed-dim flex items-center justify-center">
                   <span className="material-symbols-outlined text-primary-fixed-dim text-sm">
                     person
@@ -116,7 +110,7 @@ export function TestimonialsSection() {
                 </div>
                 <div>
                   <p className="font-mono text-label-sm text-primary-fixed-dim uppercase">
-                    {t.name}
+                    <DigitalFlicker>{t.name}</DigitalFlicker>
                   </p>
                   <p className="font-mono text-[10px] text-on-surface-variant">
                     {t.role}
@@ -130,4 +124,3 @@ export function TestimonialsSection() {
     </div>
   );
 }
-
