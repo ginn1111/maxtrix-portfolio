@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef } from "react";
 import { DigitalFlicker } from "../ui/glitch-text";
+import Image from "next/image";
 
 const skills = [
   "JavaScript",
@@ -90,10 +91,29 @@ export function SystemSpecsSection() {
           <div className="crosshair crosshair-br" />
 
           <div className="aspect-square w-full mb-6 border border-primary-fixed-dim p-2 relative overflow-hidden group">
-            <div className="w-full h-full bg-gradient-to-br from-primary-fixed-dim/30 to-surface-container-low" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-            <div className="absolute bottom-4 left-4 font-heading text-primary-fixed-dim text-sm">
-              <DigitalFlicker>[ +3YOE ]</DigitalFlicker>
+            {/* CRT scanlines overlay */}
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-fixed-dim/5 to-transparent animate-scan" />
+              <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.15)_2px,rgba(0,0,0,0.15)_4px)]" />
+            </div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 z-10 bg-primary-fixed-dim/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Top gradient */}
+            <div className="absolute inset-0 z-10 bg-primary-fixed-dim/30 opacity-50" />
+            <DigitalFlicker className="absolute inset-0">
+              <Image
+                fill
+                src="https://avatars.githubusercontent.com/u/67890264?s=400&u=01382fab2302541acb3a0ef0fe65576641bc70f5&v=4"
+                alt="avatar"
+                className="grayscale-100 brightness-75 contrast-90"
+              />
+            </DigitalFlicker>
+            {/* Bottom label with glow */}
+            <div className="absolute bottom-4 left-4 font-heading text-primary-fixed-dim text-sm z-20">
+              <span className="relative">
+                <span className="absolute inset-0 blur-sm bg-primary-fixed-dim/50 -z-10" />
+                <DigitalFlicker>[ +3YOE ]</DigitalFlicker>
+              </span>
             </div>
           </div>
 

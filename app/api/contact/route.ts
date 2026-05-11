@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 const rateLimitMap = new Map<string, number>();
 const RATE_LIMIT_MS = 5 * 60 * 1000; // 5 minutes
 
-function isRateLimited(email: string): { limited: boolean; remainingSeconds: number } {
+function isRateLimited(email: string): {
+  limited: boolean;
+  remainingSeconds: number;
+} {
   const lastSent = rateLimitMap.get(email);
   if (!lastSent) return { limited: false, remainingSeconds: 0 };
 
@@ -25,10 +28,10 @@ export async function POST(req: NextRequest) {
   const errors: Record<string, string> = {};
   if (!name?.trim()) errors.name = "Name is required";
   if (!email?.trim()) {
-  errors.email = "Email is required";
-} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-  errors.email = "Invalid email format";
-}
+    errors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errors.email = "Invalid email format";
+  }
   if (!subject?.trim()) errors.subject = "Subject is required";
   if (!message?.trim()) errors.message = "Message is required";
 
@@ -49,7 +52,10 @@ export async function POST(req: NextRequest) {
   const { RESEND_API_KEY } = process.env;
   if (!RESEND_API_KEY) {
     console.error("RESEND_API_KEY not set");
-    return NextResponse.json({ error: "Email service not configured" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Email service not configured" },
+      { status: 500 },
+    );
   }
 
   const { Resend } = await import("resend");
@@ -58,7 +64,7 @@ export async function POST(req: NextRequest) {
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "your-email@example.com",
+      to: "vanthuanjw@gmail.com",
       subject: `[Portfolio Contact] ${subject}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
@@ -66,7 +72,10 @@ export async function POST(req: NextRequest) {
     // Remove on failure so retry works immediately
     rateLimitMap.delete(email);
     console.error("Resend error:", err);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to send email" },
+      { status: 500 },
+    );
   }
 
   // Clean up old entries to prevent memory leak
