@@ -42,6 +42,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ remainingSeconds }, { status: 429 });
   }
 
+  // Record send attempt BEFORE sending to prevent race condition
+  rateLimitMap.set(email, Date.now());
+
   // Send email via Resend
   const { RESEND_API_KEY } = process.env;
   if (!RESEND_API_KEY) {
@@ -60,17 +63,18 @@ export async function POST(req: NextRequest) {
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
   } catch (err) {
+    // Remove on failure so retry works immediately
+    rateLimitMap.delete(email);
     console.error("Resend error:", err);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 
-  // Record successful send (clean up old entries first to prevent memory leak)
+  // Clean up old entries to prevent memory leak
   for (const [key, timestamp] of rateLimitMap.entries()) {
     if (Date.now() - timestamp >= RATE_LIMIT_MS) {
       rateLimitMap.delete(key);
     }
   }
-  rateLimitMap.set(email, Date.now());
 
   return NextResponse.json({ success: true }, { status: 200 });
 }
