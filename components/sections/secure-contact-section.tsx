@@ -55,7 +55,7 @@ export function SecureContactSection() {
       });
 
       if (res.status === 429) {
-        const { remainingSeconds } = await res.json();
+        const { remainingSeconds = 60 } = await res.json();
         setRateLimitError(`Please wait ${remainingSeconds} seconds before sending another message.`);
         return;
       }
@@ -66,11 +66,11 @@ export function SecureContactSection() {
 
       // Success
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setLogs([...logs,
+      setLogs(prevLogs => [...prevLogs,
         { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_COMPLETE", type: "primary" as const }
       ]);
     } catch {
-      setLogs([...logs,
+      setLogs(prevLogs => [...prevLogs,
         { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_FAILED", type: "error" as const }
       ]);
     }
