@@ -20,6 +20,7 @@ export function SecureContactSection() {
     { time: "22:04:13", text: "SSL_CERT_VERIFIED [OK]", type: "default" },
     { time: "22:04:15", text: "LISTENING_FOR_PAYLOAD...", type: "default" },
   ]);
+  const [rateLimitError, setRateLimitError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadGSAP = async () => {
@@ -42,22 +43,37 @@ export function SecureContactSection() {
     loadGSAP();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newLogs = [
-      ...logs,
-      {
-        time: new Date().toLocaleTimeString("en-GB", { hour12: false }),
-        text: `TRANSMITTING: ${formData.subject || "DATA_PAYLOAD"}...`,
-        type: "primary",
-      },
-      {
-        time: new Date().toLocaleTimeString("en-GB", { hour12: false }),
-        text: "ENCRYPTION_HANDSHAKE_COMPLETE",
-        type: "primary",
-      },
-    ];
-    setLogs(newLogs);
+    setRateLimitError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.status === 429) {
+        const { remainingSeconds } = await res.json();
+        setRateLimitError(`Please wait ${remainingSeconds} seconds before sending another message.`);
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error("Failed to send");
+      }
+
+      // Success
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setLogs([...logs,
+        { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_COMPLETE", type: "primary" as const }
+      ]);
+    } catch {
+      setLogs([...logs,
+        { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_FAILED", type: "error" as const }
+      ]);
+    }
   };
 
   return (
@@ -160,6 +176,9 @@ export function SecureContactSection() {
                   }
                 />
               </DigitalFlicker>
+              {rateLimitError && (
+                <p className="text-red-500 text-sm mt-1">{rateLimitError}</p>
+              )}
             </div>
 
             {/* Input: Message */}
