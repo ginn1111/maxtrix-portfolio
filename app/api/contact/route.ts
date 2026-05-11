@@ -24,7 +24,11 @@ export async function POST(req: NextRequest) {
   // Validation
   const errors: Record<string, string> = {};
   if (!name?.trim()) errors.name = "Name is required";
-  if (!email?.trim()) errors.email = "Email is required";
+  if (!email?.trim()) {
+  errors.email = "Email is required";
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  errors.email = "Invalid email format";
+}
   if (!subject?.trim()) errors.subject = "Subject is required";
   if (!message?.trim()) errors.message = "Message is required";
 
@@ -60,7 +64,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 
-  // Record successful send
+  // Record successful send (clean up old entries first to prevent memory leak)
+  for (const [key, timestamp] of rateLimitMap.entries()) {
+    if (Date.now() - timestamp >= RATE_LIMIT_MS) {
+      rateLimitMap.delete(key);
+    }
+  }
   rateLimitMap.set(email, Date.now());
 
   return NextResponse.json({ success: true }, { status: 200 });
