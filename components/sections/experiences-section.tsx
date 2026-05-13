@@ -185,26 +185,26 @@ export function ExperiencesSection() {
               <div className="crosshair crosshair-bl" />
               <div className="crosshair crosshair-br" />
 
-              <div className="flex items-start justify-between mb-4">
-                <div>
+              <div className="mb-4">
+                <div className="flex items-center justify-between">
                   <span className="inline-block px-2 py-1 font-mono text-[10px] text-background bg-primary-fixed-dim mb-2">
                     {exp.type}
                   </span>
-                  <h3 className="font-heading text-headline-sm text-primary-fixed-dim uppercase">
-                    {exp.role}
-                  </h3>
-                  <div>
-                    <p className="font-mono text-label-sm text-on-surface-variant mt-1">
-                      {exp.company}
-                    </p>
-                    <span className="text-sm text-primary-fixed-dim">
-                      [{exp.domain}]
-                    </span>
-                  </div>
+                  <span className="font-mono text-code-sm text-primary-fixed-dim">
+                    {exp.period}
+                  </span>
                 </div>
-                <p className="font-mono text-code-sm text-primary-fixed-dim">
-                  {exp.period}
-                </p>
+                <h3 className="font-heading text-headline-sm text-primary-fixed-dim uppercase">
+                  {exp.role}
+                </h3>
+                <div>
+                  <p className="font-mono text-label-sm text-on-surface-variant mt-1">
+                    {exp.company}
+                  </p>
+                  <span className="text-sm text-primary-fixed-dim">
+                    [{exp.domain}]
+                  </span>
+                </div>
               </div>
 
               <p className="font-body-lg text-body-sm text-on-surface-variant mb-4 leading-relaxed">

@@ -1,7 +1,7 @@
 "use client";
 
-import { ScrambleText } from "@/components/ui/scramble-text";
 import type { Project } from "@/data/projects";
+import dayjs from "dayjs";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
@@ -117,13 +117,16 @@ export function ProjectArchiveSection({
           LIVE_LOG_FEED:
         </div>
         <div className="text-[12px] mt-2 space-y-1 text-on-surface-variant opacity-70">
-          <div>[ 12:44:01 ] NODE_CONNECTION: ESTABLISHED</div>
           <div>
-            [ 12:44:03 ] SYS: ALL_SYSTEMS_OPERATIONAL. READY_FOR_COMMAND.
+            [ {dayjs().format("HH:mm:ss")} ] NODE_CONNECTION: ESTABLISHED
+          </div>
+          <div>
+            [ {dayjs().format("HH:mm:ss")} ] SYS: ALL_SYSTEMS_OPERATIONAL.
+            READY_FOR_COMMAND.
           </div>
           <div className="flex items-center">
             <span className="text-primary-fixed-dim mr-2">&gt;</span>
-            <span className="w-2 h-4 bg-primary-fixed-dim animate-pulse animate-flicker" />
+            <span className="blink-block animate-blink-block" />
           </div>
         </div>
       </section>

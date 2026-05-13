@@ -6,7 +6,7 @@ export interface Project {
   tags: string[];
   isPublic: boolean;
   features: string[];
-  link?: string;        // Live demo URL (for public projects)
+  link?: string; // Live demo URL (for public projects)
   githubLink?: string; // GitHub repository URL
 }
 
@@ -139,7 +139,7 @@ export const PROJECTS: Project[] = [
       "Graduate project for managing tasks, subtasks, proposals, employees, projects, and supplies.",
     tags: ["React Native", "React", "TypeScript", "Zustand", "Firebase"],
     isPublic: true,
-    githubLink: "https://github.com/vanthuan76/building-project-management",
+    githubLink: "https://github.com/ginn1111/project-management-docker",
     features: [
       "Task and subtask management",
       "Employee profiles",
@@ -156,7 +156,7 @@ export const PROJECTS: Project[] = [
       "Loyalty app for Canalis Club with point accumulation, discounts, and event notifications.",
     tags: ["React Native", "Firebase", "Google Sign-In", "Apple Sign-In"],
     isPublic: true,
-    githubLink: "https://github.com/vanthuan76/freelancer-mobile-app",
+    link: "https://apps.apple.com/vn/app/cnl/id6478867928?l=vi",
     features: [
       "Loyalty point system",
       "Discount redemption",

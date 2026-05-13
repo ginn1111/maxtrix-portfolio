@@ -8,6 +8,7 @@ import { Separator } from "@base-ui/react/separator";
 import { PROJECTS } from "@/data/projects";
 import { Badge } from "../ui/badge";
 import { DigitalFlicker } from "../ui/glitch-text";
+import dayjs from "dayjs";
 
 const OPEN_LINK_TIMER_MS = 1500;
 
@@ -96,7 +97,7 @@ export function ProjectDetailSection() {
         {/* Back Button */}
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-primary-fixed-dim hover:text-primary transition-colors font-mono mb-8 group"
+          className="inline-flex items-center gap-2 text-primary-fixed-dim hover:text-primary transition-colors font-mono mb-4 group"
         >
           <ArrowLeft
             size={16}
@@ -203,9 +204,13 @@ export function ProjectDetailSection() {
                     <Link
                       target="_blank"
                       href={project.link}
-                      className="text-on-surface-variant hover:text-primary transition-colors"
+                      className="text-on-surface-variant hover:text-primary transition-colors flex items-center"
                     >
-                      <DigitalFlicker>[{project.link}]</DigitalFlicker>
+                      [
+                      <DigitalFlicker className="truncate max-w-full">
+                        {project.link}
+                      </DigitalFlicker>
+                      ]
                     </Link>
                   )}
                 </div>
@@ -223,16 +228,20 @@ export function ProjectDetailSection() {
                   className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
                   style={{ width: `${linkProgress}%` }}
                 />
-                <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
+                <div className="font-mono text-code-sm text-primary-fixed-dim text-center flex items-center">
                   {linkProgress >= 100 ? (
                     <span className="animate-pulse">OPENING_LINK...</span>
                   ) : (
                     <Link
                       target="_blank"
                       href={project.githubLink}
-                      className="text-on-surface-variant hover:text-primary transition-colors"
+                      className="text-on-surface-variant hover:text-primary transition-colors truncate min-w-0 flex"
                     >
-                      <DigitalFlicker>[GITHUB: {project.githubLink}]</DigitalFlicker>
+                      [
+                      <DigitalFlicker className="max-w-full truncate">
+                        {project.githubLink}
+                      </DigitalFlicker>
+                      ]
                     </Link>
                   )}
                 </div>
@@ -266,16 +275,16 @@ export function ProjectDetailSection() {
           </div>
           <div className="text-[12px] mt-2 space-y-1 text-on-surface-variant opacity-70">
             <div>
-              [ {new Date().toLocaleTimeString()} ] NODE_{project.id}:
+              [ {dayjs().format("HH:mm:ss")} ] NODE_{project.id}:
               DISPLAYING_PROJECT_DETAILS
             </div>
             <div>
-              [ {new Date().toLocaleTimeString()} ] SYS: DATA_STREAM_COMPLETE.
+              [ {dayjs().format("HH:mm:ss")} ] SYS: DATA_STREAM_COMPLETE.
               READY_FOR_INPUT.
             </div>
             <div className="flex items-center">
               <span className="text-primary-fixed-dim mr-2">&gt;</span>
-              <span className="w-2 h-4 bg-primary-fixed-dim animate-pulse animate-flicker" />
+              <span className="blink-block animate-blink-block" />
             </div>
           </div>
         </section>
