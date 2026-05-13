@@ -75,16 +75,18 @@ export function SystemSpecsSection() {
           {null}
         </DigitalFlicker>
       </div>
-      <div className="mb-8 font-mono text-code-sm text-on-surface-variant flex items-center gap-2 px-5">
-        <span className="text-primary-fixed-dim font-bold animate-flicker">
+      <div className="mb-6 pb-4 font-mono text-code-sm text-on-surface-variant flex-col flex gap-2 px-5 border-b border-b-primary-fixed-dim">
+        <p className="text-primary-fixed-dim font-bold animate-flicker">
           ABOUT_ME.DAT
-        </span>
+        </p>
+
+        <p className="">SYSTEM_LOAD: SUCCESS. WELCOME_OPERATOR.</p>
       </div>
 
       {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 px-5">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 px-5 container">
         {/* Profile Avatar & Identity */}
-        <div className="md:col-span-4 relative p-6 border border-outline-variant bg-surface-container-lowest">
+        <div className="md:col-span-5 relative p-6 border border-outline-variant bg-surface-container-lowest">
           <div className="crosshair crosshair-tl" />
           <div className="crosshair crosshair-tr" />
           <div className="crosshair crosshair-bl" />
@@ -183,9 +185,11 @@ export function SystemSpecsSection() {
                 </a>
               </div>
             </div>
-            <div className="flex justify-between font-mono text-label-sm">
-              <span className="text-on-surface-variant">CONTACT:</span>
-              <div className="flex flex-col items-end gap-1">
+            <div className="flex justify-between font-mono text-label-sm flex-wrap">
+              <span className="text-on-surface-variant truncate min-w-0">
+                CONTACT:
+              </span>
+              <div className="flex flex-col items-end gap-1 flex-1">
                 <a
                   href="mailto:vanthuanjw@gmail.com"
                   className="text-primary-fixed-dim hover:text-primary transition-colors"
@@ -207,7 +211,7 @@ export function SystemSpecsSection() {
         {/* Decrypted Biography */}
         <div
           ref={bioRef}
-          className="md:col-span-8 relative p-8 border border-outline-variant bg-surface-container-low opacity-0"
+          className="md:col-span-7 relative p-8 border border-outline-variant bg-surface-container-low opacity-0"
         >
           <div className="crosshair crosshair-tl" />
           <div className="crosshair crosshair-tr" />
@@ -227,9 +231,6 @@ export function SystemSpecsSection() {
           </div>
 
           <div className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed space-y-6">
-            <p className="border-l-2 border-primary-fixed-dim pl-4">
-              &gt; SYSTEM_LOAD: SUCCESS. WELCOME_OPERATOR.
-            </p>
             <p>
               Hi, I&apos;m{" "}
               <span className="text-primary-fixed-dim">

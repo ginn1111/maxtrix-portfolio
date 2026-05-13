@@ -35,7 +35,7 @@ export function SecureContactSection() {
             y: 0,
             duration: 0.8,
             ease: "power2.out",
-          }
+          },
         );
       }
     };
@@ -56,7 +56,9 @@ export function SecureContactSection() {
 
       if (res.status === 429) {
         const { remainingSeconds = 60 } = await res.json();
-        setRateLimitError(`Please wait ${remainingSeconds} seconds before sending another message.`);
+        setRateLimitError(
+          `Please wait ${remainingSeconds} seconds before sending another message.`,
+        );
         return;
       }
 
@@ -66,18 +68,28 @@ export function SecureContactSection() {
 
       // Success
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setLogs(prevLogs => [...prevLogs,
-        { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_COMPLETE", type: "primary" as const }
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        {
+          time: new Date().toLocaleTimeString("en-GB", { hour12: false }),
+          text: "TRANSMISSION_COMPLETE",
+          type: "primary" as const,
+        },
       ]);
     } catch {
-      setLogs(prevLogs => [...prevLogs,
-        { time: new Date().toLocaleTimeString("en-GB", { hour12: false }), text: "TRANSMISSION_FAILED", type: "error" as const }
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        {
+          time: new Date().toLocaleTimeString("en-GB", { hour12: false }),
+          text: "TRANSMISSION_FAILED",
+          type: "error" as const,
+        },
       ]);
     }
   };
 
   return (
-    <div className="w-full" ref={sectionRef}>
+    <div className="w-full container px-5" ref={sectionRef}>
       {/* Background Decoration */}
       <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-10">
         <div className="absolute top-1/4 -right-20 w-96 h-96 border border-primary-fixed-dim rounded-full flex items-center justify-center opacity-20">
@@ -218,7 +230,7 @@ export function SecureContactSection() {
           </form>
 
           {/* Security Indicator */}
-          <div className="mt-12 flex items-center justify-between border-t border-outline-variant pt-6">
+          <div className="mt-12 flex items-center justify-between border-t border-outline-variant pt-6 flex-wrap">
             <div className="flex items-center gap-3">
               <div className="flex gap-1">
                 <div className="w-1.5 h-1.5 bg-primary-fixed-dim animate-pulse" />

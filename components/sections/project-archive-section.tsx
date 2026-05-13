@@ -61,7 +61,7 @@ export function ProjectArchiveSection({
       {/* DATA_NODES Grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-3 container px-5"
+        className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-3 container px-5"
       >
         {projects.map((project, index) => (
           <Link

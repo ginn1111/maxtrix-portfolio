@@ -12,7 +12,7 @@ type NavItem = {
   scrambleText: string;
 };
 
-const NAV_ITEMS: NavItem[] = [
+export const NAV_ITEMS: NavItem[] = [
   {
     href: "/specs",
     label: "ABOUT_ME",
@@ -59,26 +59,39 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
       }`}
     >
       <span className="material-symbols-outlined">{icon}</span>
-      <ScrambleText text={label} scrambleText={scrambleText} />
+      <ScrambleText
+        className="hidden lg:inline"
+        text={label}
+        scrambleText={scrambleText}
+      />
     </Link>
   );
 }
 
 export function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 h-full z-40 flex flex-col border-r border-outline-variant bg-background w-64 hidden md:flex">
-      <div className="px-6 py-8 border-b border-outline-variant mb-4">
-        <div className="flex items-center gap-3 mb-2">
+    <aside className="fixed left-0 top-0 h-full z-40  flex-col border-r border-outline-variant bg-background sm:w-[60px] lg:w-64 hidden md:flex">
+      <div className="lg:px-6 lg:py-7 border-b border-outline-variant mb-4">
+        <div className="flex items-center gap-3 justify-center lg:py-0 py-3">
           <div>
             <Link
               href="/"
               className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(0,230,57,0.8)]"
             >
               <DigitalFlicker>
-                <ScrambleText text="GIN_OS_v3.0.2026" isHover={false} />
+                <ScrambleText
+                  className="hidden lg:inline"
+                  text="GIN_OS_v3.0.2026"
+                  isHover={false}
+                />
+                <ScrambleText
+                  className="lg:hidden"
+                  text="GIN"
+                  isHover={false}
+                />
               </DigitalFlicker>
             </Link>
-            <p className="text-[10px] text-primary-fixed-dim opacity-70 animate-pulse">
+            <p className="text-[10px] text-primary-fixed-dim opacity-70 animate-pulse hidden lg:inline">
               SECURE_SESSION_ACTIVE
             </p>
           </div>

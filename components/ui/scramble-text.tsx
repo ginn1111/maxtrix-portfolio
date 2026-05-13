@@ -7,11 +7,13 @@ export function ScrambleText({
   isHover = true,
   scrambleText = '"!@#$%^&*()_+-=[]{}|;:,./<>?"',
   duration = 1,
+  className,
 }: {
   isHover?: boolean;
   scrambleText?: string;
   duration?: number;
   text: string;
+  className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const gsapRef = useRef<typeof gsap>(null);
@@ -39,7 +41,11 @@ export function ScrambleText({
   }, []);
 
   return (
-    <span ref={ref} onMouseOver={isHover ? runScramble : undefined}>
+    <span
+      className={className}
+      ref={ref}
+      onMouseOver={isHover ? runScramble : undefined}
+    >
       {text}
     </span>
   );

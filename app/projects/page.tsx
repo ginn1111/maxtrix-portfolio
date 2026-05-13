@@ -8,7 +8,7 @@ export default function ProjectsPage() {
     <div className="relative w-full">
       <div className="max-w-container-max mx-auto w-full">
         {/* Header */}
-        <div className="mb-12 border-b border-primary-fixed-dim pb-4 px-5">
+        <div className="mb-6 border-b border-primary-fixed-dim pb-4 px-5">
           <div className="flex items-center justify-between">
             <div>
               <span className="text-primary-fixed-dim font-bold animate-flicker">

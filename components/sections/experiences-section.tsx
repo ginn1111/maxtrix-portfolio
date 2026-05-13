@@ -162,23 +162,23 @@ export function ExperiencesSection() {
         </DigitalFlicker>
       </div>
       <div className="w-full space-y-8">
-        <div className="font-mono text-code-sm text-on-surface-variant flex gap-2 px-5 flex-col">
+        <div className="font-mono text-code-sm text-on-surface-variant flex gap-2 px-5 flex-col border-b border-b-primary-fixed-dim mb-6 pb-4">
           <span className="text-primary-fixed-dim font-bold animate-flicker">
             EXPERIENCES.DAT
           </span>
-          <p className="text-on-surface-variant">
+          <p className="text-on-surface-variant text-code-sm">
             [UPTIME: +{calculateYOE()}YOE]
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 px-5">
+        <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(500px,1fr))] gap-3 px-5 container">
           {EXPERIENCES.map((exp, i) => (
             <div
               key={exp.role + i}
               ref={(el) => {
                 if (el !== null) cardsRef.current[i] = el;
               }}
-              className="relative p-6 border border-outline-variant bg-surface-container-low opacity-0"
+              className="relative p-6 border border-outline-variant bg-surface-container-low opacity-0 max-w-full"
             >
               <div className="crosshair crosshair-tl" />
               <div className="crosshair crosshair-tr" />

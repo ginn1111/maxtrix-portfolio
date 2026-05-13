@@ -2,46 +2,38 @@
 
 import { ScrambleText } from "@/components/ui/scramble-text";
 import Link from "next/link";
+import { NAV_ITEMS } from "./sidebar";
+import { usePathname } from "next/navigation";
+import { DigitalFlicker } from "@/components/ui/glitch-text";
 
-interface HeaderProps {
-  currentPath?: string;
-}
-
-export function Header({ currentPath = "/" }: HeaderProps) {
+export function Header() {
+  const pathname = usePathname();
   return (
     <header className="fixed top-0 w-full z-50 px-margin py-unit border-b border-outline-variant bg-background/90 backdrop-blur-sm">
-      <div className="container flex justify-between items-center">
-        <nav className="hidden md:flex gap-gutter items-center">
+      <div className="container flex justify-center items-center">
+        <nav className="flex md:hidden gap-gutter items-center justify-center min-h-12">
           <Link
             href="/"
-            className={`font-heading text-headline-md uppercase tracking-tighter transition-colors duration-200 px-4 min-w-25 ${
-              currentPath === "/specs"
-                ? "text-primary-fixed border-b border-primary-fixed pb-1"
-                : "text-on-surface-variant hover:text-primary-fixed"
-            }`}
+            className={`font-heading uppercase tracking-tighter transition-colors duration-200 pl-0.5 pr-1 text-center text-primary-fixed-dim`}
           >
-            <ScrambleText text="ABOUT_ME" />
+            <DigitalFlicker>GIN</DigitalFlicker>
           </Link>
-          <Link
-            href="/projects"
-            className={`font-heading text-headline-md uppercase tracking-tighter transition-colors duration-200 px-4 min-w-25 ${
-              currentPath === "/projects"
-                ? "text-primary-fixed border-b border-primary-fixed pb-1"
-                : "text-on-surface-variant hover:text-primary-fixed"
-            }`}
-          >
-            <ScrambleText text="PROJECTS" />
-          </Link>
-          <Link
-            href="/contact"
-            className={`font-heading text-headline-md uppercase tracking-tighter transition-colors duration-200 px-4 min-w-25 text-center${
-              currentPath === "/contact"
-                ? "text-primary-fixed border-b border-primary-fixed pb-1"
-                : "text-on-surface-variant hover:text-primary-fixed"
-            }`}
-          >
-            <ScrambleText text="CONTRACT" />
-          </Link>
+          {NAV_ITEMS.map((nav) => (
+            <Link
+              key={nav.label}
+              href={nav.href}
+              className={`font-heading lowercase tracking-tighter transition-colors duration-200 px-0.5 md:px-4 md:min-w-25 min-w-18 text-center ${
+                pathname === nav.href
+                  ? "text-primary-fixed! border-b-primary-fixed border-b"
+                  : "text-on-surface-variant hover:text-primary-fixed border-transparent"
+              }`}
+            >
+              <ScrambleText
+                text={nav.label}
+                className="text-xs md:text-headline-md"
+              />
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

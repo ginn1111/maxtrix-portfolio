@@ -28,8 +28,8 @@ const AI_COLLABORATORS = [
 
 export function Footer() {
   return (
-    <footer className="fixed bottom-0 w-full z-50  px-margin py-2 text-[10px] border-t border-outline-variant bg-background">
-      <div className="container flex justify-between items-center">
+    <footer className="fixed bottom-0 w-full z-50  px-margin py-2 text-[10px] border-t border-outline-variant bg-background px-5">
+      <div className="container flex justify-between items-center flex-col sm:flex-row">
         <div className="flex items-center gap-4">
           <span className="font-mono text-label-sm font-bold text-primary-fixed-dim uppercase">
             © 2023-{new Date().getFullYear()} SUBTERRANEAN_GIN_OS.

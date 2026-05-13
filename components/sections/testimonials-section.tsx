@@ -57,7 +57,7 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full flex-1 xl:flex flex-col">
       <div className="animate-page-scan page-scan-line-specs">
         <DigitalFlicker
           config={{
@@ -70,14 +70,14 @@ export function TestimonialsSection() {
           {null}
         </DigitalFlicker>
       </div>
-      <div className="w-full space-y-8 px-5">
+      <div className="w-full space-y-8 px-5 flex flex-col flex-1">
         <div className="font-mono text-code-sm text-on-surface-variant flex items-center gap-2">
           <span className="text-primary-fixed-dim font-bold animate-flicker">
             TESTIMONIALS.DAT
           </span>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-3 container flex-1 @lg:content-center">
           {TESTIMONIALS.map((t, i) => (
             <div
               key={t.name + i}

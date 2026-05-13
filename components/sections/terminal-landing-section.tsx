@@ -89,7 +89,7 @@ export function TerminalLandingSection() {
   }, []);
 
   return (
-    <div className="my-auto">
+    <div className="my-auto px-5">
       {/* Hero Terminal Section */}
       <div className="max-w-4xl w-full relative mb-12">
         <div className="absolute -top-12 -left-12 w-32 h-32 border border-outline-variant/30 hidden lg:block" />
