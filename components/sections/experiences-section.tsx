@@ -14,7 +14,7 @@ const EXPERIENCES = [
     company: "AIOZ Network",
     domain: "web3, wallet, live-streaming",
     description:
-      "Building high-performance web applications with Next.js, TypeScript, and React. Implementing pixel-perfect UIs with shadcn/ui components and custom GSAP animations.",
+      "Built Web3 live-streaming platform with Turborepo, Next.js, Shaka Player on Vercel/Cloudflare. Integrated multi-chain wallet (Keplr) for blockchain features. Developed global map monitoring app with geospatial visualization. Optimized Lighthouse metrics (INP, TBT -2s). Collaborated with designers on UI/UX, reviewed PRs, and contributed to technical sharing sessions.",
     tech: [
       "Claude/Codex",
       "Turbo repo",

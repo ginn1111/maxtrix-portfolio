@@ -1,0 +1,3 @@
+- Build, maintain and deploy a web3 live-streaming web application with Turbo repo, NextJS, shaka player opensouce, Vercel and Cloudflare.
+- Maintain the multi-chain wallet with kelpr opensource
+- Build and maintain the global map monitoring web application with NextJS. Optimizing the lighthouse metric (INP) and total blocking time reduce by 2s

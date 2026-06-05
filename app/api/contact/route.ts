@@ -45,9 +45,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ remainingSeconds }, { status: 429 });
   }
 
-  // Record send attempt BEFORE sending to prevent race condition
-  rateLimitMap.set(email, Date.now());
-
   // Send email via Resend
   const { RESEND_API_KEY } = process.env;
   if (!RESEND_API_KEY) {
@@ -68,6 +65,9 @@ export async function POST(req: NextRequest) {
       subject: `[Portfolio Contact] ${subject}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
+
+    // Record send attempt BEFORE sending to prevent race condition
+    rateLimitMap.set(email, Date.now());
   } catch (err) {
     // Remove on failure so retry works immediately
     rateLimitMap.delete(email);

@@ -2,25 +2,45 @@
 
 import { useState } from "react";
 import { useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { TerminalButton } from "@/components/terminal/terminal-button";
 import { TerminalInput } from "@/components/terminal/terminal-input";
 import { TerminalTextarea } from "@/components/terminal/terminal-textarea";
 import { DigitalFlicker } from "../ui/glitch-text";
 
+type LogEntry = { time: string; text: string; type: "primary" | "default" | "error" };
+
+const contactSchema = z.object({
+  name: z.string().min(1, "USER_IDENTIFIER cannot be empty"),
+  email: z
+    .string()
+    .min(1, "RETURN_NODE_ADDR cannot be empty")
+    .email("Invalid return node address format"),
+  subject: z.string().min(1, "PKT_HEADER cannot be empty"),
+  message: z.string().min(1, "DATA_PAYLOAD cannot be empty"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
 export function SecureContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [logs, setLogs] = useState([
+  const [logs, setLogs] = useState<LogEntry[]>([
     { time: "22:04:12", text: "NODE_HANDSHAKE_INITIATED", type: "primary" },
     { time: "22:04:13", text: "SSL_CERT_VERIFIED [OK]", type: "default" },
     { time: "22:04:15", text: "LISTENING_FOR_PAYLOAD...", type: "default" },
   ]);
   const [rateLimitError, setRateLimitError] = useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
 
   useEffect(() => {
     const loadGSAP = async () => {
@@ -43,15 +63,14 @@ export function SecureContactSection() {
     loadGSAP();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: ContactFormData) => {
     setRateLimitError(null);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
 
       if (res.status === 429) {
@@ -66,8 +85,7 @@ export function SecureContactSection() {
         throw new Error("Failed to send");
       }
 
-      // Success
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      reset();
       setLogs((prevLogs) => [
         ...prevLogs,
         {
@@ -125,7 +143,7 @@ export function SecureContactSection() {
           <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-primary-fixed-dim" />
           <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-primary-fixed-dim" />
 
-          <form className="space-y-10" onSubmit={handleSubmit}>
+          <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
             {/* Input: Name */}
             <div className="relative">
               <label
@@ -137,14 +155,13 @@ export function SecureContactSection() {
               <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="name"
-                  name="name"
                   placeholder="Enter alphanumeric ID..."
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  {...register("name")}
                 />
               </DigitalFlicker>
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1 font-mono">{errors.name.message}</p>
+              )}
             </div>
 
             {/* Input: Email */}
@@ -158,15 +175,14 @@ export function SecureContactSection() {
               <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="email"
-                  name="email"
                   type="email"
                   placeholder="user@node.network"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  {...register("email")}
                 />
               </DigitalFlicker>
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1 font-mono">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Input: Subject */}
@@ -180,14 +196,13 @@ export function SecureContactSection() {
               <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalInput
                   id="subject"
-                  name="subject"
                   placeholder="Requesting system access..."
-                  value={formData.subject}
-                  onChange={(e) =>
-                    setFormData({ ...formData, subject: e.target.value })
-                  }
+                  {...register("subject")}
                 />
               </DigitalFlicker>
+              {errors.subject && (
+                <p className="text-red-500 text-sm mt-1 font-mono">{errors.subject.message}</p>
+              )}
               {rateLimitError && (
                 <p className="text-red-500 text-sm mt-1">{rateLimitError}</p>
               )}
@@ -204,15 +219,14 @@ export function SecureContactSection() {
               <DigitalFlicker className="flex items-baseline gap-2 w-full">
                 <TerminalTextarea
                   id="message"
-                  name="message"
                   placeholder="Begin transmission..."
                   rows={4}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
+                  {...register("message")}
                 />
               </DigitalFlicker>
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1 font-mono">{errors.message.message}</p>
+              )}
             </div>
 
             {/* Action Button */}

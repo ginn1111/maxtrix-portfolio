@@ -17,7 +17,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matrix Portfolio",
+  title: "ginn1111",
   description: "High-security subterranean mainframe portfolio",
 };
 
@@ -34,7 +34,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${jetbrainsMono.variable} ${spaceMono.variable} antialiased`}>
+      <body
+        className={`${jetbrainsMono.variable} ${spaceMono.variable} antialiased`}
+      >
         <AppLayout>{children}</AppLayout>
       </body>
     </html>

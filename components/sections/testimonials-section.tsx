@@ -5,6 +5,18 @@ import { DigitalFlicker } from "../ui/glitch-text";
 
 const TESTIMONIALS = [
   {
+    name: "Quyen Ho",
+    role: "Team Member, AIOZ Network",
+    quote:
+      "Quick learner, adaptable, and effective at breaking down complex tasks while leveraging AI tools to boost productivity. Keep grinding, stay chill. YOLO 🤘",
+  },
+  {
+    name: "DaoPVT",
+    role: "Team Member, AIOZ Network",
+    quote:
+      "His focus and dedication are truly impressive. He is highly productive, knowledgeable, and has a strong work ethic. Any team would be lucky to have him.",
+  },
+  {
     name: "Anonymous",
     role: "Unknown, YRISM",
     quote:

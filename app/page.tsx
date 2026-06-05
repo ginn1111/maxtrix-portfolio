@@ -3,3 +3,4 @@ import { TerminalLandingSection } from "@/components/sections/terminal-landing-s
 export default function Home() {
   return <TerminalLandingSection />;
 }
+
