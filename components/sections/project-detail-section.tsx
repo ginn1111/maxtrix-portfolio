@@ -9,6 +9,9 @@ import { PROJECTS } from "@/data/projects";
 import { Badge } from "../ui/badge";
 import { DigitalFlicker } from "../ui/glitch-text";
 import dayjs from "dayjs";
+import { DisclosureBanner } from "@/components/ui/disclosure-banner";
+import { TrustMethodology } from "@/components/ui/trust-methodology";
+import { trackAffiliateClick } from "@/lib/analytics";
 
 const OPEN_LINK_TIMER_MS = 1500;
 
@@ -52,6 +55,12 @@ export function ProjectDetailSection() {
         setLinkProgress((prev) => {
           if (prev >= 100) {
             if (progressRef.current) clearInterval(progressRef.current);
+            void trackAffiliateClick({
+              projectId: project.id,
+              projectTitle: project.title,
+              target: project.link,
+              placement: "project_detail_live_demo",
+            });
             window.open(project.link, "_blank");
             return 100;
           }
@@ -179,6 +188,9 @@ export function ProjectDetailSection() {
           </ul>
         </section>
 
+        <DisclosureBanner className="mb-4" />
+        <TrustMethodology className="mb-8" />
+
         {/* PROJECT_LINK */}
         <section className="mb-8 border border-outline-variant p-6 bg-surface-container-low">
           <div className="flex items-center gap-2 text-primary-fixed-dim font-mono text-label-md mb-4">
@@ -204,6 +216,14 @@ export function ProjectDetailSection() {
                     <Link
                       target="_blank"
                       href={project.link}
+                      onClick={() => {
+                        void trackAffiliateClick({
+                          projectId: project.id,
+                          projectTitle: project.title,
+                          target: project.link,
+                          placement: "project_detail_live_demo_link",
+                        });
+                      }}
                       className="text-on-surface-variant hover:text-primary transition-colors flex items-center"
                     >
                       [

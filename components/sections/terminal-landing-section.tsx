@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import { TerminalButton } from "@/components/terminal/terminal-button";
 import Link from "next/link";
 import { DigitalFlicker } from "../ui/glitch-text";
+import { SubscribeSection } from "@/components/sections/subscribe-section";
+import { DisclosureBanner } from "@/components/ui/disclosure-banner";
 
 export function TerminalLandingSection() {
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -180,8 +182,13 @@ export function TerminalLandingSection() {
         </div>
       </div>
 
+      <div className="max-w-4xl w-full mt-6">
+        <DisclosureBanner className="mb-6" />
+        <SubscribeSection />
+      </div>
+
       {/* Bento Grid Elements */}
-      <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-3 gap-gutter mt-8">
         <div
           ref={(el) => {
             if (el !== null) {
