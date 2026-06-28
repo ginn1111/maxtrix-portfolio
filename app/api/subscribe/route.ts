@@ -5,8 +5,8 @@ import {
   clearSubscribeAttempt,
   getSubscribeRateLimit,
   markSubscribeAttempt,
-  subscribeSchema,
 } from "@/lib/subscribe";
+import { subscribeSchema } from "@/lib/validation/subscribe";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export async function POST(req: NextRequest) {
