@@ -1,70 +1,25 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
 import { BLOG_POSTS } from "@/data/blog";
 import { DigitalFlicker } from "@/components/ui/glitch-text";
-
-type TocItem = { id: string; label: string; level?: 2 | 3 };
+import { ArticleToc } from "./article-toc";
+import { CopyLinkButton } from "./copy-link-button";
+import { Newsletter } from "./newsletter";
+import { ShikiCodeBlock } from "./shiki-code-block";
 
 const CODE_SNIPPETS = {
   shell: `ffmpeg -i input.m4a -vn -ac 1 -ar 44100 \\\n  -f f32le -acodec pcm_f32le -`,
   typescript: `type ArticleSection = {\n  heading: string;\n  paragraphs: string[];\n};\n\nexport function getArticle(slug: string) {\n  return articles.find((article) => article.slug === slug);\n}`,
 };
 
-const TOC_ITEMS: TocItem[] = [
+const TOC_ITEMS = [
   { id: "overview", label: "ARTICLE_OVERVIEW" },
   { id: "content-contract", label: "CONTENT_CONTRACT" },
   { id: "implementation", label: "IMPLEMENTATION_NOTES" },
   { id: "production", label: "PRODUCTION_CHECKS" },
   { id: "references", label: "REFERENCES" },
 ];
-
-function slugify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-}
-
-function CodeBlock({
-  name,
-  language,
-  code,
-}: {
-  name: string;
-  language: string;
-  code: string;
-}) {
-  const [copied, setCopied] = useState(false);
-
-  async function copyCode() {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  }
-
-  return (
-    <div className="my-6 overflow-hidden border border-outline-variant bg-surface-container-low">
-      <div className="flex items-center gap-2 border-b border-outline-variant bg-background px-3 py-2 font-mono">
-        <span className="text-xs uppercase text-on-surface">{name}</span>
-        <span className="border border-outline-variant px-2 py-0.5 text-[10px] uppercase text-on-surface-variant">
-          {language}
-        </span>
-        <button
-          type="button"
-          onClick={copyCode}
-          className="ml-auto cursor-pointer border border-outline-variant bg-surface-container-low px-2.5 py-1 font-mono text-[11px] uppercase text-on-surface-variant transition-colors hover:border-primary hover:bg-primary-container hover:text-on-primary-container"
-          aria-live="polite"
-        >
-          {copied ? "COPIED" : "COPY"}
-        </button>
-      </div>
-      <pre className="overflow-x-auto p-4 font-mono text-[13px] leading-6 text-on-surface">
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
 
 function Pipeline() {
   return (
@@ -94,70 +49,16 @@ function Pipeline() {
   );
 }
 
-function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
-
-  function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setStatus("ERROR: ENTER_A_VALID_EMAIL.");
-      return;
-    }
-    setStatus("OK: CHECK_YOUR_INBOX_TO_CONFIRM.");
-    setEmail("");
-  }
-
-  return (
-    <section className="relative mt-12 overflow-visible border border-outline-variant bg-surface-container-low p-6" aria-label="Newsletter signup">
-      <span className="crosshair crosshair-tl" aria-hidden="true" />
-      <span className="crosshair crosshair-br" aria-hidden="true" />
-      <h2 className="font-heading text-headline-md uppercase text-primary-fixed-dim">SUBSCRIBE_FEED</h2>
-      <p className="mt-2 max-w-2xl text-sm leading-6 text-on-surface-variant">
-        One practical lesson about engineering, media processing, or frontend architecture every two weeks.
-      </p>
-      <form className="mt-4 flex flex-wrap gap-2" onSubmit={submit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="YOU@EXAMPLE.COM"
-          aria-label="Email address"
-          className="min-h-10 min-w-0 flex-1 border border-outline-variant bg-background px-3 font-mono text-xs uppercase text-on-surface placeholder:text-on-surface-variant focus-visible:border-primary"
-        />
-        <button type="submit" className="cursor-pointer border border-primary-container bg-primary-container px-4 font-mono text-xs font-bold uppercase text-on-primary-container hover:bg-primary-dim">
-          SUBSCRIBE
-        </button>
-      </form>
-      <p className="mt-2 min-h-4 font-mono text-[11px] uppercase text-primary-fixed-dim" role="status" aria-live="polite">{status}</p>
-    </section>
-  );
-}
-
 export function ArticleDetail({ post }: { post: BlogPost }) {
-  const [activeToc, setActiveToc] = useState(TOC_ITEMS[0].id);
   const currentIndex = BLOG_POSTS.findIndex((item) => item.slug === post.slug);
   const previous = currentIndex > 0 ? BLOG_POSTS[currentIndex - 1] : undefined;
   const next = currentIndex >= 0 ? BLOG_POSTS[currentIndex + 1] : undefined;
   const related = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 3);
 
-  useEffect(() => {
-    const headings = TOC_ITEMS.map((item) => document.getElementById(item.id)).filter(Boolean) as HTMLElement[];
-    const onScroll = () => {
-      const current = headings.reduce((selected, heading) => {
-        return heading.getBoundingClientRect().top <= 140 ? heading.id : selected;
-      }, TOC_ITEMS[0].id);
-      setActiveToc(current);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const sectionToc = useMemo(
-    () => post.sections.map((section) => ({ id: slugify(section.heading), label: section.heading })),
-    [post.sections]
-  );
+  const sectionToc = post.sections.map((section) => ({
+    id: section.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    label: section.heading,
+  }));
 
   return (
     <div className="reading-layout mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-5 py-8 lg:grid-cols-[minmax(0,720px)_240px] lg:justify-center">
@@ -186,10 +87,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
 
           <Pipeline />
 
-          <details className="my-6 lg:hidden">
-            <summary className="cursor-pointer border border-outline-variant bg-surface-container-low p-3 font-mono text-xs uppercase text-on-surface">ON_THIS_PAGE</summary>
-            <TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} />
-          </details>
+          <ArticleToc items={[...TOC_ITEMS, ...sectionToc]} mobile />
 
           <div className="article-body text-base leading-7 text-on-surface-variant">
             <h2 id="overview" className="mt-12 border-t border-outline-variant pt-5 font-heading text-headline-md uppercase text-primary-fixed-dim">ARTICLE_OVERVIEW</h2>
@@ -206,7 +104,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
               <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} className="mb-1 font-mono text-xs font-bold uppercase text-primary-fixed-dim">NOTE</DigitalFlicker>
               <p className="mb-0 text-sm">The content model stays local and explicit so the listing and detail route cannot silently drift apart.</p>
             </div>
-            <CodeBlock name="article-model.ts" language="typescript" code={CODE_SNIPPETS.typescript} />
+            <ShikiCodeBlock name="article-model.ts" language="typescript" code={CODE_SNIPPETS.typescript} />
 
             <h2 id="implementation" className="mt-12 border-t border-outline-variant pt-5 font-heading text-headline-md uppercase text-primary-fixed-dim">IMPLEMENTATION_NOTES</h2>
             {post.sections.slice(1).map((section) => (
@@ -215,7 +113,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
                 {section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-4">{paragraph}</p>)}
               </section>
             ))}
-            <CodeBlock name="terminal.log" language="shell" code={CODE_SNIPPETS.shell} />
+            <ShikiCodeBlock name="terminal.log" language="shellscript" code={CODE_SNIPPETS.shell} />
             <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--internal-fg)" }}>
               <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} glitchColor="var(--internal-fg)" className="mb-1 font-mono text-xs font-bold uppercase text-secondary">WARNING</DigitalFlicker>
               <p className="mb-0 text-sm">Decorative motion must remain subordinate to the reading flow and respect reduced-motion preferences.</p>
@@ -241,7 +139,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
           <footer className="mt-12 border-t border-outline-variant pt-6 font-mono text-xs uppercase tracking-[0.04em] text-on-surface-variant">
             <p className="mb-3">LAST_UPDATED: {post.date}</p>
             <div className="flex flex-wrap gap-2">
-              <button type="button" onClick={() => navigator.clipboard.writeText(window.location.href)} className="cursor-pointer border border-outline-variant px-3 py-2 hover:border-primary hover:text-primary-fixed-dim">COPY_LINK</button>
+              <CopyLinkButton />
               <Link href="/hub" className="border border-outline-variant px-3 py-2 hover:border-primary hover:text-primary-fixed-dim">RETURN_TO_HUB</Link>
             </div>
           </footer>
@@ -262,13 +160,9 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
         <Newsletter />
       </main>
 
-      <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start" aria-label="Table of contents"><h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.1em] text-primary-fixed-dim">ON_THIS_PAGE</h2><TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} /></aside>
+      <ArticleToc items={[...TOC_ITEMS, ...sectionToc]} />
     </div>
   );
-}
-
-function TocLinks({ items, active }: { items: TocItem[]; active: string }) {
-  return <ul className="border-l border-outline-variant">{items.map((item) => <li key={`${item.id}-${item.label}`}><a href={`#${item.id}`} className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors focus-visible:animate-flicker focus-visible:bg-primary-container focus-visible:text-on-primary-container ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}>{item.label}</a></li>)}</ul>;
 }
 
 function ArticlePager({ direction, post, align }: { direction: "PREV" | "NEXT"; post: BlogPost; align?: "right" }) {
