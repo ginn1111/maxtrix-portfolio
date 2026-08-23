@@ -22,7 +22,7 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
 
   return (
     <>
-      <div className="mb-3 flex flex-wrap items-center gap-2 border border-[#2a2a2a] bg-[#111111] p-3 font-mono">
+      <div className="mx-5 mb-3 flex flex-wrap items-center gap-2 border border-[#2a2a2a] bg-[#111111] p-3 font-mono">
         <span className="mr-1 text-[10px] uppercase tracking-[0.08em] text-[#888888]">
           TECH_STACK:
         </span>
@@ -47,7 +47,7 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
       </div>
 
       <div
-        className="grid grid-cols-1 gap-3 md:grid-cols-2"
+        className="container grid grid-cols-1 gap-3 px-5 md:grid-cols-2"
         aria-live="polite"
       >
         {visiblePosts.map((post) => (
@@ -56,7 +56,7 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
       </div>
 
       {visiblePosts.length === 0 && (
-        <p className="border border-[#2a2a2a] bg-[#111111] p-8 text-center font-mono text-xs uppercase tracking-[0.08em] text-[#888888]">
+        <p className="mx-5 border border-[#2a2a2a] bg-[#111111] p-8 text-center font-mono text-xs uppercase tracking-[0.08em] text-[#888888]">
           NO_MATCHING_NODES // ADJUST_FILTER_TO_CONTINUE
         </p>
       )}
