@@ -15,9 +15,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
       <div className="relative">
         <div className="mb-5 flex items-center justify-between gap-2.5 font-mono text-[10px] uppercase tracking-[0.06em] text-on-surface-variant">
           <span>NODE_ID: 0xA{post.id}</span>
-          <span className="border border-[var(--public-border)] bg-[var(--public-bg)] px-1.5 py-0.5 text-[8px] text-[var(--public-fg)]">
-            ● PUBLIC
-          </span>
+          <Chip variant="public">PUBLIC</Chip>
         </div>
 
         <div className="relative mb-5 grid min-h-[150px] place-items-center overflow-hidden border border-outline-variant bg-surface-container-low font-mono text-[11px] uppercase tracking-[0.12em] text-primary-dim">
