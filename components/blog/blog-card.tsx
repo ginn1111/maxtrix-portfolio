@@ -1,47 +1,79 @@
+"use client";
+
 import Link from "next/link";
 import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
 import { forwardRef } from "react";
+import { Badge } from "../ui/badge";
 
 export const BlogCard = forwardRef<HTMLAnchorElement, { post: BlogPost }>(
   function BlogCard({ post }, ref) {
+    function captureTransition(event: React.MouseEvent<HTMLAnchorElement>) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      sessionStorage.setItem(
+        "blog-card-transition",
+        JSON.stringify({
+          slug: post.slug,
+          title: post.title,
+          rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height },
+        })
+      );
+    }
+
     return (
-    <Link
-      ref={ref}
-      href={`/hub/blog/${post.slug}`}
-      className="group/project relative block min-w-0 cursor-pointer overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
-    >
-      <span className="crosshair crosshair-tl" aria-hidden="true" />
-      <span className="crosshair crosshair-br" aria-hidden="true" />
-      <div className="scanline-effect group-hover/project:animate-page-scan-specs" aria-hidden="true" />
+      <Link
+        ref={ref}
+        href={`/hub/blog/${post.slug}`}
+        onClick={captureTransition}
+        className="group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
+      >
+        <span className="crosshair crosshair-tl" aria-hidden="true" />
+        <span className="crosshair crosshair-br" aria-hidden="true" />
+        <div
+          className="scanline-effect group-hover/project:animate-page-scan-specs"
+          aria-hidden="true"
+        />
 
-      <div className="relative">
-        <div className="mb-5 flex items-center justify-between gap-2.5 font-mono text-[10px] uppercase tracking-[0.06em] text-on-surface-variant">
-          <span>NODE_ID: 0xA{post.id}</span>
-          <Chip variant="public">PUBLIC</Chip>
-        </div>
+        <div className="relative">
+          <div className="mb-5 flex items-center justify-between gap-2.5 font-mono text-[10px] uppercase tracking-[0.06em] text-on-surface-variant">
+            <span>NODE_ID: 0xA{post.id}</span>
+            <Chip variant="public">PUBLIC</Chip>
+          </div>
 
-        <div className="relative mb-5 grid min-h-[150px] place-items-center overflow-hidden border border-outline-variant bg-surface-container-low font-mono text-[11px] uppercase tracking-[0.12em] text-primary-dim">
-          <span className="relative z-10">{post.id === "001" ? "VISUAL_OUTPUT" : post.id === "002" ? "SIGNAL_TRACE" : "MODULE_MAP"}</span>
-          <span className="absolute inset-0 opacity-20 bg-[radial-gradient(var(--accent-faint)_1px,transparent_1px)] [background-size:18px_18px]" aria-hidden="true" />
-        </div>
+          <div className="relative mb-5 grid min-h-[150px] place-items-center overflow-hidden border border-outline-variant bg-surface-container-low font-mono text-[11px] uppercase tracking-[0.12em] text-primary-dim">
+            <span className="relative z-10">
+              {post.id === "001"
+                ? "VISUAL_OUTPUT"
+                : post.id === "002"
+                  ? "SIGNAL_TRACE"
+                  : "MODULE_MAP"}
+            </span>
+            <span
+              className="absolute inset-0 opacity-20 bg-[radial-gradient(var(--accent-faint)_1px,transparent_1px)] [background-size:18px_18px]"
+              aria-hidden="true"
+            />
+          </div>
 
-        <h2 className="mb-2 font-heading text-base uppercase leading-[1.35] text-primary-fixed-dim">
-          {post.title}
-        </h2>
-        <p className="mb-3.5 text-xs leading-6 text-on-surface-variant">SYSTEM_LOG: {post.excerpt}</p>
-        <div className="my-[18px] flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <Chip key={tag}>{tag.toLowerCase()}</Chip>
-          ))}
+          <h2 className="mb-2 font-heading uppercase text-lg text-primary-fixed-dim">
+            {post.title}
+          </h2>
+          <p className="mb-3.5 text-on-surface-variant text-code-sm text-sm">
+            SYSTEM_LOG: {post.excerpt}
+          </p>
+          <div className="my-[18px] flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <Badge variant="tech" key={tag}>
+                {tag.toLowerCase()}
+              </Badge>
+            ))}
+          </div>
+          <span className="block border border-outline-variant p-3 text-center font-mono text-[11px] uppercase text-on-surface-variant transition-colors group-hover/project:bg-primary-container group-hover/project:text-on-primary-container">
+            [READ_NODE]
+          </span>
         </div>
-        <span className="block border border-outline-variant p-3 text-center font-mono text-[11px] uppercase text-on-surface-variant transition-colors group-hover/project:bg-primary-container group-hover/project:text-on-primary-container">
-          [READ_NODE]
-        </span>
-      </div>
-    </Link>
+      </Link>
     );
-  }
+  },
 );
 
 BlogCard.displayName = "BlogCard";

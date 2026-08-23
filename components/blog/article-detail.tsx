@@ -71,7 +71,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
           </nav>
 
           <span className="mb-3 inline-block font-mono text-[11px] uppercase tracking-[0.12em] text-primary-fixed-dim">ARTICLE</span>
-          <h1 className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
+          <h1 data-blog-detail-target className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
             <DigitalFlicker config={{ delay: 5000, xOffest: 3 }}>
               {post.title}
             </DigitalFlicker>
