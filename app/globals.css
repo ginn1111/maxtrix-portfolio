@@ -23,12 +23,14 @@
   --internal-bg: rgb(240 160 42 / 0.3);
   --internal-fg: #f0a02a;
   --internal-border: rgb(240 160 42 / 0.5);
-  --font-family-heading: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-family-heading:
+    "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
   --font-family-body: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-  --font-family-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-family-mono: "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
 }
 
 @theme {
+  --font-mono: "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
   --color-primary: var(--accent);
   --color-primary-dim: var(--accent-dim);
   --color-primary-muted: var(--muted);
