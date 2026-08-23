@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pragmata Pro Liga";
+  src: url("/fonts/pragmata-pro-mono-r-liga.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 @utility container {
   margin: auto;
 }
