@@ -6,7 +6,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/hub/blog/${post.slug}`}
-      className="card-node group/project relative block min-w-0 cursor-pointer overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
+      className="group/project relative block min-w-0 cursor-pointer overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
     >
       <span className="crosshair crosshair-tl" aria-hidden="true" />
       <span className="crosshair crosshair-br" aria-hidden="true" />
