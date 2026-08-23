@@ -1,4 +1,4 @@
-import { BlogFilter } from "@/components/blog/blog-filter";
+import { BlogArchive } from "@/components/blog/blog-archive";
 import { BLOG_POSTS } from "@/data/blog";
 
 export default function HubPage() {
@@ -27,7 +27,7 @@ export default function HubPage() {
             <span id="archive-title">ACTIVE_NODES:</span>
             <span>FILTER: ALL_STACKS</span>
           </div>
-          <BlogFilter posts={BLOG_POSTS} />
+          <BlogArchive posts={BLOG_POSTS} />
         </section>
 
         <section className="mt-12 grid gap-3 px-5 md:grid-cols-3" aria-label="Archive stats">

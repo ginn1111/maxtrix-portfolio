@@ -1,101 +1,41 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { BlogPost } from "@/data/blog";
-import { BlogCard } from "./blog-card";
+export const FILTERS = ["all", "schema", "audit", "css", "ops"] as const;
 
-const FILTERS = ["all", "schema", "audit", "css", "ops"] as const;
+export type Filter = (typeof FILTERS)[number];
 
-type Filter = (typeof FILTERS)[number];
+interface BlogFilterProps {
+  activeFilter: Filter;
+  onFilterChange: (filter: Filter) => void;
+}
 
-export function BlogFilter({ posts }: { posts: BlogPost[] }) {
-  const [activeFilter, setActiveFilter] = useState<Filter>("all");
-  const cardsRef = useRef<HTMLAnchorElement[]>([]);
-  const visiblePosts = useMemo(
-    () =>
-      posts.filter(
-        (post) =>
-          activeFilter === "all" ||
-          post.tags.some((tag) => tag.toLowerCase() === activeFilter)
-      ),
-    [activeFilter, posts]
-  );
-
-  useEffect(() => {
-    const loadGSAP = async () => {
-      const gsap = (await import("gsap")).default;
-      const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-      gsap.registerPlugin(ScrollTrigger);
-
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-    };
-
-    loadGSAP();
-  }, []);
-
+export function BlogFilter({
+  activeFilter,
+  onFilterChange,
+}: BlogFilterProps) {
   return (
-    <>
-      <div className="mx-5 mb-3 flex flex-wrap items-center gap-2 border border-outline-variant bg-surface-container-low p-3 font-mono">
-        <span className="mr-1 text-[10px] uppercase tracking-[0.08em] text-on-surface-variant">
-          TECH_STACK:
-        </span>
-        {FILTERS.map((filter) => {
-          const isActive = activeFilter === filter;
-          return (
-            <button
-              key={filter}
-              type="button"
-              aria-pressed={isActive}
-              onClick={() => setActiveFilter(filter)}
-              className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim ${
-                isActive
-                  ? "border-primary-dim text-primary-fixed-dim outline outline-1 outline-offset-2 outline-primary-fixed-dim"
-                  : "border-outline-variant bg-background text-on-surface-variant hover:border-primary-dim hover:bg-primary-container hover:text-on-primary-container"
-              }`}
-            >
-              {filter}
-            </button>
-          );
-        })}
-      </div>
-
-      <div
-        className="container grid grid-cols-1 gap-3 px-5 md:grid-cols-2"
-        aria-live="polite"
-      >
-        {visiblePosts.map((post, index) => (
-          <BlogCard
-            key={post.slug}
-            post={post}
-            ref={(element) => {
-              if (element) cardsRef.current[index] = element;
-            }}
-          />
-        ))}
-      </div>
-
-      {visiblePosts.length === 0 && (
-        <p className="mx-5 border border-outline-variant bg-surface-container-low p-8 text-center font-mono text-xs uppercase tracking-[0.08em] text-on-surface-variant">
-          NO_MATCHING_NODES // ADJUST_FILTER_TO_CONTINUE
-        </p>
-      )}
-    </>
+    <div className="mx-5 mb-3 flex flex-wrap items-center gap-2 border border-outline-variant bg-surface-container-low p-3 font-mono">
+      <span className="mr-1 text-[10px] uppercase tracking-[0.08em] text-on-surface-variant">
+        TECH_STACK:
+      </span>
+      {FILTERS.map((filter) => {
+        const isActive = activeFilter === filter;
+        return (
+          <button
+            key={filter}
+            type="button"
+            aria-pressed={isActive}
+            onClick={() => onFilterChange(filter)}
+            className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim ${
+              isActive
+                ? "border-primary-dim text-primary-fixed-dim outline outline-1 outline-offset-2 outline-primary-fixed-dim"
+                : "border-outline-variant bg-background text-on-surface-variant hover:border-primary-dim hover:bg-primary-container hover:text-on-primary-container"
+            }`}
+          >
+            {filter}
+          </button>
+        );
+      })}
+    </div>
   );
 }
