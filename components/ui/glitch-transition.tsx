@@ -6,9 +6,10 @@ import { DigitalFlicker } from "./glitch-text";
 
 interface GlitchTransitionProps {
   children: React.ReactNode;
+  triggerKey?: string | number;
 }
 
-export function GlitchTransition({ children }: GlitchTransitionProps) {
+export function GlitchTransition({ children, triggerKey }: GlitchTransitionProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef(null);
   const brRef = useRef(null);
@@ -53,7 +54,7 @@ export function GlitchTransition({ children }: GlitchTransitionProps) {
     };
 
     runGlitch();
-  }, [pathname]);
+  }, [pathname, triggerKey]);
 
   return (
     <>
