@@ -8,7 +8,6 @@ export function BlogDetailTransition({ children }: { children: React.ReactNode }
   useEffect(() => {
     const content = contentRef.current;
     const raw = sessionStorage.getItem("blog-card-transition");
-    sessionStorage.removeItem("blog-card-transition");
 
     if (!content || !raw) return;
 
@@ -45,6 +44,9 @@ export function BlogDetailTransition({ children }: { children: React.ReactNode }
       pointerEvents: "none",
     });
     document.body.appendChild(proxy);
+    const clearHandoff = window.setTimeout(() => {
+      sessionStorage.removeItem("blog-card-transition");
+    }, 1000);
 
     let active = true;
     const run = async () => {
@@ -67,6 +69,7 @@ export function BlogDetailTransition({ children }: { children: React.ReactNode }
 
     return () => {
       active = false;
+      window.clearTimeout(clearHandoff);
       proxy.remove();
     };
   }, []);
