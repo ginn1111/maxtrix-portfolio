@@ -14,6 +14,12 @@ type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   {
+    href: "/hub",
+    label: "KNOWLEDGE_HUB",
+    icon: "menu_book",
+    scrambleText: "DATA_LOGS",
+  },
+  {
     href: "/specs",
     label: "ABOUT_ME",
     icon: "terminal",
@@ -47,7 +53,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 function NavItem({ href, label, icon, scrambleText }: NavItem) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <Link

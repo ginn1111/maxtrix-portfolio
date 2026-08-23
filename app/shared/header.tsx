@@ -23,7 +23,7 @@ export function Header() {
               key={nav.label}
               href={nav.href}
               className={`font-heading lowercase tracking-tighter transition-colors duration-200 px-0.5 md:px-4 md:min-w-25 min-w-18 text-center ${
-                pathname === nav.href
+                pathname === nav.href || pathname.startsWith(`${nav.href}/`)
                   ? "text-primary-fixed! border-b-primary-fixed border-b"
                   : "text-on-surface-variant hover:text-primary-fixed border-transparent"
               }`}
