@@ -6,6 +6,7 @@ import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
 import { BLOG_POSTS } from "@/data/blog";
 import { GlitchTransition } from "@/components/ui/glitch-transition";
+import { DigitalFlicker } from "@/components/ui/glitch-text";
 
 type TocItem = { id: string; label: string; level?: 2 | 3 };
 
@@ -172,8 +173,10 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
           </nav>
 
           <span className="mb-3 inline-block font-mono text-[11px] uppercase tracking-[0.12em] text-primary-fixed-dim">ARTICLE</span>
-          <h1 className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface animate-flicker">
-            {post.title}
+          <h1 className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
+            <DigitalFlicker config={{ delay: 5000, xOffest: 3 }}>
+              {post.title}
+            </DigitalFlicker>
           </h1>
           <p className="mt-3 max-w-[60ch] text-base leading-7 text-on-surface-variant">{post.excerpt}</p>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 border-y border-outline-variant py-3 font-mono text-xs uppercase text-on-surface-variant">
@@ -203,7 +206,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
               </section>
             ))}
             <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--accent)" }}>
-              <div className="mb-1 font-mono text-xs font-bold uppercase text-primary-fixed-dim">NOTE</div>
+              <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} className="mb-1 font-mono text-xs font-bold uppercase text-primary-fixed-dim">NOTE</DigitalFlicker>
               <p className="mb-0 text-sm">The content model stays local and explicit so the listing and detail route cannot silently drift apart.</p>
             </div>
             <CodeBlock name="article-model.ts" language="typescript" code={CODE_SNIPPETS.typescript} />
@@ -217,7 +220,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
             ))}
             <CodeBlock name="terminal.log" language="shell" code={CODE_SNIPPETS.shell} />
             <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--internal-fg)" }}>
-              <div className="mb-1 font-mono text-xs font-bold uppercase text-secondary">WARNING</div>
+              <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} glitchColor="var(--internal-fg)" className="mb-1 font-mono text-xs font-bold uppercase text-secondary">WARNING</DigitalFlicker>
               <p className="mb-0 text-sm">Decorative motion must remain subordinate to the reading flow and respect reduced-motion preferences.</p>
             </div>
 
