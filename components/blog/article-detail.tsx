@@ -199,7 +199,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
                 {section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-4">{paragraph}</p>)}
               </section>
             ))}
-            <div className="my-6 border border-outline-variant border-l-4 border-l-primary-fixed-dim bg-surface-container-low p-4">
+            <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--accent)" }}>
               <div className="mb-1 font-mono text-xs font-bold uppercase text-primary-fixed-dim">NOTE</div>
               <p className="mb-0 text-sm">The content model stays local and explicit so the listing and detail route cannot silently drift apart.</p>
             </div>
@@ -213,7 +213,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
               </section>
             ))}
             <CodeBlock name="terminal.log" language="shell" code={CODE_SNIPPETS.shell} />
-            <div className="my-6 border border-outline-variant border-l-4 border-l-secondary bg-surface-container-low p-4">
+            <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--internal-fg)" }}>
               <div className="mb-1 font-mono text-xs font-bold uppercase text-secondary">WARNING</div>
               <p className="mb-0 text-sm">Decorative motion must remain subordinate to the reading flow and respect reduced-motion preferences.</p>
             </div>
