@@ -4,74 +4,73 @@ import { useEffect, useRef } from "react";
 
 export function BlogDetailTransition({ children }: { children: React.ReactNode }) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
 
   useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
     const content = contentRef.current;
     const raw = sessionStorage.getItem("blog-card-transition");
 
     if (!content || !raw) return;
 
-    const target = document.querySelector<HTMLElement>("[data-blog-detail-target]");
-    if (!target) return;
+    const cardProxy = document.querySelector<HTMLElement>("[data-blog-transition-proxy]");
+    const titleProxy = document.querySelector<HTMLElement>("[data-blog-title-proxy]");
+    const shell = document.querySelector<HTMLElement>("[data-blog-detail-shell]");
+    const title = document.querySelector<HTMLElement>("[data-blog-detail-target]");
+    if (!cardProxy || !shell || !title) return;
 
-    let transitionData: { title: string; rect: { left: number; top: number; width: number; height: number } };
+    let transitionData: { hasTitleProxy: boolean };
     try {
       transitionData = JSON.parse(raw);
     } catch {
       return;
     }
 
-    const targetRect = target.getBoundingClientRect();
-    const proxy = document.createElement("div");
-    proxy.textContent = transitionData.title;
-    proxy.setAttribute("aria-hidden", "true");
-    Object.assign(proxy.style, {
-      position: "fixed",
-      zIndex: "10000",
-      left: `${transitionData.rect.left}px`,
-      top: `${transitionData.rect.top}px`,
-      width: `${transitionData.rect.width}px`,
-      height: `${transitionData.rect.height}px`,
-      overflow: "hidden",
-      padding: "24px",
-      border: "1px solid var(--accent)",
-      background: "var(--bg)",
-      color: "var(--accent)",
-      fontFamily: "var(--font-family-heading)",
-      fontSize: "24px",
-      fontWeight: "700",
-      textTransform: "uppercase",
-      pointerEvents: "none",
-    });
-    document.body.appendChild(proxy);
-    const clearHandoff = window.setTimeout(() => {
-      sessionStorage.removeItem("blog-card-transition");
-    }, 1000);
-
-    let active = true;
-    const run = async () => {
+    const shellRect = shell.getBoundingClientRect();
+    const titleRect = title.getBoundingClientRect();
+    const gsapRun = async () => {
       const gsap = (await import("gsap")).default;
-      if (!active) return;
-      gsap.set(content, { opacity: 0, y: 24 });
-      gsap.timeline({ onComplete: () => proxy.remove() })
-        .to(proxy, {
-          left: targetRect.left,
-          top: targetRect.top,
-          width: targetRect.width,
-          height: targetRect.height,
-          duration: 0.55,
-          ease: "power3.inOut",
-        })
-        .to(proxy, { opacity: 0, duration: 0.16 }, 0.42)
-        .to(content, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.16);
-    };
-    run();
+      gsap.set(content, { opacity: 0 });
+      gsap.set(title, { opacity: 0 });
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          cardProxy.remove();
+          titleProxy?.remove();
+          sessionStorage.removeItem("blog-card-transition");
+        },
+      });
 
-    return () => {
-      active = false;
-      window.clearTimeout(clearHandoff);
-      proxy.remove();
+      timeline.to(cardProxy, {
+        left: shellRect.left,
+        top: shellRect.top,
+        width: shellRect.width,
+        height: shellRect.height,
+        duration: 0.7,
+        ease: "power3.inOut",
+      });
+
+      if (transitionData.hasTitleProxy && titleProxy) {
+        timeline.to(titleProxy, {
+          left: titleRect.left,
+          top: titleRect.top,
+          width: titleRect.width,
+          height: titleRect.height,
+          duration: 0.7,
+          ease: "power3.inOut",
+        }, 0);
+      }
+
+      timeline
+        .to(cardProxy, { opacity: 0, duration: 0.18 }, 0.56)
+        .to(titleProxy, { opacity: 0, duration: 0.18 }, 0.56)
+        .to(title, { opacity: 1, duration: 0.25 }, 0.58)
+        .to(content, { opacity: 1, duration: 0.35 }, 0.68);
     };
+    gsapRun();
+
+    return undefined;
   }, []);
 
   return <div ref={contentRef}>{children}</div>;
