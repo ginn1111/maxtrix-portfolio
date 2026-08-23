@@ -37,7 +37,7 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
   }, []);
 
   return (
-    <div className="container grid grid-cols-1 gap-3 px-5" aria-live="polite">
+    <div className="grid min-w-0 grid-cols-1 gap-3 container px-5 lg:grid-cols-2" aria-live="polite">
       {posts.map((post, index) => (
         <BlogCard
           key={post.slug}
