@@ -63,7 +63,7 @@ export function BlogDetailTransition({ children }: { children: React.ReactNode }
       }
 
       timeline
-        .to(cardProxy, { opacity: 0, duration: 0.18 }, 0.56)
+        .to(cardProxy, { opacity: 0, borderColor: "transparent", duration: 0.18 }, 0.56)
         .to(titleProxy, { opacity: 0, duration: 0.18 }, 0.56)
         .to(title, { opacity: 1, duration: 0.25 }, 0.58)
         .to(content, { opacity: 1, duration: 0.35 }, 0.68);
