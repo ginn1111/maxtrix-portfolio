@@ -162,8 +162,8 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
     <div className="reading-layout mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-5 py-8 lg:grid-cols-[minmax(0,720px)_240px] lg:justify-center">
       <main id="main" className="min-w-0">
         <article>
-          <nav className="mb-4 font-mono text-xs uppercase tracking-[0.04em] text-on-surface-variant" aria-label="Breadcrumb">
-            <Link href="/hub" className="cursor-pointer text-on-surface-variant hover:text-primary-fixed-dim">HUB</Link>
+          <nav className="mb-4 flex flex-wrap items-center font-mono text-xs uppercase tracking-[0.04em] text-on-surface-variant" aria-label="Breadcrumb">
+            <Link href="/hub" className="cursor-pointer text-on-surface-variant hover:text-primary-fixed-dim">← BACK_TO_HUB</Link>
             <span className="mx-2 text-primary-fixed-dim" aria-hidden="true">/</span>
             <span>{post.tags[0]}</span>
           </nav>
