@@ -22,8 +22,8 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
 
   return (
     <>
-      <div className="mx-5 mb-3 flex flex-wrap items-center gap-2 border border-[#2a2a2a] bg-[#111111] p-3 font-mono">
-        <span className="mr-1 text-[10px] uppercase tracking-[0.08em] text-[#888888]">
+      <div className="mx-5 mb-3 flex flex-wrap items-center gap-2 border border-outline-variant bg-surface-container-low p-3 font-mono">
+        <span className="mr-1 text-[10px] uppercase tracking-[0.08em] text-on-surface-variant">
           TECH_STACK:
         </span>
         {FILTERS.map((filter) => {
@@ -34,10 +34,10 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
               type="button"
               aria-pressed={isActive}
               onClick={() => setActiveFilter(filter)}
-              className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f] ${
+              className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim ${
                 isActive
-                  ? "border-[#00ff9f66] text-[#00ff9f] outline outline-1 outline-offset-2 outline-[#00ff9f]"
-                  : "border-[#2a2a2a] bg-[#0a0a0a] text-[#888888] hover:border-[#00ff9f44] hover:text-[#00ff9f]"
+                  ? "border-primary-dim text-primary-fixed-dim outline outline-1 outline-offset-2 outline-primary-fixed-dim"
+                  : "border-outline-variant bg-background text-on-surface-variant hover:border-primary-dim hover:bg-primary-container hover:text-on-primary-container"
               }`}
             >
               {filter}
@@ -56,7 +56,7 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
       </div>
 
       {visiblePosts.length === 0 && (
-        <p className="mx-5 border border-[#2a2a2a] bg-[#111111] p-8 text-center font-mono text-xs uppercase tracking-[0.08em] text-[#888888]">
+        <p className="mx-5 border border-outline-variant bg-surface-container-low p-8 text-center font-mono text-xs uppercase tracking-[0.08em] text-on-surface-variant">
           NO_MATCHING_NODES // ADJUST_FILTER_TO_CONTINUE
         </p>
       )}
