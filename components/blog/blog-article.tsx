@@ -7,7 +7,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
     <article className="w-full max-w-4xl space-y-8">
       <Link
         href="/hub"
-        className="inline-flex font-mono text-sm text-primary-fixed-dim transition-colors hover:text-primary-fixed focus-visible:outline-none"
+        className="inline-flex cursor-pointer font-mono text-sm text-primary-fixed-dim transition-colors hover:text-primary-fixed focus-visible:outline-none"
       >
         ← RETURN_TO_HUB
       </Link>

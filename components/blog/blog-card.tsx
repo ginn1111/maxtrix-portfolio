@@ -34,7 +34,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
         </div>
         <Link
           href={`/hub/blog/${post.slug}`}
-          className="block border border-[#2a2a2a] p-3 text-center font-mono text-[11px] uppercase text-[#888888] transition-colors hover:text-[#00ff9f] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f]"
+          className="block cursor-pointer border border-[#2a2a2a] p-3 text-center font-mono text-[11px] uppercase text-[#888888] transition-colors hover:text-[#00ff9f] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f]"
         >
           [READ_NODE]
         </Link>

@@ -34,7 +34,7 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
               type="button"
               aria-pressed={isActive}
               onClick={() => setActiveFilter(filter)}
-              className={`border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f] ${
+              className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f] ${
                 isActive
                   ? "border-[#00ff9f66] text-[#00ff9f] outline outline-1 outline-offset-2 outline-[#00ff9f]"
                   : "border-[#2a2a2a] bg-[#0a0a0a] text-[#888888] hover:border-[#00ff9f44] hover:text-[#00ff9f]"

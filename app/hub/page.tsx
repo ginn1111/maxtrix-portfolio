@@ -7,7 +7,7 @@ export default function HubPage() {
     <div className="relative w-full font-mono text-[#cccccc]">
       <div className="mx-auto w-full max-w-container-max">
       <nav className="mb-6 flex flex-col gap-2 border-b border-[#2a2a2a] px-5 pb-4 text-[11px] uppercase tracking-[0.08em] sm:flex-row sm:items-center sm:justify-between">
-        <Link href="/projects" className="font-bold text-[#00ff9f] hover:underline focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f]">← BACK_TO_GALLERY</Link>
+        <Link href="/projects" className="cursor-pointer font-bold text-[#00ff9f] hover:underline focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#00ff9f]">← BACK_TO_GALLERY</Link>
         <span className="text-[#888888]"><span className="text-[#00ff9f]">[NOW_LOG]</span> · FETCHING HUB.LOG... [ OK ]</span>
       </nav>
 
