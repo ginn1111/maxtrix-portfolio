@@ -1,5 +1,5 @@
 ---
-status: approved
+status: completed
 size: M
 scope: hub blog article detail page
 owner: ginb
