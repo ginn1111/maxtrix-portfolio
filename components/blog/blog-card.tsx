@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
+import { forwardRef } from "react";
 
-export function BlogCard({ post }: { post: BlogPost }) {
-  return (
+export const BlogCard = forwardRef<HTMLAnchorElement, { post: BlogPost }>(
+  function BlogCard({ post }, ref) {
+    return (
     <Link
+      ref={ref}
       href={`/hub/blog/${post.slug}`}
       className="group/project relative block min-w-0 cursor-pointer overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
     >
@@ -37,5 +40,8 @@ export function BlogCard({ post }: { post: BlogPost }) {
         </span>
       </div>
     </Link>
-  );
-}
+    );
+  }
+);
+
+BlogCard.displayName = "BlogCard";

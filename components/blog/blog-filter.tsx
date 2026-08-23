@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { BlogPost } from "@/data/blog";
 import { BlogCard } from "./blog-card";
 
@@ -10,6 +10,7 @@ type Filter = (typeof FILTERS)[number];
 
 export function BlogFilter({ posts }: { posts: BlogPost[] }) {
   const [activeFilter, setActiveFilter] = useState<Filter>("all");
+  const cardsRef = useRef<HTMLAnchorElement[]>([]);
   const visiblePosts = useMemo(
     () =>
       posts.filter(
@@ -19,6 +20,35 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
       ),
     [activeFilter, posts]
   );
+
+  useEffect(() => {
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+      const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+      gsap.registerPlugin(ScrollTrigger);
+
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    };
+
+    loadGSAP();
+  }, []);
 
   return (
     <>
@@ -50,8 +80,14 @@ export function BlogFilter({ posts }: { posts: BlogPost[] }) {
         className="container grid grid-cols-1 gap-3 px-5 md:grid-cols-2"
         aria-live="polite"
       >
-        {visiblePosts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
+        {visiblePosts.map((post, index) => (
+          <BlogCard
+            key={post.slug}
+            post={post}
+            ref={(element) => {
+              if (element) cardsRef.current[index] = element;
+            }}
+          />
         ))}
       </div>
 
