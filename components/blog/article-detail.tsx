@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
 import { BLOG_POSTS } from "@/data/blog";
-import { GlitchTransition } from "@/components/ui/glitch-transition";
 import { DigitalFlicker } from "@/components/ui/glitch-text";
 
 type TocItem = { id: string; label: string; level?: 2 | 3 };
@@ -137,7 +136,6 @@ function Newsletter() {
 
 export function ArticleDetail({ post }: { post: BlogPost }) {
   const [activeToc, setActiveToc] = useState(TOC_ITEMS[0].id);
-  const [tocTransition, setTocTransition] = useState(0);
   const currentIndex = BLOG_POSTS.findIndex((item) => item.slug === post.slug);
   const previous = currentIndex > 0 ? BLOG_POSTS[currentIndex - 1] : undefined;
   const next = currentIndex >= 0 ? BLOG_POSTS[currentIndex + 1] : undefined;
@@ -162,7 +160,6 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
   );
 
   return (
-    <GlitchTransition triggerKey={tocTransition}>
     <div className="reading-layout mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-5 py-8 lg:grid-cols-[minmax(0,720px)_240px] lg:justify-center">
       <main id="main" className="min-w-0">
         <article>
@@ -191,7 +188,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
 
           <details className="my-6 lg:hidden">
             <summary className="cursor-pointer border border-outline-variant bg-surface-container-low p-3 font-mono text-xs uppercase text-on-surface">ON_THIS_PAGE</summary>
-            <TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} onNavigate={() => setTocTransition((value) => value + 1)} />
+            <TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} />
           </details>
 
           <div className="article-body text-base leading-7 text-on-surface-variant">
@@ -265,14 +262,13 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
         <Newsletter />
       </main>
 
-      <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start" aria-label="Table of contents"><h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.1em] text-primary-fixed-dim">ON_THIS_PAGE</h2><TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} onNavigate={() => setTocTransition((value) => value + 1)} /></aside>
+      <aside className="hidden lg:block lg:sticky lg:top-24 lg:self-start" aria-label="Table of contents"><h2 className="mb-3 font-mono text-[11px] uppercase tracking-[0.1em] text-primary-fixed-dim">ON_THIS_PAGE</h2><TocLinks items={[...TOC_ITEMS, ...sectionToc]} active={activeToc} /></aside>
     </div>
-    </GlitchTransition>
   );
 }
 
-function TocLinks({ items, active, onNavigate }: { items: TocItem[]; active: string; onNavigate: () => void }) {
-  return <ul className="border-l border-outline-variant">{items.map((item) => <li key={`${item.id}-${item.label}`}><a href={`#${item.id}`} onClick={onNavigate} className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors ${active === item.id ? "-ml-px border-primary-fixed-dim text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:text-on-surface"}`}>{item.label}</a></li>)}</ul>;
+function TocLinks({ items, active }: { items: TocItem[]; active: string }) {
+  return <ul className="border-l border-outline-variant">{items.map((item) => <li key={`${item.id}-${item.label}`}><a href={`#${item.id}`} className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors focus-visible:animate-flicker focus-visible:bg-primary-container focus-visible:text-on-primary-container ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}>{item.label}</a></li>)}</ul>;
 }
 
 function ArticlePager({ direction, post, align }: { direction: "PREV" | "NEXT"; post: BlogPost; align?: "right" }) {
