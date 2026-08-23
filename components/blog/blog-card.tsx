@@ -4,10 +4,13 @@ import type { BlogPost } from "@/data/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <article className="group relative min-w-0 overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-within:outline focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-primary max-md:p-[18px]">
+    <Link
+      href={`/hub/blog/${post.slug}`}
+      className="card-node group/project relative block min-w-0 cursor-pointer overflow-hidden border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
+    >
       <span className="crosshair crosshair-tl" aria-hidden="true" />
       <span className="crosshair crosshair-br" aria-hidden="true" />
-      <div className="scanline-effect" aria-hidden="true" />
+      <div className="scanline-effect group-hover/project:animate-page-scan-specs" aria-hidden="true" />
 
       <div className="relative">
         <div className="mb-5 flex items-center justify-between gap-2.5 font-mono text-[10px] uppercase tracking-[0.06em] text-on-surface-variant">
@@ -31,13 +34,10 @@ export function BlogCard({ post }: { post: BlogPost }) {
             <Chip key={tag}>{tag.toLowerCase()}</Chip>
           ))}
         </div>
-        <Link
-          href={`/hub/blog/${post.slug}`}
-          className="block cursor-pointer border border-outline-variant p-3 text-center font-mono text-[11px] uppercase text-on-surface-variant transition-colors hover:bg-primary-container hover:text-on-primary-container focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim"
-        >
+        <span className="block border border-outline-variant p-3 text-center font-mono text-[11px] uppercase text-on-surface-variant transition-colors group-hover/project:bg-primary-container group-hover/project:text-on-primary-container">
           [READ_NODE]
-        </Link>
+        </span>
       </div>
-    </article>
+    </Link>
   );
 }
