@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
+import Link from "next/link";
 import { forwardRef } from "react";
 import { Badge } from "../ui/badge";
 
@@ -20,11 +19,6 @@ export const BlogCard = forwardRef<HTMLAnchorElement, { post: BlogPost }>(
         />
 
         <div className="relative">
-          <div className="mb-5 flex items-center justify-between gap-2.5 font-mono text-[10px] uppercase tracking-[0.06em] text-on-surface-variant">
-            <span>NODE_ID: 0xA{post.id}</span>
-            <Chip variant="public">PUBLIC</Chip>
-          </div>
-
           <div className="relative mb-5 grid min-h-[150px] place-items-center overflow-hidden border border-outline-variant bg-surface-container-low font-mono text-[11px] uppercase tracking-[0.12em] text-primary-dim">
             <span className="relative z-10">
               {post.id === "001"
