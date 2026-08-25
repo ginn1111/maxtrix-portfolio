@@ -1,5 +1,4 @@
 import { BlogArticle } from "@/components/blog/blog-article";
-import { BlogDetailTransition } from "@/components/blog/blog-detail-transition";
 import { BLOG_POSTS, getBlogPost } from "@/data/blog";
 import { notFound } from "next/navigation";
 
@@ -19,5 +18,5 @@ export default async function BlogDetailPage({
     notFound();
   }
 
-  return <BlogDetailTransition><BlogArticle post={post} /></BlogDetailTransition>;
+  return <BlogArticle post={post} />;
 }

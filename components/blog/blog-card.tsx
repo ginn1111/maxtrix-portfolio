@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Chip } from "@/components/terminal/chip";
 import type { BlogPost } from "@/data/blog";
@@ -8,63 +6,10 @@ import { Badge } from "../ui/badge";
 
 export const BlogCard = forwardRef<HTMLAnchorElement, { post: BlogPost }>(
   function BlogCard({ post }, ref) {
-    function captureTransition(event: React.MouseEvent<HTMLAnchorElement>) {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-      const card = event.currentTarget;
-      const rect = card.getBoundingClientRect();
-      const title = card.querySelector("h2");
-      const titleRect = title?.getBoundingClientRect();
-      const cardProxy = card.cloneNode(true) as HTMLElement;
-      const titleProxy = title?.cloneNode(true) as HTMLElement | undefined;
-
-      document.querySelector("[data-blog-transition-proxy]")?.remove();
-      document.querySelector("[data-blog-title-proxy]")?.remove();
-
-      cardProxy.setAttribute("data-blog-transition-proxy", "true");
-      cardProxy.removeAttribute("href");
-      Object.assign(cardProxy.style, {
-        position: "fixed",
-        zIndex: "10000",
-        left: `${rect.left}px`,
-        top: `${rect.top}px`,
-        width: `${rect.width}px`,
-        height: `${rect.height}px`,
-        margin: "0",
-        pointerEvents: "none",
-      });
-      cardProxy.querySelector("h2")?.remove();
-      document.body.appendChild(cardProxy);
-
-      if (titleProxy && titleRect) {
-        titleProxy.setAttribute("data-blog-title-proxy", "true");
-        Object.assign(titleProxy.style, {
-          position: "fixed",
-          zIndex: "10001",
-          left: `${titleRect.left}px`,
-          top: `${titleRect.top}px`,
-          width: `${titleRect.width}px`,
-          height: `${titleRect.height}px`,
-          margin: "0",
-          pointerEvents: "none",
-        });
-        document.body.appendChild(titleProxy);
-      }
-
-      sessionStorage.setItem(
-        "blog-card-transition",
-        JSON.stringify({
-          slug: post.slug,
-          hasTitleProxy: Boolean(titleProxy && titleRect),
-        })
-      );
-    }
-
     return (
       <Link
         ref={ref}
         href={`/hub/blog/${post.slug}`}
-        onClick={captureTransition}
         className="group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none max-md:p-[18px]"
       >
         <span className="crosshair crosshair-tl" aria-hidden="true" />

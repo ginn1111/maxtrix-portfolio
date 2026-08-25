@@ -63,7 +63,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
   return (
     <div className="reading-layout mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-5 py-8 lg:grid-cols-[minmax(0,720px)_240px] lg:justify-center">
       <main id="main" className="min-w-0">
-        <article data-blog-detail-shell>
+        <article>
           <nav className="mb-4 flex flex-wrap items-center font-mono text-xs uppercase tracking-[0.04em] text-on-surface-variant" aria-label="Breadcrumb">
             <Link href="/hub" className="cursor-pointer text-on-surface-variant hover:text-primary-fixed-dim">← BACK_TO_HUB</Link>
             <span className="mx-2 text-primary-fixed-dim" aria-hidden="true">/</span>
@@ -71,7 +71,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
           </nav>
 
           <span className="mb-3 inline-block font-mono text-[11px] uppercase tracking-[0.12em] text-primary-fixed-dim">ARTICLE</span>
-          <h1 data-blog-detail-target className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
+          <h1 className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
             <DigitalFlicker config={{ delay: 5000, xOffest: 3 }}>
               {post.title}
             </DigitalFlicker>
