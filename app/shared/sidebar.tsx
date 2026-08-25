@@ -14,12 +14,6 @@ type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   {
-    href: "/hub",
-    label: "KNOWLEDGE_HUB",
-    icon: "menu_book",
-    scrambleText: "DATA_LOGS",
-  },
-  {
     href: "/specs",
     label: "ABOUT_ME",
     icon: "terminal",
@@ -42,6 +36,12 @@ export const NAV_ITEMS: NavItem[] = [
     label: "TESTIMONIALS",
     icon: "format_quote",
     scrambleText: "FEEDBACK_DATA",
+  },
+  {
+    href: "/hub",
+    label: "HUB",
+    icon: "menu_book",
+    scrambleText: "DATA_LOGS",
   },
   {
     href: "/contact",

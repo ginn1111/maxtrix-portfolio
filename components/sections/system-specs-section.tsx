@@ -230,7 +230,7 @@ export function SystemSpecsSection() {
             </h2>
           </div>
 
-          <div className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed space-y-6">
+          <div className="font-body text-body-lg text-on-surface-variant leading-relaxed space-y-6">
             <p>
               Hi, I&apos;m{" "}
               <span className="text-primary-fixed-dim">

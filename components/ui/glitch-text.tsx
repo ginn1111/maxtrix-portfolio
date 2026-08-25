@@ -151,7 +151,7 @@ interface GlitchHoverProps {
 export function GlitchHover({
   children,
   className = "",
-  glitchColor = "#00e639",
+  glitchColor = "var(--accent)",
 }: GlitchHoverProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const gsapRef = useRef<typeof gsap>(null);

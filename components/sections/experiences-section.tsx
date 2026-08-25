@@ -207,7 +207,7 @@ export function ExperiencesSection() {
                 </div>
               </div>
 
-              <p className="font-body-lg text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              <p className="font-body text-body-sm text-on-surface-variant mb-4 leading-relaxed">
                 {exp.description}
               </p>
 

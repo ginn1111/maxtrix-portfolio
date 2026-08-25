@@ -24,7 +24,7 @@ export function Chip({ children, variant = "primary", className }: ChipProps) {
       className={cn(
         isVisibility ? "" : "font-mono text-xs tracking-wider",
         variantStyles[variant],
-        className
+        className,
       )}
     >
       {isVisibility ? (
@@ -32,7 +32,7 @@ export function Chip({ children, variant = "primary", className }: ChipProps) {
           {variant === "public" ? "●" : "◼"} {children}
         </>
       ) : (
-        `[ ${children} ]`
+        `[${children}]`
       )}
     </span>
   );

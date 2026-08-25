@@ -110,7 +110,7 @@ export function TestimonialsSection() {
                 format_quote
               </span>
 
-              <p className="font-body-lg text-body-sm text-on-surface-variant mb-6 leading-relaxed italic">
+              <p className="font-body text-body-sm text-on-surface-variant mb-6 leading-relaxed italic">
                 &quot;{t.quote}&ldquo;
               </p>
 

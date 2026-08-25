@@ -61,7 +61,7 @@ export function ProjectArchiveSection({
       {/* DATA_NODES Grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-3 container px-5"
+        className="grid min-w-0 grid-cols-1 gap-3 container px-5 lg:grid-cols-2"
       >
         {projects.map((project, index) => (
           <Link
@@ -72,7 +72,7 @@ export function ProjectArchiveSection({
                 cardsRef.current[index] = el;
               }
             }}
-            className="card-node block relative border border-outline-variant p-6 bg-surface-container-lowest group cursor-pointer group/project"
+            className="card-node group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none"
           >
             <div className="crosshair crosshair-tl" />
             <div className="crosshair crosshair-br" />
@@ -85,7 +85,7 @@ export function ProjectArchiveSection({
 
             {/* Placeholder image area */}
             <div className="mb-6 h-40 w-full overflow-hidden border border-outline-variant bg-surface-container-low">
-              <div className="w-full h-full bg-gradient-to-br from-primary-fixed-dim/10 to-transparent" />
+              <div className="h-full w-full bg-[radial-gradient(var(--accent-faint)_1px,transparent_1px)] [background-size:18px_18px]" />
             </div>
 
             <h3 className="font-heading text-headline-md text-primary-fixed-dim uppercase mb-2">
@@ -96,8 +96,8 @@ export function ProjectArchiveSection({
               <span
                 className={`ml-2 inline-flex items-center gap-1 px-1.5 py-0.5 text-[8px] font-mono uppercase ${
                   project.isPublic
-                    ? "bg-green-900/30 text-green-400 border border-green-700/50"
-                    : "bg-red-900/30 text-red-400 border border-red-700/50"
+                    ? "border border-[var(--public-border)] bg-[var(--public-bg)] text-[var(--public-fg)]"
+                    : "border border-[var(--internal-border)] bg-[var(--internal-bg)] text-[var(--internal-fg)]"
                 }`}
               >
                 {project.isPublic ? "● PUBLIC" : "◼ INTERNAL"}

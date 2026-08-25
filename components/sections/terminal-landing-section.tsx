@@ -127,7 +127,7 @@ export function TerminalLandingSection() {
               <div className="lg:col-span-7 space-y-4">
                 <p
                   ref={heroBodyRef}
-                  className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed"
+                  className="text-body-lg font-body text-on-surface-variant leading-relaxed"
                 >
                   Welcome, Operator. You have successfully bypassed the
                   perimeter security protocols. The Subterranean GIN_OS is now
