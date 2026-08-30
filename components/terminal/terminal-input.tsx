@@ -24,8 +24,9 @@ const TerminalInput = React.forwardRef<HTMLInputElement, TerminalInputProps>(
           <input
             id={id}
             type={type}
+            data-od-id="input"
             className={cn(
-              "flex h-10 w-full bg-transparent font-mono text-primary flex-1 outline-none",
+              "flex h-11 w-full bg-transparent font-mono text-primary flex-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
               "px-2 py-2 pl-6 text-sm",
               "placeholder:text-primary/40 placeholder:font-mono",
               "transition-all duration-150",

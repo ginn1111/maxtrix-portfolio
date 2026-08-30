@@ -63,7 +63,7 @@ export const DigitalFlicker = forwardRef(
             x: offsetX,
             y: offsetY,
             opacity: targetOpacity,
-            textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 rgba(0, 255, 255, 0.8)`,
+            textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 var(--c-success)`,
             duration,
             ease: "steps(3)",
           })
@@ -177,7 +177,7 @@ export function GlitchHover({
           x: (Math.random() - 0.5) * -4,
           y: (Math.random() - 0.5) * 2,
           opacity: 0.8,
-          textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 rgba(0, 255, 255, 0.8)`,
+          textShadow: `2px 0 0 ${glitchColor}, -2px 0 0 var(--c-success)`,
           duration: 0.05,
           ease: "steps(3)",
         })

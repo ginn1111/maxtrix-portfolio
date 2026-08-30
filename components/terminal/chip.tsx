@@ -10,7 +10,7 @@ export function Chip({ children, variant = "primary", className }: ChipProps) {
   const variantStyles = {
     primary: "text-primary",
     warning: "text-secondary",
-    error: "text-red-500",
+    error: "text-secondary",
     public:
       "inline-flex items-center gap-1 border border-[var(--public-border)] bg-[var(--public-bg)] px-1.5 py-0.5 text-[8px] font-mono uppercase text-[var(--public-fg)]",
     internal:
@@ -21,6 +21,7 @@ export function Chip({ children, variant = "primary", className }: ChipProps) {
 
   return (
     <span
+      data-od-id="chip"
       className={cn(
         isVisibility ? "" : "font-mono text-xs tracking-wider",
         variantStyles[variant],

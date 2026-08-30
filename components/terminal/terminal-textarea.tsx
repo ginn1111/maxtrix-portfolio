@@ -25,10 +25,11 @@ const TerminalTextarea = React.forwardRef<
         </span>
         <textarea
           id={id}
+          data-od-id="textarea"
           className={cn(
             "flex min-h-[120px] w-full bg-transparent  font-mono text-primary",
             "px-2 py-2 pl-6 text-sm resize-none",
-            "focus:outline-none flex-1",
+            "flex-1",
             "placeholder:text-primary/40 placeholder:font-mono",
             "transition-all duration-150",
             className,

@@ -64,7 +64,35 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
           : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
       }`}
     >
-      <span className="material-symbols-outlined">{icon}</span>
+      <span className="hidden">{icon}</span>
+      <svg
+        className="size-4 shrink-0"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+        aria-hidden="true"
+      >
+        {icon === "terminal" && (
+          <path d="M4 17l6-5-6-5M12 19h8" />
+        )}
+        {icon === "work_history" && (
+          <path d="M3 5h18v14H3zM3 9h18M7 13h4" />
+        )}
+        {icon === "account_tree" && (
+          <path d="M6 3h12v6H6zM4 15h16v6H4zM12 9v6" />
+        )}
+        {icon === "format_quote" && (
+          <path d="M10 7H6v6h4v4M18 7h-4v6h4v4" />
+        )}
+        {icon === "menu_book" && (
+          <path d="M4 4h7v16H4zM13 4h7v16h-7zM4 8h7M4 12h7M13 8h7M13 12h7" />
+        )}
+        {icon === "lock" && (
+          <path d="M7 11V7a5 5 0 0 1 10 0v4h-2V7a3 3 0 0 0-6 0v4zM5 11h14v9H5z" />
+        )}
+      </svg>
       <ScrambleText
         className="hidden lg:inline"
         text={label}
@@ -76,18 +104,18 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
 
 export function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 h-full z-40  flex-col border-r border-outline-variant bg-background sm:w-[60px] lg:w-64 hidden md:flex">
+    <aside className="fixed left-0 top-0 h-full z-40 flex-col border-r border-outline-variant bg-background w-[var(--rail)] hidden md:flex rounded-none">
       <div className="lg:px-6 lg:py-7 border-b border-outline-variant mb-4">
         <div className="flex items-center gap-3 justify-center lg:py-0 py-3">
           <div>
             <Link
               href="/"
-              className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_rgba(0,230,57,0.8)]"
+              className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_var(--c-success)]"
             >
               <DigitalFlicker>
                 <ScrambleText
                   className="hidden lg:inline"
-                  text="GIN_OS_v3.0.2026"
+                  text="matrGINx.v2026"
                   isHover={false}
                 />
                 <ScrambleText

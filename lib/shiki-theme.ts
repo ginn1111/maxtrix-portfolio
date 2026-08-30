@@ -15,7 +15,7 @@ export const GIN_MATRIX_THEME: ThemeRegistration = {
     { scope: ["keyword", "storage", "storage.type", "storage.modifier"], settings: { foreground: "#1ad6b0", fontStyle: "bold" } },
     { scope: ["string", "constant.character", "constant.other"], settings: { foreground: "#18e000" } },
     { scope: ["entity.name.function", "support.function", "meta.function-call"], settings: { foreground: "#83f5c8" } },
-    { scope: ["variable", "variable.parameter", "entity.name.variable"], settings: { foreground: "#f0a02a" } },
+    { scope: ["variable", "variable.parameter", "entity.name.variable"], settings: { foreground: "#d8a23a" } },
     { scope: ["constant.numeric", "constant.language"], settings: { foreground: "#1ad6b0" } },
     { scope: ["entity.name.type", "support.type", "entity.name.class"], settings: { foreground: "#18e000", fontStyle: "bold" } },
   ],

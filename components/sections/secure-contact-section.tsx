@@ -130,8 +130,8 @@ export function SecureContactSection() {
             Establish Connection
           </h1>
           <p className="text-on-surface-variant font-body-md max-w-lg">
-            Input your credentials and transmission data. All communications are
-            routed through encrypted subterranean nodes.
+            Input your credentials and transmission data. All communications
+            route through the matrGINx encrypted node network.
           </p>
         </div>
 
@@ -160,7 +160,7 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1 font-mono">{errors.name.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">{errors.name.message}</p>
               )}
             </div>
 
@@ -181,7 +181,7 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1 font-mono">{errors.email.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">{errors.email.message}</p>
               )}
             </div>
 
@@ -201,10 +201,10 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.subject && (
-                <p className="text-red-500 text-sm mt-1 font-mono">{errors.subject.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">{errors.subject.message}</p>
               )}
               {rateLimitError && (
-                <p className="text-red-500 text-sm mt-1">{rateLimitError}</p>
+                <p className="text-destructive text-sm mt-1">{rateLimitError}</p>
               )}
             </div>
 
@@ -225,7 +225,7 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.message && (
-                <p className="text-red-500 text-sm mt-1 font-mono">{errors.message.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">{errors.message.message}</p>
               )}
             </div>
 
@@ -236,9 +236,17 @@ export function SecureContactSection() {
                 className="w-full md:w-auto px-12 py-4 flex items-center justify-center gap-4"
               >
                 [EXECUTE_MESSAGE]_
-                <span className="material-symbols-outlined text-[18px]">
-                  send
-                </span>
+                <svg
+                  className="size-[18px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="square"
+                  aria-hidden="true"
+                >
+                  <path d="M3 11l18-8-8 18-2-8-8-2zM13 13L5 5" />
+                </svg>
               </TerminalButton>
             </div>
           </form>

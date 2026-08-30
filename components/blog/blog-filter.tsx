@@ -24,9 +24,10 @@ export function BlogFilter({
           <button
             key={filter}
             type="button"
+            data-od-id="button"
             aria-pressed={isActive}
             onClick={() => onFilterChange(filter)}
-            className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim ${
+            className={`cursor-pointer border px-2.5 py-1.5 text-[10px] uppercase tracking-[0.04em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-fixed-dim ${
               isActive
                 ? "border-primary-dim text-primary-fixed-dim outline outline-1 outline-offset-2 outline-primary-fixed-dim"
                 : "border-outline-variant bg-background text-on-surface-variant hover:border-primary-dim hover:bg-primary-container hover:text-on-primary-container"

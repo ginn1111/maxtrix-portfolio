@@ -9,7 +9,7 @@ import { DigitalFlicker } from "@/components/ui/glitch-text";
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="fixed top-0 w-full z-50 px-margin py-unit border-b border-outline-variant bg-background/90 backdrop-blur-sm">
+    <header className="fixed top-0 w-full z-50 px-margin py-unit border-b border-outline-variant bg-background/90">
       <div className="container flex justify-center items-center">
         <nav className="flex md:hidden gap-gutter items-center justify-center min-h-12">
           <Link

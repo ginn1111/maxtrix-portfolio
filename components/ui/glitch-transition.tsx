@@ -71,7 +71,7 @@ export function GlitchTransition({ children, triggerKey }: GlitchTransitionProps
               transparent 2px
             )
           `,
-          boxShadow: `inset 0 0 100px rgba(0, 230, 57, 0.3)`,
+          boxShadow: `inset 0 0 100px var(--c-success)`,
         }}
       >
         <DigitalFlicker ref={tlRef} className="crosshair-tl size-8 crosshair">

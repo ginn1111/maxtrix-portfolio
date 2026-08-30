@@ -32,7 +32,7 @@ export function Footer() {
       <div className="container flex justify-between items-center flex-col sm:flex-row">
         <div className="flex items-center gap-4">
           <span className="font-mono text-label-sm font-bold text-primary-fixed-dim uppercase">
-            © 2023-{new Date().getFullYear()} SUBTERRANEAN_GIN_OS.
+            © 2023-{new Date().getFullYear()} MATRGINX.
             ALL_RIGHTS_RESERVED.
           </span>
         </div>

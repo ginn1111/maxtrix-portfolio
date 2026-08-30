@@ -32,56 +32,127 @@
   color-scheme: dark;
   --bg: #0f160f;
   --surface-low: #112615;
-  --surface: #1b342d;
+  --surface: #112615;
   --fg: #83f5c8;
   --muted: #6ea098;
   --border: #267d69;
   --accent: #1ad6b0;
+  --accent-2: #18e000;
   --accent-dim: #1ad6b066;
   --accent-soft: #1ad6b044;
   --accent-faint: #1ad6b01a;
   --accent-wash: #1ad6b00a;
-  --public-bg: rgb(24 224 0 / 0.3);
+  --public-bg: #18e0004d;
   --public-fg: #18e000;
-  --public-border: rgb(24 224 0 / 0.5);
-  --internal-bg: rgb(240 160 42 / 0.3);
-  --internal-fg: #f0a02a;
-  --internal-border: rgb(240 160 42 / 0.5);
+  --public-border: #18e0007f;
+  --internal-bg: #d8a23a4d;
+  --internal-fg: #d8a23a;
+  --internal-border: #d8a23a7f;
+  --warn: #d8a23a;
+  /* Semantic roles (DESIGN.md §2) */
+  --c-bg: var(--bg);
+  --c-surface: var(--surface);
+  --c-text: var(--fg);
+  --c-text-muted: var(--muted);
+  --c-border: var(--border);
+  --c-action: var(--accent);
+  --c-success: var(--accent-2);
+  --c-warning: var(--warn);
+  --invert: #0f160f;
+  --on-action: var(--invert);
+  --c-action-fg: var(--invert);
+  --c-success-fg: var(--invert);
+  --c-warning-fg: var(--invert);
+  /* Spacing / layout (DESIGN.md §5 / §6) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --gutter: 8px;
+  --rail: 240px;
+  --maxw: 56rem;
+  --ctrl-h: 44px;
   --font-family-heading:
-    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
+    "EnvyCodeR Nerd Font Mono", ui-monospace, "SFMono-Regular", monospace;
   --font-family-body:
-    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
+    "Trebuchet MS", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-family-mono:
-    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
+    "EnvyCodeR Nerd Font Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* On-palette light inversion (DESIGN.md §1 light kit) */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e8fbf3;
+  --surface-low: #d6f5e6;
+  --surface: #d6f5e6;
+  --fg: #0f160f;
+  --muted: #43685c;
+  --border: #2a6b5a;
+  --accent: #0e8a72;
+  --accent-2: #1f8a12;
+  --accent-dim: #0e8a7240;
+  --accent-soft: #0e8a7230;
+  --accent-faint: #0e8a721c;
+  --accent-wash: #0e8a720d;
+  --public-fg: #1f8a12;
+  --public-bg: #1f8a121f;
+  --public-border: #1f8a1280;
+  --internal-fg: #9c6a16;
+  --internal-bg: #9c6a161f;
+  --internal-border: #9c6a1680;
+  --warn: #9c6a16;
+  --invert: #e8fbf3;
+  --c-bg: var(--bg);
+  --c-surface: var(--surface);
+  --c-text: var(--fg);
+  --c-text-muted: var(--muted);
+  --c-border: var(--border);
+  --c-action: var(--accent);
+  --c-success: var(--accent-2);
+  --c-warning: var(--warn);
+  --on-action: var(--invert);
+  --c-action-fg: var(--fg);
+  --c-success-fg: var(--fg);
+  --c-warning-fg: var(--fg);
 }
 
 @theme {
   --font-mono: "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
-  --color-primary: var(--accent);
-  --color-primary-dim: var(--accent-dim);
-  --color-primary-muted: var(--muted);
-  --color-primary-fixed: var(--fg);
-  --color-primary-fixed-dim: var(--accent);
-  --color-primary-container: var(--accent);
-  --color-on-primary-container: var(--bg);
-  --color-secondary: var(--internal-fg);
-  --color-secondary-container: var(--internal-fg);
-  --color-background: var(--bg);
-  --color-on-background: var(--fg);
-  --color-surface: var(--surface);
-  --color-surface-container: var(--surface);
-  --color-surface-container-low: var(--surface-low);
-  --color-surface-container-lowest: var(--bg);
-  --color-surface-container-high: var(--surface);
-  --color-surface-container-highest: var(--surface);
-  --color-surface-bright: var(--surface);
-  --color-on-surface: var(--fg);
-  --color-on-surface-variant: var(--muted);
-  --color-outline: var(--border);
-  --color-outline-variant: var(--border);
-  --color-surface-tint: var(--accent);
-  --color-error: var(--internal-fg);
-  --color-tertiary: var(--fg);
+  --color-primary: var(--c-action);
+  --color-primary-foreground: var(--on-action);
+  --color-primary-dim: var(--c-action);
+  --color-primary-muted: var(--c-text-muted);
+  --color-primary-fixed: var(--c-text);
+  --color-primary-fixed-dim: var(--c-action);
+  --color-primary-container: var(--c-action);
+  --color-on-primary-container: var(--on-action);
+  --color-secondary: var(--c-warning);
+  --color-secondary-foreground: var(--on-action);
+  --color-secondary-container: var(--c-warning);
+  --color-background: var(--c-bg);
+  --color-on-background: var(--c-text);
+  --color-surface: var(--c-surface);
+  --color-surface-container: var(--c-surface);
+  --color-surface-container-low: var(--c-surface);
+  --color-surface-container-lowest: var(--c-bg);
+  --color-surface-container-high: var(--c-surface);
+  --color-surface-container-highest: var(--c-surface);
+  --color-surface-bright: var(--c-surface);
+  --color-on-surface: var(--c-text);
+  --color-on-surface-variant: var(--c-text-muted);
+  --color-outline: var(--c-border);
+  --color-outline-variant: var(--c-border);
+  --color-surface-tint: var(--c-action);
+  --color-error: var(--c-warning);
+  --color-destructive: var(--c-warning);
+  --color-destructive-foreground: var(--on-action);
+  --color-ring: var(--c-action);
+  --color-input: var(--c-border);
+  --color-muted: var(--c-surface);
+  --color-muted-foreground: var(--c-text-muted);
+  --color-tertiary: var(--c-text);
 }
 
 * {
@@ -103,7 +174,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 2px solid var(--c-action);
   outline-offset: 2px;
 }
 
@@ -151,29 +222,13 @@ body::after {
   }
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
-}
-.material-symbols-filled {
-  font-variation-settings:
-    "FILL" 1,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
-}
-
-/* Glow effects */
+/* Glow effects — bound to registered accent only */
 .glow-sm {
-  box-shadow: 0 0 10px rgba(0, 230, 57, 0.3);
+  box-shadow: 0 0 10px var(--c-success);
 }
 
 .glow-md {
-  box-shadow: 0 0 20px rgba(0, 230, 57, 0.5);
+  box-shadow: 0 0 20px var(--c-success);
 }
 
 /* ===== FLICKER ANIMATIONS ===== */
@@ -341,19 +396,19 @@ body::after {
 
 /* ===== UTILITIES ===== */
 @utility animate-flicker {
-  animation: flicker 3s linear infinite;
+  animation: flicker 6s linear infinite;
 }
 
 @utility animate-flicker-fast {
-  animation: flicker 0.15s infinite;
+  animation: flicker 6s linear infinite;
 }
 
 @utility animate-flicker-text {
-  animation: flicker 0.1s infinite;
+  animation: flicker 6s linear infinite;
 }
 
 @utility animate-flicker-logo {
-  animation: flicker-logo 4s linear infinite;
+  animation: flicker-logo 6s linear infinite;
 }
 
 @utility animate-blink-block {
@@ -369,22 +424,22 @@ body::after {
 }
 
 @utility glow-sm {
-  box-shadow: 0 0 10px rgba(0, 230, 57, 0.3);
+  box-shadow: 0 0 10px var(--c-success);
 }
 
 @utility glow-md {
-  box-shadow: 0 0 20px rgba(0, 230, 57, 0.5);
+  box-shadow: 0 0 20px var(--c-success);
 }
 
 @utility text-glow {
-  text-shadow: 0 0 8px rgba(0, 230, 57, 0.8);
+  text-shadow: 0 0 8px var(--c-success);
 }
 
 @utility crosshair {
   position: absolute;
   width: 8px;
   height: 8px;
-  border-color: #3b4b37;
+  border-color: var(--border);
 }
 
 @utility crosshair-tl {
@@ -425,15 +480,13 @@ body::after {
     90deg,
     transparent,
     var(--accent),
-    #00ff55,
+    var(--accent-2),
     var(--accent),
     transparent
   );
   box-shadow:
-    0 0 30px var(--accent),
-    0 0 60px var(--accent),
-    0 0 90px rgba(0, 230, 57, 0.6),
-    0 0 120px rgba(0, 230, 57, 0.4);
+    0 0 8px var(--accent),
+    0 0 12px var(--accent);
   pointer-events: none;
   z-index: 99;
   opacity: 0.4;
@@ -445,10 +498,9 @@ body::after {
   left: 0;
   width: 100%;
   height: 12px;
-  background: linear-gradient(90deg, var(--accent), #00ff55);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   box-shadow:
-    0 0 40px 10px var(--accent),
-    0 0 200px 10px var(--accent);
+    0 0 8px var(--accent);
   pointer-events: none;
   z-index: 99;
   opacity: 10%;
@@ -481,15 +533,13 @@ body::after {
     90deg,
     transparent,
     var(--accent),
-    #00ff55,
+    var(--accent-2),
     var(--accent),
     transparent
   );
   box-shadow:
-    0 0 20px var(--accent),
-    0 0 40px var(--accent),
-    0 0 60px rgba(0, 230, 57, 0.5),
-    0 0 80px rgba(0, 230, 57, 0.3);
+    0 0 8px var(--accent),
+    0 0 12px var(--accent-2);
   z-index: 10;
   opacity: 0;
   transition: none;
@@ -523,7 +573,7 @@ body::after {
 /* Corner decorations - these need to be used with ::before and ::after in components */
 
 @utility crt-flicker-text {
-  animation: highFreqFlicker 0.2s infinite;
+  animation: flicker 6s linear infinite;
 }
 
 /* Corner decorations with pseudo-elements */
@@ -561,9 +611,6 @@ body::after {
 .crt-fallback {
   position: relative;
   overflow: hidden;
-  box-shadow:
-    inset 0 0 60px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(0, 230, 57, 0.2);
 }
 
 .crt-fallback::before {
@@ -601,21 +648,7 @@ body::after {
   z-index: 3;
 }
 
-/* Noise background for CRT static effect */
-.crt-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-  opacity: 0.08;
-  mix-blend-mode: overlay;
-}
-
-/* Color aberration effect for text */
-.crt-color-aberration {
-  text-shadow:
-    1px 0 0 rgba(255, 0, 0, 0.5),
-    -1px 0 0 rgba(0, 255, 255, 0.5);
-}
+/* Noise / aberration removed — decorative layers disallowed by DESIGN.md §7 */
 
 @keyframes crt-flicker {
   0%,
@@ -640,7 +673,7 @@ body::after {
 }
 
 .crt-flicker {
-  animation: crt-flicker 4s linear infinite;
+  animation: crt-flicker 6s linear infinite;
 }
 
 .corner-br::after {

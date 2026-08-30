@@ -72,7 +72,7 @@ export function ProjectArchiveSection({
                 cardsRef.current[index] = el;
               }
             }}
-            className="card-node group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low focus-visible:outline-none"
+            className="card-node group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low"
           >
             <div className="crosshair crosshair-tl" />
             <div className="crosshair crosshair-br" />

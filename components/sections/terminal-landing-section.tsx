@@ -129,10 +129,9 @@ export function TerminalLandingSection() {
                   ref={heroBodyRef}
                   className="text-body-lg font-body text-on-surface-variant leading-relaxed"
                 >
-                  Welcome, Operator. You have successfully bypassed the
-                  perimeter security protocols. The Subterranean GIN_OS is now
-                  at your disposal. Navigate through the encrypted nodes to
-                  review current projects and system specifications.
+                  Welcome, Operator. matrGINx is at your disposal.
+                  Navigate the node network to review current projects and
+                  system specifications.
                 </p>
                 <div className="space-y-1 font-mono text-on-surface-variant opacity-80 mt-8">
                   <p>IP_SOURCE........127.0.0.1</p>
@@ -188,7 +187,7 @@ export function TerminalLandingSection() {
               nodesRef.current[0] = el;
             }
           }}
-          className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md"
+          className="border border-outline-variant p-4 bg-background/60"
         >
           <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">
             [ DATA_STREAM_01 ]
@@ -203,7 +202,7 @@ export function TerminalLandingSection() {
               nodesRef.current[1] = el;
             }
           }}
-          className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md"
+          className="border border-outline-variant p-4 bg-background/60"
         >
           <p className="font-mono text-label-sm text-primary-fixed-dim mb-1">
             [ UPLINK_STATUS ]
@@ -218,17 +217,22 @@ export function TerminalLandingSection() {
               nodesRef.current[2] = el;
             }
           }}
-          className="border border-outline-variant p-4 bg-background/60 backdrop-blur-md flex items-center justify-between"
+          className="border border-outline-variant p-4 bg-background/60 flex items-center justify-between"
         >
           <p className="font-mono text-label-sm text-primary-fixed-dim">
             [ SECURE ]
           </p>
-          <span
-            className="material-symbols-outlined text-primary-fixed-dim"
-            style={{ fontVariationSettings: "'FILL' 1" }}
+          <svg
+            className="size-5 text-primary-fixed-dim"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="square"
+            aria-hidden="true"
           >
-            lock
-          </span>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4h-2V7a3 3 0 0 0-6 0v4zM5 11h14v9H5z" />
+          </svg>
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ export function ArticleToc({
         <li key={`${item.id}-${item.label}`}>
           <a
             href={`#${item.id}`}
-            className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors focus-visible:animate-flicker focus-visible:bg-primary-container focus-visible:text-on-primary-container ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}
+            className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}
           >
             <ScrambleText text={item.label} />
           </a>
