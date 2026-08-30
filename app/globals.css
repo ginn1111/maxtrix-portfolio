@@ -1,9 +1,25 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Pragmata Pro Liga";
-  src: url("/fonts/pragmata-pro-mono-r-liga.woff2") format("woff2");
+  font-family: "EnvyCodeR Nerd Font Mono";
+  src: url("/fonts/envy-code-r-nerd-font-mono-regular.ttf") format("truetype");
   font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EnvyCodeR Nerd Font Mono";
+  src: url("/fonts/envy-code-r-nerd-font-mono-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EnvyCodeR Nerd Font Mono";
+  src: url("/fonts/envy-code-r-nerd-font-mono-italic.ttf") format("truetype");
+  font-style: italic;
   font-weight: 400;
   font-display: swap;
 }
@@ -32,13 +48,15 @@
   --internal-fg: #f0a02a;
   --internal-border: rgb(240 160 42 / 0.5);
   --font-family-heading:
-    "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
-  --font-family-body: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-  --font-family-mono: "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
+    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
+  --font-family-body:
+    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
+  --font-family-mono:
+    "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
 }
 
 @theme {
-  --font-mono: "Pragmata Pro Liga", "SFMono-Regular", Menlo, monospace;
+  --font-mono: "EnvyCodeR Nerd Font Mono", "SFMono-Regular", Menlo, monospace;
   --color-primary: var(--accent);
   --color-primary-dim: var(--accent-dim);
   --color-primary-muted: var(--muted);
@@ -75,6 +93,10 @@ body {
   color: var(--fg);
   font-family: var(--font-family-body);
   overflow-x: hidden;
+}
+
+.uppercase {
+  font-weight: 700;
 }
 
 a:focus-visible,

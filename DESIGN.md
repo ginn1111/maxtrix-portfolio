@@ -1,184 +1,160 @@
----
-name: The System Architecture
-colors:
-  surface: '#131313'
-  surface-dim: '#131313'
-  surface-bright: '#393939'
-  surface-container-lowest: '#0e0e0e'
-  surface-container-low: '#1b1b1b'
-  surface-container: '#1f1f1f'
-  surface-container-high: '#2a2a2a'
-  surface-container-highest: '#353535'
-  on-surface: '#e2e2e2'
-  on-surface-variant: '#b9ccb2'
-  inverse-surface: '#e2e2e2'
-  inverse-on-surface: '#303030'
-  outline: '#84967e'
-  outline-variant: '#3b4b37'
-  surface-tint: '#00e639'
-  primary: '#ebffe2'
-  on-primary: '#003907'
-  primary-container: '#00ff41'
-  on-primary-container: '#007117'
-  inverse-primary: '#006e16'
-  secondary: '#ffd393'
-  on-secondary: '#432c00'
-  secondary-container: '#fdaf00'
-  on-secondary-container: '#694600'
-  tertiary: '#fcf8f8'
-  on-tertiary: '#313030'
-  tertiary-container: '#dfdcdb'
-  on-tertiary-container: '#626060'
-  error: '#ffb4ab'
-  on-error: '#690005'
-  error-container: '#93000a'
-  on-error-container: '#ffdad6'
-  primary-fixed: '#72ff70'
-  primary-fixed-dim: '#00e639'
-  on-primary-fixed: '#002203'
-  on-primary-fixed-variant: '#00530e'
-  secondary-fixed: '#ffddaf'
-  secondary-fixed-dim: '#ffba43'
-  on-secondary-fixed: '#281800'
-  on-secondary-fixed-variant: '#614000'
-  tertiary-fixed: '#e5e2e1'
-  tertiary-fixed-dim: '#c9c6c5'
-  on-tertiary-fixed: '#1c1b1b'
-  on-tertiary-fixed-variant: '#474646'
-  background: '#131313'
-  on-background: '#e2e2e2'
-  surface-variant: '#353535'
-typography:
-  headline-xl:
-    fontFamily: JetBrains Mono
-    fontSize: 48px
-    fontWeight: '700'
-    lineHeight: '1.1'
-    letterSpacing: -0.05em
-  headline-lg:
-    fontFamily: JetBrains Mono
-    fontSize: 32px
-    fontWeight: '600'
-    lineHeight: '1.2'
-    letterSpacing: -0.02em
-  headline-md:
-    fontFamily: JetBrains Mono
-    fontSize: 24px
-    fontWeight: '600'
-    lineHeight: '1.3'
-    letterSpacing: 0em
-  body-lg:
-    fontFamily: JetBrains Mono
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.5'
-    letterSpacing: 0em
-  body-md:
-    fontFamily: JetBrains Mono
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.5'
-    letterSpacing: 0em
-  label-sm:
-    fontFamily: Space Mono
-    fontSize: 12px
-    fontWeight: '700'
-    lineHeight: '1'
-    letterSpacing: 0.1em
-  code-sm:
-    fontFamily: Space Mono
-    fontSize: 14px
-    fontWeight: '400'
-    lineHeight: '1.4'
-    letterSpacing: 0em
-spacing:
-  unit: 4px
-  gutter: 16px
-  margin: 24px
-  container-max: 1440px
----
+# matrGINx Design System
 
-## Brand & Style
+> Category: Project Design System
+> Surface: web
+> Lineage: ginn1111 operator interface layer
+> Version: v1.1.2026
+> Brand mark: matr**GIN**x (GIN rendered in Access Cyan)
 
-This design system is built on the aesthetic of a high-security subterranean mainframe. It evokes a sense of technical mastery, raw data access, and digital subversion. The brand personality is clinical yet energetic, stripping away modern "user-friendly" fluff in favor of a powerful, retro-futuristic terminal interface.
+matrGINx is the operator interface layer for ginn1111. It reads like a terminal and ships like a product: square corners, phosphor fields, one accent used only where attention is earned, and honest, implementation-specific copy. Build pages from stacked information blocks; keep the signal high and the noise off.
 
-The visual direction combines **Digital Brutalism** with **Retro-Futuristic** cinematic cues. It prioritizes information density and functional clarity, using light and color as the primary means of hierarchy against a void-like background. The goal is to make the user feel like an operator navigating the core of a complex simulation.
+## 0. Context (source-backed)
 
-## Colors
+This design system is generated from the imported OpenDesign project `matrginx-design-system` (project location `loc_G2opKORU_jGtsd6m`). The copied artifact `design-system.html` is the primary evidence: its `:root` block supplies the color and type tokens, and its markup supplies component, layout, motion, and copy patterns below.
 
-The palette is strictly limited to maintain the high-contrast terminal aesthetic.
+- **Source product:** the ginn1111 operator interface — a terminal-read, product-shipped surface for node/command/system operations.
+- **Primary surfaces:** fixed left-rail console, stacked information blocks, system log, command input, status badges.
+- **Core capabilities:** node fleet status, command dispatch, system logging, operator feedback with reduced-motion fallback.
+- **Evidence → tokens:** seven registered colors plus internal-status amber are read directly from the source `:root`.
+- **Inference:** no images, icons, avatars, or font files were copied into the source project; the declared fallback stacks remain the contract unless this repository explicitly bundles compatible fonts.
 
-- **Primary (#00FF41):** Digital Green. Used for all active data, primary text, and success states. It represents the "pulse" of the system.
-- **Secondary (#FFB000):** Warning Amber. Reserved for alerts, system overrides, and secondary highlights.
-- **Background (#000000):** Total Black. The foundation of the UI, creating an infinite void that allows glowing elements to pop.
-- **Surface (#0D0D0D):** A subtle variation used only for rare structural separation where borders are insufficient.
+No fabricated metrics, decorative imagery, or invented tokens are introduced.
 
-All colors should be applied with a "luminescent" mindset. Text and borders are not just colored; they are sources of light on the screen.
+## 1. Visual Theme & Atmosphere
 
-## Typography
+A deep green-black command surface lit by phosphor mint text and a single Access Cyan accent. The mood is technical, precise, self-aware, and operator-focused. Negative space is generous; structure is carried by 1px hairlines, not shadows. Brief system feedback (scanlines, flicker, pulse, phosphor bloom) is permitted with a reduced-motion fallback — it is feedback, not decoration.
 
-The typography system relies exclusively on monospaced fonts to reinforce the command-line origin of the interface.
+The light kit is an on-palette inversion: a phosphor-mint field with deep-moss ink. It is not a generic white or cream theme.
 
-**JetBrains Mono** is the workhorse for primary data and headlines, chosen for its exceptional legibility and technical precision. **Space Mono** is utilized for metadata, labels, and small UI annotations to provide a slightly more geometric, "sci-fi" texture.
+Anti-goals: purple gradients, busy hero photography, cartoon sci-fi imagery, unlabeled stock art, avatars as hero art, invented metrics, decorative imagery where evidence is absent, and off-palette light backgrounds.
 
-All typography should implement a subtle `text-shadow` using the primary color to simulate CRT phosphor bloom. For critical headers, an "all-caps" approach is preferred to signal authority.
+## 2. Color
 
-## Layout & Spacing
+Every literal must be one of these registered values:
 
-This design system employs a **Fixed Grid** model based on a 4px baseline unit.
+| Token | Hex | Role |
+|---|---|---|
+| `--bg` | `#0f160f` | Page field (Deep Moss) |
+| `--surface` | `#112615` | Raised panels (Subterranean Green) |
+| `--fg` | `#83f5c8` | Primary text (Phosphor Mint) |
+| `--muted` | `#6ea098` | Secondary text and labels (Signal Gray) |
+| `--border` | `#267d69` | 1px structure (Trace Line) |
+| `--accent` | `#1ad6b0` | Action, active, completion (Access Cyan) |
+| `--accent-2` | `#18e000` | Live signal (Public Green) |
+| `--warn` | `#d8a23a` | Internal status/warning only (Amber) |
 
-- **Grid:** A 12-column layout on desktop, 6-column on tablet, and 2-column on mobile.
-- **Gutters:** Standardized at 16px to ensure a tight, dense information flow characteristic of developer tools.
-- **Structural Lines:** Use 1px green lines instead of whitespace to define regions. The layout should look like a blueprint or a schematic.
+Semantic aliases must bind component code to intent:
 
-The interface should feel "locked" to the screen edges. Avoid excessive margins; the content should feel like it is filling the terminal window.
+| Role | Binds to | Use for |
+|---|---|---|
+| `--c-bg` | `--bg` | Page and field background |
+| `--c-surface` | `--surface` | Raised panels and cards |
+| `--c-text` | `--fg` | Primary copy and headings |
+| `--c-text-muted` | `--muted` | Labels, secondary copy, placeholders |
+| `--c-border` | `--border` | 1px structure |
+| `--c-action` | `--accent` | Action, active, completion |
+| `--c-success` | `--accent-2` | Live signal |
+| `--c-warning` | `--warn` | Internal status only |
 
-## Elevation & Depth
+Use `--invert: #0f160f` and `--on-action: var(--invert)` for ink over accent fills. Accent, success, and warning text on a field must use `--c-action-fg`, `--c-success-fg`, and `--c-warning-fg`; these resolve to deep moss in the light kit for contrast. The source contrast target is at least 4.5:1 for normal text and 3:1 for large text/UI components.
 
-Depth is not achieved through shadows or Z-axis stacking, but through **luminosity and scanline density.**
+Access Cyan is precious: use it at most twice per screen, for actions and active/completion states, never as a large wash. Hover must not dim foreground text; shift background or border instead. When a solid button inverts on hover, swap foreground and background together.
 
-- **Z-Index 0:** Pure black background with a fixed, semi-transparent CRT scanline overlay (horizontal 1px lines).
-- **Z-Index 1:** The main grid and structural borders. These have a faint glow.
-- **Z-Index 2:** Active data and primary text. High-intensity glow.
-- **Z-Index 3:** Modals and pop-overs. These should not "float" with shadows; instead, they should "cut into" the background with a solid 1px glowing border and a solid black fill that obscures the content beneath.
+## 3. Typography
 
-To simulate CRT flicker, a very subtle 0.05s opacity jitter can be applied to high-priority elements.
+| Role | Stack | Notes |
+|---|---|---|
+| Display, headings, labels, IDs, logs, status | `"EnvyCodeR Nerd Font", EnvyCodeR, SFMono-Regular, Menlo, monospace` | Mono terminal voice |
+| Body/explanatory copy | `"Trebuchet MS", "Segoe UI", system-ui, sans-serif` | Human counterweight |
+| Data marks/mono | `"EnvyCodeR Nerd Font Mono", EnvyCodeR, SFMono-Regular, Menlo, monospace` | IDs, metrics, paths |
 
-## Shapes
+Source specimen scale: display-xl 40px, display-md 24px, body 16px, mono 14px, labels 11–12px uppercase and tracked. Display and body are intentionally different families.
 
-The shape language is strictly **Sharp (0px).**
+## 4. Spacing and Shape
 
-Curves represent organic softness which has no place in this system. Every container, button, and input field must feature 90-degree corners. This reinforces the grid-based, mathematical nature of the interface. Borders should always be 1px in width—never thicker—to maintain a precise, "wireframe" aesthetic.
+- Corner radius: **0px** on every surface.
+- Border weight: **1px** hairlines; avoid heavy shadows.
+- Baseline: 4px utility scale with a dominant 8 / 16 / 32px rhythm.
+- Tokens: `--space-1`…`--space-6` = 4 / 8 / 16 / 24 / 32 / 48px.
+- Touch targets: at least 44px.
 
-## Components
+## 5. Layout and Composition
 
-### Buttons
+- Fixed left rail: `--rail: 240px` on desktop; compact top bar at `≤860px`.
+- Main content: centered `--maxw: 56rem` column on a 12-column desktop rhythm with 8px gutters.
+- Pages: stacked information blocks and square-corner panels with 1px borders.
+- Body copy: at least 16px; titles: at least 36px on 1080p surfaces.
+- Mobile must not scroll horizontally; redesign rather than squeeze.
 
-Buttons are treated as command prompts.
+## 6. Components
 
-- **Idle State:** 1px green border, green text, no fill.
-- **Hover/Focus State:** Solid green background, black text. A cursor character `_` should appear at the end of the button label.
-- **Interaction:** On click, the button should "flash" or invert colors briefly to simulate a mechanical terminal response.
+| Component | Spec | States |
+|---|---|---|
+| Primary button | `--c-action` fill, `--on-action` ink, 44px minimum, mono 14px, 1px border; inverts to outline on hover; one primary per viewport. | rest, hover, active, focus ring, disabled |
+| Ghost button | Transparent, `--c-border` edge, `--c-text`; border becomes action on hover. | rest, hover, focus, disabled |
+| Input | `--c-bg` field, 1px `--c-border`, mono 14px, 44px; accent focus ring; muted placeholder. | rest, focus, disabled, readonly |
+| Badge | 1px bordered mono 12px chip. Variants: default, signal, live, warn. | static; live pulse optional |
+| System log | Mono 13px on `--c-bg`, 1px border; `[ok]` success, `[sig]` action, `[w]` warning. | streaming, reduced-motion |
+| Panel/hero | `--c-surface` block, 1px border, optional phosphor-bloom corner glow; no heavy shadow. | rest, motion-safe glow |
 
-### Input Fields
+Component tokens: `--ctrl-h: 44px`, `--btn-fs: 14px`, `--input-fs: 14px`, `--badge-fs: 12px`, `--log-fs: 13px`, `--label-fs: 11px`.
 
-Inputs are preceded by a `>` prompt character.
+## 7. Motion and Interaction
 
-- **Visuals:** A bottom border only, or a full thin border.
-- **Focus:** The border glows intensely. The text cursor is a solid green block that blinks.
+- Scanlines and phosphor bloom via `body::before`; flicker keyframe is 6s.
+- `prefers-reduced-motion: reduce` disables flicker and smooth scrolling.
+- Hover shifts background by approximately ±0.08 L; foreground remains unchanged.
+- Every control gets a 2px accent `:focus-visible` ring.
+- Disabled is the only state allowed to reduce contrast.
 
-### Chips & Tags
+## 8. Voice and Brand
 
-Small, all-caps labels enclosed in brackets, e.g., `[ STATUS: ACTIVE ]`. These do not have backgrounds, only text and brackets.
+**Brand:** matrGINx — the matrix-themed operator layer built by GIN on the ginn1111 command substrate. The wordmark carries `GIN` in Access Cyan. Use concise, systems-minded terminal language with controlled security-fiction framing and direct human explanation. Prefer operator, system, node, signal, command, module, repository, and ready for input. Avoid vague claims, fake metrics, filler copy, and polished corporate language.
 
-### Cards & Containers
+## 9. Anti-patterns
 
-Containers are simple 1px boxes. To add "high-tech" detail, corners can feature "crosshair" extensions (lines that extend 4px past the corner intersection).
+- Purple gradient washes or gradients on every background layer.
+- Emoji as functional icons; hand-drawn people/scenes.
+- Colored vertical bars with rounded callout cards.
+- Hover states that make text gray/lighter.
+- Multiple solid buttons for the same action in one viewport.
+- Icons beside every heading; invented metrics or filler copy.
+- Warm beige/cream backgrounds by default.
+- Non-zero radius, heavy shadows, amber as a brand accent.
+- Busy hero photography, cartoon sci-fi, unlabeled stock imagery.
+- Off-palette light themes.
 
-### Data Lists
+## 10. Implementation Contract
 
-Standardized as key-value pairs separated by dots: `USER_ID........29384-X`. This maintains the horizontal rhythm of a terminal readout.
+- Bind every component to semantic `--c-*` roles. Do not inline hex in component CSS.
+- Theme switching is done with `data-theme="light"` on `html` or a wrapper; no JS is required for color. Default is dark.
+- Author both dark and light contrast pairs: `(--fg, --bg)` and `(--on-action, --accent)`.
+- Accent/success/warning text on fields uses the corresponding `--c-*-fg` alias.
+- Interactive components carry stable `data-od-id` hooks for OpenDesign mapping and contrast audits.
+- Shipped token groups are palette, semantic roles, ink, three type stacks, spacing, layout, component, and motion tokens.
+- OpenDesign reference files: `colors_and_type.css`, `theme.json`, `preview/*.html`, and `ui_kits/app/` in project `237b4471-78d6-49a1-8502-b1a9a264c00d`.
 
-### Feedback Elements
+## 11. Current Code Alignment
 
-Warnings must use the Amber (#FFB000) color for both text and borders. Errors should trigger a "System Failure" style visual, utilizing high-frequency blinking of the Amber elements.
+This section is an evidence-based comparison against the repository at the time this document was updated. It is intentionally not a claim that the code is already compliant.
+
+### Aligned
+
+- The code uses the core registered dark palette for `--bg`, `--fg`, `--muted`, `--border`, and `--accent`.
+- EnvyCodeR Nerd Font Mono is bundled and used throughout the current application.
+- CRT scanlines, flicker/blink utilities, reduced-motion handling, square border styling, 44px-class controls, and dot-leader data rows are already represented.
+- The desktop navigation is a fixed left rail and the app prevents horizontal overflow.
+
+### Mismatches to resolve
+
+1. **Token drift:** current `--surface` is `#1b342d` instead of the registered `#112615`; extra semi-transparent and RGB tokens introduce off-palette literals. Current amber is `#f0a02a` rather than registered `#d8a23a`.
+2. **No semantic token layer/light kit:** current CSS has no `--c-*` aliases, `--invert`, `--on-action`, component/layout/motion token set, or `[data-theme="light"]` kit.
+3. **Typography mismatch:** body, heading, and mono all resolve to EnvyCodeR Nerd Font Mono; the design requires display EnvyCodeR Nerd Font, readable body Trebuchet/Segoe/system, and separate data mono stack.
+4. **Focus mismatch:** current global focus outline is 1px; the design requires a 2px accent ring on every control.
+5. **Motion/elevation mismatch:** the implementation has multiple heavy glow box-shadows, gradients, noise, color aberration, high-frequency flicker, and z-index overlays. The design limits depth to hairlines/luminosity and brief feedback, with a 6s flicker and no decorative effects.
+6. **Component contract mismatch:** code uses legacy Tailwind names and raw role mappings instead of the design's semantic roles; stable `data-od-id` hooks and explicit primary/ghost/input/badge/log state contracts are not consistently present.
+7. **Layout mismatch:** current sidebar widths are responsive `60px`/`16rem` rather than the specified `240px` rail, and current content/layout primitives do not clearly implement the measured `56rem` centered column and 8px gutter rhythm.
+8. **Brand/copy mismatch:** current metadata and UI still foreground the old “high-security subterranean mainframe” framing and Material Symbols Google font dependency instead of the matrGINx wordmark/voice and self-hosted/fallback-only source contract.
+9. **Palette hardcoding in code:** `lib/shiki-theme.ts` and utility styles contain direct hex/RGB values, violating the semantic-token single-source-of-truth rule.
+
+These mismatches are documentation findings only; this update does not modify application styling or component behavior.

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { AppLayout } from "@/app/shared";
+import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {

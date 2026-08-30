@@ -4,6 +4,7 @@ import type { BlogPost } from "@/data/blog";
 import { BLOG_POSTS } from "@/data/blog";
 import { DigitalFlicker } from "@/components/ui/glitch-text";
 import { ArticleToc } from "./article-toc";
+import { ArticleCallout } from "./article-callout";
 import { CopyLinkButton } from "./copy-link-button";
 import { Newsletter } from "./newsletter";
 import { ShikiCodeBlock } from "./shiki-code-block";
@@ -61,15 +62,9 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
   }));
 
   return (
-    <div className="reading-layout mx-auto grid w-full max-w-container-max grid-cols-1 gap-10 px-5 py-8 lg:grid-cols-[minmax(0,720px)_240px] lg:justify-center">
+    <>
       <main id="main" className="min-w-0">
         <article>
-          <nav className="mb-4 flex flex-wrap items-center font-mono text-xs uppercase tracking-[0.04em] text-on-surface-variant" aria-label="Breadcrumb">
-            <Link href="/hub" className="cursor-pointer text-on-surface-variant hover:text-primary-fixed-dim">← BACK_TO_HUB</Link>
-            <span className="mx-2 text-primary-fixed-dim" aria-hidden="true">/</span>
-            <span>{post.tags[0]}</span>
-          </nav>
-
           <span className="mb-3 inline-block font-mono text-[11px] uppercase tracking-[0.12em] text-primary-fixed-dim">ARTICLE</span>
           <h1 className="max-w-[22ch] font-heading text-[clamp(26px,4vw,40px)] font-bold uppercase leading-tight tracking-tight text-on-surface">
             <DigitalFlicker config={{ delay: 5000, xOffest: 3 }}>
@@ -100,10 +95,9 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
                 {section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-4">{paragraph}</p>)}
               </section>
             ))}
-            <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--accent)" }}>
-              <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} className="mb-1 font-mono text-xs font-bold uppercase text-primary-fixed-dim">NOTE</DigitalFlicker>
-              <p className="mb-0 text-sm">The content model stays local and explicit so the listing and detail route cannot silently drift apart.</p>
-            </div>
+            <ArticleCallout variant="note">
+              The content model stays local and explicit so the listing and detail route cannot silently drift apart.
+            </ArticleCallout>
             <ShikiCodeBlock name="article-model.ts" language="typescript" code={CODE_SNIPPETS.typescript} />
 
             <h2 id="implementation" className="mt-12 border-t border-outline-variant pt-5 font-heading text-headline-md uppercase text-primary-fixed-dim">IMPLEMENTATION_NOTES</h2>
@@ -114,10 +108,9 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
               </section>
             ))}
             <ShikiCodeBlock name="terminal.log" language="shellscript" code={CODE_SNIPPETS.shell} />
-            <div className="my-6 border border-outline-variant border-l-4 bg-surface-container-low p-4" style={{ borderLeftColor: "var(--internal-fg)" }}>
-              <DigitalFlicker config={{ delay: 7000, xOffest: 2 }} glitchColor="var(--internal-fg)" className="mb-1 font-mono text-xs font-bold uppercase text-secondary">WARNING</DigitalFlicker>
-              <p className="mb-0 text-sm">Decorative motion must remain subordinate to the reading flow and respect reduced-motion preferences.</p>
-            </div>
+            <ArticleCallout variant="warning">
+              Decorative motion must remain subordinate to the reading flow and respect reduced-motion preferences.
+            </ArticleCallout>
 
             <h2 id="production" className="mt-12 border-t border-outline-variant pt-5 font-heading text-headline-md uppercase text-primary-fixed-dim">PRODUCTION_CHECKS</h2>
             <p className="mb-4">The article surface is complete only when its links, focus states, responsive layout, and generated route behavior are verified together.</p>
@@ -140,7 +133,6 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
             <p className="mb-3">LAST_UPDATED: {post.date}</p>
             <div className="flex flex-wrap gap-2">
               <CopyLinkButton />
-              <Link href="/hub" className="border border-outline-variant px-3 py-2 hover:border-primary hover:text-primary-fixed-dim">RETURN_TO_HUB</Link>
             </div>
           </footer>
         </article>
@@ -161,7 +153,7 @@ export function ArticleDetail({ post }: { post: BlogPost }) {
       </main>
 
       <ArticleToc items={[...TOC_ITEMS, ...sectionToc]} />
-    </div>
+    </>
   );
 }
 

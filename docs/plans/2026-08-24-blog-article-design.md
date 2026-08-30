@@ -6,7 +6,6 @@ owner: ginb
 ---
 
 # Full Blog Article Detail Design
-
 ## Goal
 
 Implement the full article-reading experience for `/hub/blog/[slug]` using the OpenDesign `article.html` structure while preserving the current Matrix portfolio theme, global shell, design tokens, Pragmata Pro Liga font, and existing static blog data.
