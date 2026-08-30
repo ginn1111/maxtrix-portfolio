@@ -103,37 +103,23 @@ export function TestimonialsSection() {
               <div className="crosshair crosshair-bl" />
               <div className="crosshair crosshair-br" />
 
-              <svg
-                className="size-8 text-primary-fixed-dim"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="square"
-                aria-hidden="true"
-                style={{ transform: "scaleX(-1)" }}
+              <span
+                className="material-symbols-outlined text-primary-fixed-dim mb-4 block"
+                style={{ fontVariationSettings: "'FILL' 1" }}
               >
-                <path d="M9 6c4 2 6 5 6 9M15 6c-4 2-6 5-6 9" />
-              </svg>
+                format_quote
+              </span>
 
               <p className="font-body text-body-sm text-on-surface-variant mb-6 leading-relaxed italic">
                 &quot;{t.quote}&ldquo;
               </p>
 
               <div className="flex items-center gap-3 border-t border-outline-variant pt-4 mt-auto">
-                <span className="w-10 h-10 border border-primary-fixed-dim flex items-center justify-center">
-                  <svg
-                    className="size-5 text-primary-fixed-dim"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="square"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5" />
-                  </svg>
-                </span>
+                <div className="w-10 h-10 border border-primary-fixed-dim flex items-center justify-center">
+                  <span className="material-symbols-outlined text-primary-fixed-dim text-sm">
+                    person
+                  </span>
+                </div>
                 <div>
                   <p className="font-mono text-label-sm text-primary-fixed-dim uppercase">
                     <DigitalFlicker>{t.name}</DigitalFlicker>

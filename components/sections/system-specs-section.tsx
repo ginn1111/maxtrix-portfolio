@@ -218,17 +218,12 @@ export function SystemSpecsSection() {
           <div className="crosshair crosshair-br" />
 
           <div className="flex items-center gap-3 mb-6">
-            <svg
-              className="size-5 text-primary-fixed-dim"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="square"
-              aria-hidden="true"
+            <span
+              className="material-symbols-outlined text-primary-fixed-dim"
+              style={{ fontVariationSettings: "'FILL' 1" }}
             >
-              <path d="M12 3l9 5-9 5-9-5 9-5zM3 17l9 5 9-5M3 12l9 5 9-5" />
-            </svg>
+              lock_open
+            </span>
             <h2 className="font-heading text-headline-lg text-primary-fixed-dim uppercase tracking-tighter">
               DECRYPTED_PROFILE_DATA
             </h2>
@@ -274,17 +269,7 @@ export function SystemSpecsSection() {
           <div className="crosshair crosshair-br" />
 
           <h3 className="font-heading text-headline-md text-primary-fixed-dim mb-8 flex items-center gap-3 uppercase">
-            <svg
-              className="size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="square"
-              aria-hidden="true"
-            >
-              <path d="M8 4h8v4H8zM4 10h16v10H4zM8 13h3M8 16h3" />
-            </svg>
+            <span className="material-symbols-outlined">code</span>
             TECH_STACK
           </h3>
 
@@ -311,17 +296,7 @@ export function SystemSpecsSection() {
           <div className="crosshair crosshair-br" />
 
           <h3 className="font-heading text-headline-md text-primary-fixed-dim mb-6 flex items-center gap-3 uppercase">
-            <svg
-              className="size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="square"
-              aria-hidden="true"
-            >
-              <path d="M3 5h18v14H3zM3 8h18M7 11h4M7 14h8" />
-            </svg>
+            <span className="material-symbols-outlined">school</span>
             EDUCATION
           </h3>
 

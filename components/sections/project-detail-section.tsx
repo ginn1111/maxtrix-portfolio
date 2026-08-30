@@ -183,7 +183,7 @@ export function ProjectDetailSection() {
             <span className="animate-pulse">●</span>
             LINKS:
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 group/link">
             {/* Live Demo Link */}
             {project.isPublic && project.link && (
               <div
@@ -192,7 +192,7 @@ export function ProjectDetailSection() {
                 onMouseLeave={() => setIsHoveringLink(false)}
               >
                 <div
-                  className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
+                  className="absolute bottom-0 left-0 h-full bg-primary transition-all duration-50"
                   style={{ width: `${linkProgress}%` }}
                 />
                 <div className="font-mono text-code-sm text-primary-fixed-dim text-center">
@@ -202,7 +202,7 @@ export function ProjectDetailSection() {
                     <Link
                       target="_blank"
                       href={project.link}
-                      className="text-on-surface-variant hover:text-primary transition-colors flex items-center"
+                      className="text-on-surface-variant group-hover/link:text-on-primary-container transition-colors flex items-center"
                     >
                       [
                       <DigitalFlicker className="truncate max-w-full">
@@ -223,17 +223,17 @@ export function ProjectDetailSection() {
                 onMouseLeave={() => setIsHoveringLink(false)}
               >
                 <div
-                  className="absolute bottom-0 left-0 h-full bg-primary-fixed-dim transition-all duration-50"
+                  className="absolute bottom-0 left-0 h-full bg-primary transition-all duration-50"
                   style={{ width: `${linkProgress}%` }}
                 />
-                <div className="font-mono text-code-sm text-primary-fixed-dim text-center flex items-center">
+                <div className="font-mono text-code-sm text-primary-fixed-dim text-center flex items-center group-hover/link:text-on-primary-container">
                   {linkProgress >= 100 ? (
                     <span className="animate-pulse">OPENING_LINK...</span>
                   ) : (
                     <Link
                       target="_blank"
                       href={project.githubLink}
-                      className="text-on-surface-variant hover:text-primary transition-colors truncate min-w-0 flex"
+                      className="text-on-surface-variant group-hover/link:text-on-primary-container transition-colors truncate min-w-0 flex"
                     >
                       [
                       <DigitalFlicker className="max-w-full truncate">

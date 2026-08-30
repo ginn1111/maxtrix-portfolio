@@ -64,35 +64,9 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
           : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"
       }`}
     >
-      <span className="hidden">{icon}</span>
-      <svg
-        className="size-4 shrink-0"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="square"
-        aria-hidden="true"
-      >
-        {icon === "terminal" && (
-          <path d="M4 17l6-5-6-5M12 19h8" />
-        )}
-        {icon === "work_history" && (
-          <path d="M3 5h18v14H3zM3 9h18M7 13h4" />
-        )}
-        {icon === "account_tree" && (
-          <path d="M6 3h12v6H6zM4 15h16v6H4zM12 9v6" />
-        )}
-        {icon === "format_quote" && (
-          <path d="M10 7H6v6h4v4M18 7h-4v6h4v4" />
-        )}
-        {icon === "menu_book" && (
-          <path d="M4 4h7v16H4zM13 4h7v16h-7zM4 8h7M4 12h7M13 8h7M13 12h7" />
-        )}
-        {icon === "lock" && (
-          <path d="M7 11V7a5 5 0 0 1 10 0v4h-2V7a3 3 0 0 0-6 0v4zM5 11h14v9H5z" />
-        )}
-      </svg>
+      <span className="material-symbols-outlined shrink-0" aria-hidden="true">
+        {icon}
+      </span>
       <ScrambleText
         className="hidden lg:inline"
         text={label}
