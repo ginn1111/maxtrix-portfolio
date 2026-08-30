@@ -113,7 +113,6 @@ export function SystemSpecsSection() {
             {/* Bottom label with glow */}
             <div className="absolute bottom-4 left-4 font-heading text-primary-fixed-dim text-sm z-20">
               <span className="relative">
-                <span className="absolute inset-0 blur-sm bg-primary-fixed-dim/50 -z-10" />
                 <DigitalFlicker>[ +3YOE ]</DigitalFlicker>
               </span>
             </div>
@@ -142,7 +141,7 @@ export function SystemSpecsSection() {
                   href="https://github.com/ginn1111"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-fixed-dim hover:text-primary transition-colors cursor"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors cursor focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   aria-label="GitHub"
                 >
                   <svg
@@ -157,7 +156,7 @@ export function SystemSpecsSection() {
                   href="https://www.linkedin.com/in/thuanpv-frontenddev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -172,7 +171,7 @@ export function SystemSpecsSection() {
                   href="https://www.facebook.com/vanthuan1309"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   aria-label="Facebook"
                 >
                   <svg
@@ -192,14 +191,14 @@ export function SystemSpecsSection() {
               <div className="flex flex-col items-end gap-1 flex-1">
                 <a
                   href="mailto:vanthuanjw@gmail.com"
-                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   vanthuanjw@gmail.com
                 </a>
 
                 <a
                   href="tel:0365338185"
-                  className="text-primary-fixed-dim hover:text-primary transition-colors"
+                  className="text-primary-fixed-dim hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   0365338185
                 </a>

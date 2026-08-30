@@ -12,7 +12,7 @@ interface TerminalEntryProps {
 
 export function TerminalEntry({ id, title, date, tags, excerpt }: TerminalEntryProps) {
   return (
-    <div className="group border border-outline-variant p-4 hover:border-primary-fixed transition-colors cursor-pointer">
+    <div className="group border border-outline-variant p-4 hover:border-primary-fixed transition-colors cursor-pointer" data-od-id="terminal-entry">
       <div className="flex items-start gap-4">
         <span className="text-xs font-mono text-secondary shrink-0 pt-1">
           [{id}]

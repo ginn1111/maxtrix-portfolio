@@ -104,17 +104,17 @@ export function TestimonialsSection() {
               <div className="crosshair crosshair-br" />
 
               <svg
-                          className="size-8 text-primary-fixed-dim"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="square"
-                          aria-hidden="true"
-                          style={{ transform: "scaleX(-1)" }}
-                        >
-                          <path d="M9 6c4 2 6 5 6 9M15 6c-4 2-6 5-6 9" />
-                        </svg>
+                className="size-8 text-primary-fixed-dim"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="square"
+                aria-hidden="true"
+                style={{ transform: "scaleX(-1)" }}
+              >
+                <path d="M9 6c4 2 6 5 6 9M15 6c-4 2-6 5-6 9" />
+              </svg>
 
               <p className="font-body text-body-sm text-on-surface-variant mb-6 leading-relaxed italic">
                 &quot;{t.quote}&ldquo;

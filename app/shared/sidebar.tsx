@@ -58,7 +58,7 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
   return (
     <Link
       href={href}
-      className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all ${
+      className={`px-4 py-3 flex items-center gap-3 font-mono text-code-sm uppercase transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
         isActive
           ? "bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim"
           : "text-on-surface-variant hover:text-primary-fixed hover:bg-surface-container"

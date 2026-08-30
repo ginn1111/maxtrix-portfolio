@@ -140,7 +140,7 @@ export function TerminalLandingSection() {
                 </div>
               </div>
               <div className="lg:col-span-5 flex flex-col gap-4">
-                <Link href="/specs" className="block">
+                <Link href="/specs" className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                   <TerminalButton className="group w-full text-headline-md gap-0 h-min py-3">
                     COMMAND: USER_SPECS
                     <div className="absolute bottom-0 left-0 h-1 bg-primary-container w-0 group-hover:w-full transition-all duration-300" />

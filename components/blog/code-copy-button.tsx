@@ -15,7 +15,7 @@ export function CodeCopyButton({ code }: { code: string }) {
     <button
       type="button"
       onClick={copyCode}
-      className="ml-auto cursor-pointer border border-outline-variant bg-surface-container-low px-2.5 py-1 font-mono text-[11px] uppercase text-on-surface-variant transition-colors hover:border-primary hover:bg-primary-container hover:text-on-primary-container"
+      className="ml-auto cursor-pointer border border-outline-variant bg-surface-container-low px-2.5 py-1 font-mono text-[11px] uppercase text-on-surface-variant transition-colors hover:border-primary hover:bg-primary-container hover:text-on-primary-container focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       aria-live="polite"
     >
       {copied ? "COPIED" : "COPY"}

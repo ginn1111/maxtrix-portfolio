@@ -24,7 +24,7 @@ export function Newsletter() {
       <p className="mt-2 max-w-2xl text-sm leading-6 text-on-surface-variant">One practical lesson about engineering, media processing, or frontend architecture every two weeks.</p>
       <form className="mt-4 flex flex-wrap gap-2" onSubmit={submit}>
         <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="YOU@EXAMPLE.COM" aria-label="Email address" data-od-id="input" className="min-h-11 min-w-0 flex-1 border border-outline-variant bg-background px-3 font-mono text-xs uppercase text-on-surface placeholder:text-on-surface-variant focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" />
-        <button type="submit" data-od-id="button" className="cursor-pointer border border-primary-container bg-primary-container px-4 font-mono text-xs font-bold uppercase text-on-primary-container hover:bg-primary-dim">SUBSCRIBE</button>
+        <button type="submit" data-od-id="button" className="cursor-pointer border border-primary-container bg-primary-container px-4 font-mono text-xs font-bold uppercase text-on-primary-container hover:bg-primary-dim focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">SUBSCRIBE</button>
       </form>
       <p className="mt-2 min-h-4 font-mono text-[11px] uppercase text-primary-fixed-dim" role="status" aria-live="polite">{status}</p>
     </section>

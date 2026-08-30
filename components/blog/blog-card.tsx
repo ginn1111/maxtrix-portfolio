@@ -9,6 +9,7 @@ export const BlogCard = forwardRef<HTMLAnchorElement, { post: BlogPost }>(
       <Link
         ref={ref}
         href={`/hub/blog/${post.slug}`}
+        data-od-id="blog-card"
         className="group/project relative block min-w-0 cursor-pointer border border-outline-variant bg-surface-container-lowest p-6 transition-colors hover:border-primary hover:bg-surface-container-low max-md:p-[18px]"
       >
         <span className="crosshair crosshair-tl" aria-hidden="true" />

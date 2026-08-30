@@ -13,6 +13,7 @@ interface ProjectCardProps {
 export function ProjectCard({ id, title, description, status, className }: ProjectCardProps) {
   return (
     <Card
+      data-od-id="project-card"
       className={cn(
         "bg-surface border-primary/50 border",
         "hover:bg-primary hover:border-primary",

@@ -37,7 +37,7 @@ export function ArticleToc({
         <li key={`${item.id}-${item.label}`}>
           <a
             href={`#${item.id}`}
-            className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}
+            className={`block border-l px-3 py-1.5 font-mono text-xs uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${active === item.id ? "-ml-px border-primary-fixed-dim bg-primary-muted/10 text-primary-fixed-dim" : "border-transparent text-on-surface-variant hover:border-primary-dim hover:text-on-surface"}`}
           >
             <ScrambleText text={item.label} />
           </a>
@@ -49,7 +49,7 @@ export function ArticleToc({
   if (mobile) {
     return (
       <details className="my-6 lg:hidden">
-        <summary className="cursor-pointer border border-outline-variant bg-surface-container-low p-3 font-mono text-xs uppercase text-on-surface">
+        <summary className="cursor-pointer border border-outline-variant bg-surface-container-low p-3 font-mono text-xs uppercase text-on-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
           ON_THIS_PAGE
         </summary>
         {links}

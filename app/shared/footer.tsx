@@ -46,7 +46,7 @@ export function Footer() {
                 href={ai.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-fixed-dim hover:text-primary transition-colors"
+                className="text-primary-fixed-dim hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 aria-label={ai.name}
                 title={ai.name}
               >

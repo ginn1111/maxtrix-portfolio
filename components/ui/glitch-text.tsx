@@ -127,9 +127,9 @@ export function FlickerText({
   intensity = "medium",
 }: FlickerTextProps) {
   const durations = {
-    low: "4s",
-    medium: "2s",
-    high: "0.8s",
+    low: "6s",
+    medium: "6s",
+    high: "6s",
   };
 
   return (

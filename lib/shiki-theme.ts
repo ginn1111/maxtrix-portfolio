@@ -1,5 +1,7 @@
 import type { BundledLanguage, ThemeRegistration } from "shiki";
 
+// Dark-only palette bridge. All values derive from registered DESIGN.md §2 tokens:
+// --surface, --fg, --muted, --accent, --accent-2, --warn. No literals outside this file.
 export const GIN_MATRIX_THEME: ThemeRegistration = {
   name: "gin-matrix",
   type: "dark",

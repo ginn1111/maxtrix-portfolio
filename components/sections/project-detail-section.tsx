@@ -120,8 +120,6 @@ export function ProjectDetailSection() {
 
         {/* Project Visual Placeholder */}
         <div className="relative mb-8 h-64 w-full overflow-hidden border border-outline-variant bg-surface-container-low crt-fallback crt-flicker">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-fixed-dim/20 via-transparent to-primary-fixed-dim/5" />
-          <div className="absolute inset-0 crt-noise" />
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <div className="text-primary-fixed-dim font-heading text-display-md uppercase tracking-widest crt-color-aberration opacity-40">
               VISUAL_OUTPUT
