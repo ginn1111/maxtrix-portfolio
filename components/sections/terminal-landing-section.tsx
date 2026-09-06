@@ -95,8 +95,6 @@ export function TerminalLandingSection() {
         <div className="absolute -top-12 -left-12 w-32 h-32 border border-outline-variant/30 hidden lg:block" />
         <div className="absolute -bottom-12 -right-12 w-48 h-48 border border-outline-variant/30 hidden lg:block" />
 
-        <div className="crosshair corner-tl" />
-        <div className="crosshair corner-br" />
         <div
           ref={terminalRef}
           className="relative bg-background border border-primary-fixed-dim glow-md p-8 md:p-12 z-10"
@@ -129,9 +127,9 @@ export function TerminalLandingSection() {
                   ref={heroBodyRef}
                   className="text-body-lg font-body text-on-surface-variant leading-relaxed"
                 >
-                  Welcome, Operator. matrGINx is at your disposal.
-                  Navigate the node network to review current projects and
-                  system specifications.
+                  Welcome, Operator. GIN Portfolio is at your disposal. Navigate
+                  the node network to review current projects and system
+                  specifications.
                 </p>
                 <div className="space-y-1 font-mono text-on-surface-variant opacity-80 mt-8">
                   <p>IP_SOURCE........127.0.0.1</p>
@@ -140,8 +138,14 @@ export function TerminalLandingSection() {
                 </div>
               </div>
               <div className="lg:col-span-5 flex flex-col gap-4">
-                <Link href="/specs" className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                  <TerminalButton className="group w-full text-headline-md gap-0 h-min py-3">
+                <Link
+                  href="/specs"
+                  className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  <TerminalButton
+                    className="group w-full text-headline-md gap-0 h-min py-3"
+                    variant="ghost"
+                  >
                     COMMAND: USER_SPECS
                     <div className="absolute bottom-0 left-0 h-1 bg-primary-container w-0 group-hover:w-full transition-all duration-300" />
                   </TerminalButton>

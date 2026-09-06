@@ -15,7 +15,7 @@ type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   {
     href: "/specs",
-    label: "ABOUT_ME",
+    label: "USER_SPECS",
     icon: "terminal",
     scrambleText: "ROOT_ACCESS",
   },
@@ -37,12 +37,14 @@ export const NAV_ITEMS: NavItem[] = [
     icon: "format_quote",
     scrambleText: "FEEDBACK_DATA",
   },
+  /* Hub hidden until feature is ready.
   {
     href: "/hub",
     label: "HUB",
     icon: "menu_book",
     scrambleText: "DATA_LOGS",
   },
+  */
   {
     href: "/contact",
     label: "CONTACT",
@@ -68,7 +70,7 @@ function NavItem({ href, label, icon, scrambleText }: NavItem) {
         {icon}
       </span>
       <ScrambleText
-        className="hidden lg:inline"
+        className="hidden md:inline"
         text={label}
         scrambleText={scrambleText}
       />
@@ -87,16 +89,7 @@ export function Sidebar() {
               className="font-heading text-headline-lg font-bold text-primary-fixed-dim drop-shadow-[0_0_8px_var(--c-success)]"
             >
               <DigitalFlicker>
-                <ScrambleText
-                  className="hidden lg:inline"
-                  text="matrGINx.v2026"
-                  isHover={false}
-                />
-                <ScrambleText
-                  className="lg:hidden"
-                  text="GIN"
-                  isHover={false}
-                />
+                <ScrambleText text="GIN.v0.3.2026" isHover={false} />
               </DigitalFlicker>
             </Link>
             <p className="text-[10px] text-primary-fixed-dim opacity-70 animate-pulse hidden lg:inline">

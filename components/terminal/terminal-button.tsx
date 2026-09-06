@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface TerminalButtonProps
-  extends Omit<React.ComponentProps<typeof Button>, "variant"> {
+interface TerminalButtonProps extends Omit<
+  React.ComponentProps<typeof Button>,
+  "variant"
+> {
   children: React.ReactNode;
   variant?: "primary" | "ghost";
 }
@@ -15,7 +17,7 @@ export function TerminalButton({
 }: TerminalButtonProps) {
   const styles = {
     primary:
-      "font-mono uppercase tracking-wider text-on-action bg-primary border border-primary cursor-pointer rounded-none",
+      "font-mono uppercase tracking-wider text-on-action border border-primary cursor-pointer rounded-none",
     ghost:
       "font-mono uppercase tracking-wider text-primary border border-primary bg-transparent cursor-pointer rounded-none",
   }[variant];

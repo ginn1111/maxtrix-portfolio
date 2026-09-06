@@ -10,7 +10,11 @@ import { TerminalInput } from "@/components/terminal/terminal-input";
 import { TerminalTextarea } from "@/components/terminal/terminal-textarea";
 import { DigitalFlicker } from "../ui/glitch-text";
 
-type LogEntry = { time: string; text: string; type: "primary" | "default" | "error" };
+type LogEntry = {
+  time: string;
+  text: string;
+  type: "primary" | "default" | "error";
+};
 
 const contactSchema = z.object({
   name: z.string().min(1, "USER_IDENTIFIER cannot be empty"),
@@ -126,7 +130,7 @@ export function SecureContactSection() {
             </span>
             <div className="h-px flex-1 bg-outline-variant" />
           </div>
-          <h1 className="font-heading text-headline-xl text-primary-fixed-dim mb-4 uppercase tracking-tighter animate-flicker">
+          <h1 className="font-heading text-headline-xl text-primary-fixed-dim mb-4 uppercase tracking-tighter animate-flicker font-mono">
             Establish Connection
           </h1>
           <p className="text-on-surface-variant font-body-md max-w-lg">
@@ -160,7 +164,9 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.name && (
-                <p className="text-destructive text-sm mt-1 font-mono">{errors.name.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">
+                  {errors.name.message}
+                </p>
               )}
             </div>
 
@@ -181,7 +187,9 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.email && (
-                <p className="text-destructive text-sm mt-1 font-mono">{errors.email.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
@@ -201,10 +209,14 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.subject && (
-                <p className="text-destructive text-sm mt-1 font-mono">{errors.subject.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">
+                  {errors.subject.message}
+                </p>
               )}
               {rateLimitError && (
-                <p className="text-destructive text-sm mt-1">{rateLimitError}</p>
+                <p className="text-destructive text-sm mt-1">
+                  {rateLimitError}
+                </p>
               )}
             </div>
 
@@ -225,7 +237,9 @@ export function SecureContactSection() {
                 />
               </DigitalFlicker>
               {errors.message && (
-                <p className="text-destructive text-sm mt-1 font-mono">{errors.message.message}</p>
+                <p className="text-destructive text-sm mt-1 font-mono">
+                  {errors.message.message}
+                </p>
               )}
             </div>
 
@@ -234,6 +248,7 @@ export function SecureContactSection() {
               <TerminalButton
                 type="submit"
                 className="w-full md:w-auto px-12 py-4 flex items-center justify-center gap-4"
+                variant="ghost"
               >
                 [EXECUTE_MESSAGE]_
                 <svg

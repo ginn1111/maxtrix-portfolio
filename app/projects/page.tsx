@@ -9,7 +9,7 @@ export default function ProjectsPage() {
       <div className="max-w-container-max mx-auto w-full">
         {/* Header */}
         <div className="mb-6 border-b border-primary-fixed-dim pb-4 px-5">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between font-mono">
             <div>
               <span className="text-primary-fixed-dim font-bold animate-flicker">
                 PROJECTS.DAT
