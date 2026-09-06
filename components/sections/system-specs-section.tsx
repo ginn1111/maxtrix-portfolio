@@ -9,6 +9,7 @@ const skills = [
   "JavaScript",
   "TypeScript",
   "Go",
+  "Python",
   "CSS",
   "HTML",
   "Next.js",
@@ -124,7 +125,7 @@ export function SystemSpecsSection() {
               <span className="text-primary-fixed-dim">FULL_STACK_DEV</span>
             </div>
             <div className="flex justify-between font-mono text-label-sm">
-              <span className="text-on-surface-variant">STACK:</span>
+              <span className="text-on-surface-variant">STACKS:</span>
               <span className="text-primary-fixed-dim">
                 <DigitalFlicker>AI </DigitalFlicker>
                 /REACT/NEXTJS
@@ -132,7 +133,7 @@ export function SystemSpecsSection() {
             </div>
             <div className="flex justify-between font-mono text-label-sm">
               <span className="text-on-surface-variant">LANGUAGES:</span>
-              <span className="text-primary-fixed-dim">TS/JS/GO</span>
+              <span className="text-primary-fixed-dim">TS/JS/GO/Python</span>
             </div>
             <div className="flex justify-between font-mono text-label-sm">
               <span className="text-on-surface-variant">SOCIALS:</span>
@@ -233,29 +234,42 @@ export function SystemSpecsSection() {
             <p>
               Hi, I&apos;m{" "}
               <span className="text-primary-fixed-dim">
-                Pham (<DigitalFlicker>Gin</DigitalFlicker>) Van Thuan
+                Pham Van Thuan (<DigitalFlicker>Gin</DigitalFlicker>)
               </span>{" "}
-              — a web developer crafting performant, user-centered digital
-              experiences. I champion clean code and best practices to keep
-              projects maintainable.
+              — a frontend-focused Software Engineer building fast, polished,
+              and maintainable web experiences.
             </p>
             <p>
-              My journey began with a drive to turn ideas into elegant,
-              functional web solutions. Today, I work with HTML, CSS,
-              JavaScript, TypeScript, React, and Next.js — always prioritizing
-              code quality.
+              I started my journey with web development, focusing on{" "}
+              <span className="text-primary-fixed-dim">JavaScript</span>,{" "}
+              <span className="text-primary-fixed-dim">TypeScript</span>,{" "}
+              <span className="text-primary-fixed-dim">React</span>, and{" "}
+              <span className="text-primary-fixed-dim">Next.js</span>. Over
+              time, I&apos;ve worked across different products and teams, which
+              helped me grow beyond building interfaces into thinking more about{" "}
+              <span className="text-primary-fixed-dim">performance</span>,{" "}
+              <span className="text-primary-fixed-dim">architecture</span>,{" "}
+              <span className="text-primary-fixed-dim">
+                developer experience
+              </span>
+              , and how frontend connects with the rest of the system.
             </p>
             <p>
-              In this ever-evolving field, I embrace continuous learning. I
-              welcome challenges, collaborate with peers, and strive to build
-              web solutions that matter.
+              More recently, I&apos;ve been expanding into{" "}
+              <span className="text-primary-fixed-dim">
+                backend development
+              </span>{" "}
+              to understand APIs, data flow, services, and system behavior more
+              deeply. I also use{" "}
+              <span className="text-primary-fixed-dim">AI coding agents</span>{" "}
+              as part of my workflow to support research, implementation and
+              testing,
             </p>
             <p>
               <span className="text-primary-fixed-dim">What&apos;s next:</span>{" "}
-              Expanding into{" "}
-              <span className="text-primary-fixed-dim">backend</span> and{" "}
-              <span className="text-primary-fixed-dim">mobile development</span>
-              .
+              becoming a more well-rounded Software Engineer — deepening my
+              frontend expertise, strengthening my backend foundation, and
+              building better engineering workflows with AI.
               <span className="blink-block animate-blink-block ml-1" />
             </p>
           </div>
@@ -270,12 +284,12 @@ export function SystemSpecsSection() {
 
           <h3 className="font-heading text-headline-md text-primary-fixed-dim mb-8 flex items-center gap-3 uppercase">
             <span className="material-symbols-outlined">code</span>
-            TECH_STACK
+            TECH_STACKS
           </h3>
 
           <div className="flex flex-wrap gap-3">
             <Badge variant="tech">
-              <DigitalFlicker>Claude/Codex/Gemini</DigitalFlicker>
+              <DigitalFlicker>AI Agents</DigitalFlicker>
             </Badge>
             <Badge variant="tech">
               <DigitalFlicker>Hermes</DigitalFlicker>
